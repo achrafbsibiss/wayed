@@ -99,7 +99,7 @@ export default function Header() {
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Box
                     component="img"
-                    src="/images/hero/logo-wayd.webp"
+                    src="/images/hero/logo-wayd-2.webp"
                     alt="WAYD Logo"
                     sx={{
                       height: { xs: 48, md: 61 },
