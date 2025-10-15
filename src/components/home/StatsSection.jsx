@@ -111,16 +111,16 @@ export default function StatsSection() {
                                     {/* Description with leaf icon */}
                                     <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
                                         <Box
-                                        component="img"
-                                        src={stat.image || "/images/hero/decorative-leaf.png"}
-                                        alt={stat.label}
-                                        sx={{
-                                            width: { xs: 40, md: 43 },
-                                            height: { xs: 40, md: 19 },
-                                            objectFit: 'contain',
-                                            mt: 1,
-                                        }}
-                                    />
+                                            component="img"
+                                            src={stat.image || "/images/hero/decorative-leaf.png"}
+                                            alt={stat.label}
+                                            sx={{
+                                                width: { xs: 40, md: 43 },
+                                                height: { xs: 40, md: 19 },
+                                                objectFit: 'contain',
+                                                mt: 1,
+                                            }}
+                                        />
                                         <Typography
                                             variant="body2"
                                             sx={{

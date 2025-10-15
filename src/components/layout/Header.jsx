@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  AppBar, 
-  Toolbar, 
-  Container, 
-  Button, 
-  IconButton, 
-  Drawer, 
-  List, 
-  ListItem, 
+import {
+  AppBar,
+  Toolbar,
+  Container,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
   ListItemText,
   Box,
 } from '@mui/material';
@@ -44,14 +44,14 @@ export default function Header() {
       <List>
         {NAV_LINKS.map((link) => (
           <ListItem key={link.label} component={Link} href={link.href} onClick={handleDrawerToggle}>
-            <ListItemText 
-              primary={link.label} 
-              sx={{ 
-                '& .MuiTypography-root': { 
+            <ListItemText
+              primary={link.label}
+              sx={{
+                '& .MuiTypography-root': {
                   fontWeight: 500,
                   fontSize: '16px',
                 }
-              }} 
+              }}
             />
           </ListItem>
         ))}
@@ -61,7 +61,7 @@ export default function Header() {
             fullWidth
             component={Link}
             href="/contact"
-            sx={{ 
+            sx={{
               borderRadius: '50px',
               bgcolor: '#2d2d2d',
               color: 'white',
@@ -82,142 +82,142 @@ export default function Header() {
 
   return (
     <>
-      <AppBar 
-        position="fixed" 
+      <AppBar
+        position="fixed"
         elevation={0}
-        sx={{ 
+        sx={{
           backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.98)' : 'transparent',
           backdropFilter: scrolled ? 'blur(10px)' : 'none',
           boxShadow: scrolled ? '0 2px 8px rgba(0,0,0,0.08)' : 'none',
           transition: 'all 0.3s ease',
         }}
       >
-          <Container maxWidth="lg">
-            <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
-              {/* Logo */}
-              <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Box
-                    component="img"
-                    src="/images/hero/logo-wayd-2.webp"
-                    alt="WAYD Logo"
-                    sx={{
-                      height: { xs: 48, md: 61 },
-                      width: 'auto',
-                      display: 'block',
-                    }}
-                  />
-                </Box>
-              </Link>
-
-              {/* Desktop Navigation */}
-              <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: { lg: 2, xl: 3 }, alignItems: 'center' }}>
-                {NAV_LINKS.map((link) => (
-                  <Button
-                    key={link.label}
-                    component={Link}
-                    href={link.href}
-                    sx={{
-                      color: '#2A2A2A',
-                      fontWeight: 500,
-                      fontSize: '16px',
-                      px: 2,
-                      textTransform: 'none',
-                      '&:hover': {
-                        opacity: 0.7,
-                        backgroundColor: 'transparent',
-                      },
-                      transition: 'opacity 0.3s ease',
-                    }}
-                  >
-                    {link.label}
-                  </Button>
-                ))}
+        <Container maxWidth="lg">
+          <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
+            {/* Logo */}
+            <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Box
+                  component="img"
+                  src="/images/hero/logo-wayd-2.webp"
+                  alt="WAYD Logo"
+                  sx={{
+                    height: { xs: 48, md: 61 },
+                    width: 'auto',
+                    display: 'block',
+                  }}
+                />
               </Box>
+            </Link>
 
-              {/* CTA Buttons */}
-              <Box sx={{ display: 'flex', gap: { xs: 1.5, md: 2 }, alignItems: 'center' }}>
+            {/* Desktop Navigation */}
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: { lg: 2, xl: 3 }, alignItems: 'center' }}>
+              {NAV_LINKS.map((link) => (
                 <Button
-                  variant="contained"
+                  key={link.label}
                   component={Link}
-                  href="/contact"
-                  sx={{ 
-                    display: { xs: 'none', sm: 'inline-flex' },
-                    width: '144px',
-                    height: '45px',
-                    flexShrink: 0,
-                    borderRadius: '68px',
-                    border: '2px solid rgba(255, 255, 255, 0)',
-                    background: '#2A2A2A',
-                    color: 'white',
-                    textTransform: 'none',
-                    fontWeight: 500,
-                    fontSize: '15px',
-                    padding: 0,
-                    boxShadow: 'none',
-                    '&:hover': {
-                      background: '#1a1a1a',
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 6px 16px rgba(0,0,0,0.2)',
-                    },
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  Request a Quote
-                </Button>
-                
-                <Button
-                  variant="outlined"
-                  startIcon={
-                    <Icon icon="solar:global-linear" width="25" height="25" />
-                  }
-                  endIcon={
-                    <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />
-                  }
-                  sx={{ 
-                    display: { xs: 'none', sm: 'inline-flex' },
-                    width: '117px',
-                    height: '45px',
-                    flexShrink: 0,
-                    borderRadius: '68px',
-                    border: '2px solid #2A2A2A',
-                    background: 'rgba(255, 255, 255, 0)',
+                  href={link.href}
+                  sx={{
                     color: '#2A2A2A',
-                    textTransform: 'none',
                     fontWeight: 500,
-                    fontSize: '15px',
-                    padding: 0,
+                    fontSize: '16px',
+                    px: 2,
+                    textTransform: 'none',
                     '&:hover': {
-                      border: '2px solid #2A2A2A',
-                      bgcolor: '#2A2A2A',
-                      color: 'white',
-                      '& svg': {
-                        color: 'white',
-                      },
+                      opacity: 0.7,
+                      backgroundColor: 'transparent',
                     },
-                    transition: 'all 0.3s ease',
+                    transition: 'opacity 0.3s ease',
                   }}
                 >
-                  English
+                  {link.label}
                 </Button>
+              ))}
+            </Box>
 
-                {/* Mobile menu button */}
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  sx={{ 
-                    display: { lg: 'none' },
-                    color: '#2A2A2A',
-                  }}
-                >
-                  <Icon icon="solar:hamburger-menu-line-duotone" width="28" height="28" />
-                </IconButton>
-              </Box>
-            </Toolbar>
-          </Container>
-        </AppBar>
+            {/* CTA Buttons */}
+            <Box sx={{ display: 'flex', gap: { xs: 1.5, md: 2 }, alignItems: 'center' }}>
+              <Button
+                variant="contained"
+                component={Link}
+                href="/contact"
+                sx={{
+                  display: { xs: 'none', sm: 'inline-flex' },
+                  width: '144px',
+                  height: '45px',
+                  flexShrink: 0,
+                  borderRadius: '68px',
+                  border: '2px solid rgba(255, 255, 255, 0)',
+                  background: '#2A2A2A',
+                  color: 'white',
+                  textTransform: 'none',
+                  fontWeight: 500,
+                  fontSize: '15px',
+                  padding: 0,
+                  boxShadow: 'none',
+                  '&:hover': {
+                    background: '#1a1a1a',
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 6px 16px rgba(0,0,0,0.2)',
+                  },
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                Request a Quote
+              </Button>
+
+              <Button
+                variant="outlined"
+                startIcon={
+                  <Icon icon="solar:global-linear" width="25" height="25" />
+                }
+                endIcon={
+                  <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />
+                }
+                sx={{
+                  display: { xs: 'none', sm: 'inline-flex' },
+                  width: '117px',
+                  height: '45px',
+                  flexShrink: 0,
+                  borderRadius: '68px',
+                  border: '2px solid #2A2A2A',
+                  background: 'rgba(255, 255, 255, 0)',
+                  color: '#2A2A2A',
+                  textTransform: 'none',
+                  fontWeight: 500,
+                  fontSize: '15px',
+                  padding: 0,
+                  '&:hover': {
+                    border: '2px solid #2A2A2A',
+                    bgcolor: '#2A2A2A',
+                    color: 'white',
+                    '& svg': {
+                      color: 'white',
+                    },
+                  },
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                English
+              </Button>
+
+              {/* Mobile menu button */}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{
+                  display: { lg: 'none' },
+                  color: '#2A2A2A',
+                }}
+              >
+                <Icon icon="solar:hamburger-menu-line-duotone" width="28" height="28" />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
 
       {/* Mobile Drawer */}
       <Drawer
