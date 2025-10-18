@@ -28,13 +28,24 @@ export default function ContactPage() {
                     }}
                 >
                     {/* Curved Shape */}
-                    <Box
+                    {/* <Box
                         sx={{
                             position: 'absolute',
                             inset: 0,
                             borderBottomLeftRadius: '50%',
                             borderBottomRightRadius: '50%',
                             overflow: 'hidden',
+                        }}
+                    > */}
+                    {/* SVG Clip Path for Eye Shape */}
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            inset: 0,
+                            clipPath: {
+                                xs: 'ellipse(100% 80% at 50% 20%)',
+                                md: 'ellipse(60% 70% at 50% 10%)',
+                            },
                         }}
                     >
                         {/* Background Image */}
@@ -129,24 +140,22 @@ export default function ContactPage() {
             </Box>
 
             {/* Contact Information Section */}
-            <Box sx={{ py: { xs: 8, md: 12 } }}>
+            <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: 'white' }}>
                 <Container maxWidth="lg">
-                    <Grid container spacing={4}>
+                    <Grid container spacing={6}>
                         {/* Visit Us */}
-                        <Grid size={{ xs: 12, md: 4 }}>
-                            <Card
+                        <Grid item xs={12} md={4}>
+                            <Box
                                 sx={{
-                                    height: '100%',
                                     textAlign: 'center',
-                                    p: 4,
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: 80,
-                                        height: 80,
+                                        width: 100,
+                                        height: 100,
                                         borderRadius: 2,
-                                        bgcolor: '#22c55e',
+                                        bgcolor: '#41873C',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -154,15 +163,17 @@ export default function ContactPage() {
                                         mb: 3,
                                     }}
                                 >
-                                    <Icon icon="solar:home-2-bold" width="40" height="40" color="white" />
+                                    <Icon icon="solar:home-2-bold" width="50" height="50" color="white" />
                                 </Box>
 
                                 <Typography
                                     variant="h5"
                                     sx={{
                                         fontWeight: 700,
-                                        mb: 3,
+                                        mb: 2,
                                         color: 'text.primary',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px',
                                     }}
                                 >
                                     VISIT US
@@ -172,7 +183,7 @@ export default function ContactPage() {
                                     variant="body1"
                                     sx={{
                                         fontWeight: 600,
-                                        color: '#22c55e',
+                                        color: '#41873C',
                                         mb: 1,
                                     }}
                                 >
@@ -184,28 +195,27 @@ export default function ContactPage() {
                                     sx={{
                                         color: 'text.secondary',
                                         lineHeight: 1.6,
+                                        fontSize: '0.9rem',
                                     }}
                                 >
                                     Come see our fields and greenhouses in person!
                                 </Typography>
-                            </Card>
+                            </Box>
                         </Grid>
 
                         {/* Call Us */}
-                        <Grid size={{ xs: 12, md: 4 }}>
-                            <Card
+                        <Grid item xs={12} md={4}>
+                            <Box
                                 sx={{
-                                    height: '100%',
                                     textAlign: 'center',
-                                    p: 4,
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: 80,
-                                        height: 80,
+                                        width: 100,
+                                        height: 100,
                                         borderRadius: 2,
-                                        bgcolor: '#22c55e',
+                                        bgcolor: '#41873C',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -213,15 +223,17 @@ export default function ContactPage() {
                                         mb: 3,
                                     }}
                                 >
-                                    <Icon icon="solar:phone-bold" width="40" height="40" color="white" />
+                                    <Icon icon="solar:phone-bold" width="50" height="50" color="white" />
                                 </Box>
 
                                 <Typography
                                     variant="h5"
                                     sx={{
                                         fontWeight: 700,
-                                        mb: 3,
+                                        mb: 2,
                                         color: 'text.primary',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px',
                                     }}
                                 >
                                     CALL US
@@ -231,7 +243,7 @@ export default function ContactPage() {
                                     variant="body1"
                                     sx={{
                                         fontWeight: 600,
-                                        color: '#22c55e',
+                                        color: '#41873C',
                                         mb: 1,
                                     }}
                                 >
@@ -243,30 +255,27 @@ export default function ContactPage() {
                                     sx={{
                                         color: 'text.secondary',
                                         lineHeight: 1.6,
+                                        fontSize: '0.9rem',
                                     }}
                                 >
                                     We're happy to answer your questions and provide support
                                 </Typography>
-                            </Card>
+                            </Box>
                         </Grid>
 
                         {/* Contact Us (Email) */}
-                        <Grid size={{ xs: 12, md: 4 }}>
-                            <Card
+                        <Grid item xs={12} md={4}>
+                            <Box
                                 sx={{
-                                    height: '100%',
                                     textAlign: 'center',
-                                    p: 4,
-                                    borderRadius: 3,
-                                    transition: 'all 0.3s ease',
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: 80,
-                                        height: 80,
+                                        width: 100,
+                                        height: 100,
                                         borderRadius: 2,
-                                        bgcolor: '#22c55e',
+                                        bgcolor: '#41873C',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -274,15 +283,17 @@ export default function ContactPage() {
                                         mb: 3,
                                     }}
                                 >
-                                    <Icon icon="solar:letter-bold" width="40" height="40" color="white" />
+                                    <Icon icon="solar:letter-bold" width="50" height="50" color="white" />
                                 </Box>
 
                                 <Typography
                                     variant="h5"
                                     sx={{
                                         fontWeight: 700,
-                                        mb: 3,
+                                        mb: 2,
                                         color: 'text.primary',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px',
                                     }}
                                 >
                                     CONTACT US
@@ -292,7 +303,7 @@ export default function ContactPage() {
                                     variant="body1"
                                     sx={{
                                         fontWeight: 600,
-                                        color: '#22c55e',
+                                        color: '#41873C',
                                         mb: 1,
                                     }}
                                 >
@@ -304,11 +315,12 @@ export default function ContactPage() {
                                     sx={{
                                         color: 'text.secondary',
                                         lineHeight: 1.6,
+                                        fontSize: '0.9rem',
                                     }}
                                 >
                                     Send us an email and we'll get back to you promptly
                                 </Typography>
-                            </Card>
+                            </Box>
                         </Grid>
                     </Grid>
                 </Container>

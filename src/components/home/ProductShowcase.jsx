@@ -39,8 +39,8 @@ export default function ProductShowcase() {
   const nextRef = useRef(null);
 
   return (
-    <Box sx={{ py: { xs: 3, md: 4 } }}>
-      <Container maxWidth="lg">
+    <Box sx={{ py: { xs: 3, md: 4 }, overflow: 'hidden' }}>
+      <Container maxWidth="lg" sx={{ overflow: 'hidden' }}>
         {/* Header with Navigation Button */}
         <Box 
           sx={{ 
@@ -78,7 +78,7 @@ export default function ProductShowcase() {
         </Box>
 
         {/* Swiper Carousel */}
-        <Box sx={{ position: 'relative' }}>
+        <Box sx={{ position: 'relative', overflow: 'hidden', mx: { xs: -2, sm: 0 } }}>
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={24}
@@ -174,7 +174,7 @@ export default function ProductShowcase() {
               position: 'absolute',
               bottom: 0,
               left: 0,
-              display: 'flex',
+              display: { xs: 'none', sm: 'flex' }, // Hide on mobile
               gap: 2,
               zIndex: 10,
             }}

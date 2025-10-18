@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function HeroSection() {
+export default function HeroLast() {
     return (
         <Box
             sx={{
@@ -57,7 +57,7 @@ export default function HeroSection() {
                     {/* Main image with proper object-fit */}
                     <Box
                         component="img"
-                        src="/images/hero/hero.webp"
+                        src="/images/hero/hero 3.webp"
                         alt="Moroccan harvest fields"
                         sx={{
                             position: 'absolute',
@@ -92,9 +92,7 @@ export default function HeroSection() {
                             px: 2,
                         }}
                     >
-                        Bringing Moroccan
-                        <br />
-                        Harvests To The World
+                        Committed to a Greener Future
                     </Typography>
 
                     <Typography
@@ -109,22 +107,20 @@ export default function HeroSection() {
                             px: 1,
                         }}
                     >
-                        We bring Moroccan farmers to the world stage by exporting
-                        fresh, high-quality crops.
+                        We believe in sustainable farming and eco-friendly innovation that protects our planet for generations.
                     </Typography>
 
-                    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', px: 2 }}>
+                    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
                         <Button
                             variant="contained"
                             component={Link}
                             href="/harvest"
                             endIcon={<Icon icon="solar:arrow-right-outline" width="25.612" height="25.612" />}
                             sx={{
-                                width: { xs: '100%', sm: '164px' },
-                                maxWidth: '300px',
-                                height: { xs: '50px', sm: '45px' },
+                                width: '164px',
+                                height: '45px',
                                 flexShrink: 0,
-                                fontSize: { xs: '16px', sm: '15px' },
+                                fontSize: '15px',
                                 borderRadius: '68px',
                                 border: '2px solid rgba(255, 255, 255, 0)',
                                 background: 'linear-gradient(180deg, #2A2A2A 45.2%, #3A3636 100%)',
@@ -151,7 +147,7 @@ export default function HeroSection() {
                                 },
                             }}
                         >
-                            Learn Services
+                            Our Initiatives
                         </Button>
                     </Box>
                 </Box>
