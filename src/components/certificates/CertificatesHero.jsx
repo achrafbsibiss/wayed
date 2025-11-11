@@ -129,7 +129,7 @@ export default function CertificatesHero() {
                                 mt: 8,
                                 position: 'relative',
                                 minHeight: { xs: '500px', md: '600px' },
-                                display: 'flex',
+                                display: { xs: 'none', md: 'flex' },
                                 alignItems: 'center',
                                 justifyContent: 'center',
                             }}

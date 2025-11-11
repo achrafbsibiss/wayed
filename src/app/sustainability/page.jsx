@@ -1,12 +1,12 @@
 import StatsSection from "@/components/home/StatsSection";
-import HeroLast from "@/components/last/HeroLast";
+import HeroSustainability from "@/components/last/HeroSustainability";
 import MissionPhilosophySection from "@/components/last/Missionphilosophysection";
 import StorytellingSection from "@/components/last/Storytellingsection";
 
-export default function LastPage() {
+export default function SustainabilityPage() {
     return (
         <>
-            <HeroLast />
+            <HeroSustainability />
             <MissionPhilosophySection />
             <StatsSection />
             <StorytellingSection />

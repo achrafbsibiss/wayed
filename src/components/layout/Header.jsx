@@ -60,7 +60,7 @@ export default function Header() {
             variant="contained"
             fullWidth
             component={Link}
-            href="/contact"
+            href="/quote"
             sx={{
               borderRadius: '50px',
               bgcolor: '#2d2d2d',
@@ -93,127 +93,135 @@ export default function Header() {
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
-            {/* Logo */}
-            <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Box
-                  component="img"
-                  src="/images/hero/logo-wayd-2.webp"
-                  alt="WAYD Logo"
+          <Toolbar sx={{ py: 2 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
+              {/* Left: mobile menu icon (visible on mobile) */}
+              <Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
                   sx={{
-                    height: { xs: 48, md: 61 },
-                    width: 'auto',
-                    display: 'block',
-                  }}
-                />
-              </Box>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: { lg: 2, xl: 3 }, alignItems: 'center' }}>
-              {NAV_LINKS.map((link) => (
-                <Button
-                  key={link.label}
-                  component={Link}
-                  href={link.href}
-                  sx={{
+                    display: { lg: 'none' },
                     color: '#2A2A2A',
-                    fontWeight: 500,
-                    fontSize: '16px',
-                    px: 2,
-                    textTransform: 'none',
-                    '&:hover': {
-                      opacity: 0.7,
-                      backgroundColor: 'transparent',
-                    },
-                    transition: 'opacity 0.3s ease',
                   }}
                 >
-                  {link.label}
-                </Button>
-              ))}
-            </Box>
+                  <Icon icon="solar:hamburger-menu-line-duotone" width="28" height="28" />
+                </IconButton>
+              </Box>
 
-            {/* CTA Buttons */}
-            <Box sx={{ display: 'flex', gap: { xs: 1.5, md: 2 }, alignItems: 'center' }}>
-              <Button
-                variant="contained"
-                component={Link}
-                href="/contact"
-                sx={{
-                  display: { xs: 'none', sm: 'inline-flex' },
-                  width: '144px',
-                  height: '45px',
-                  flexShrink: 0,
-                  borderRadius: '68px',
-                  border: '2px solid rgba(255, 255, 255, 0)',
-                  background: '#2A2A2A',
-                  color: 'white',
-                  textTransform: 'none',
-                  fontWeight: 500,
-                  fontSize: '15px',
-                  padding: 0,
-                  boxShadow: 'none',
-                  '&:hover': {
-                    background: '#1a1a1a',
-                    transform: 'scale(1.05)',
-                    boxShadow: '0 6px 16px rgba(0,0,0,0.2)',
-                  },
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                Request a Quote
-              </Button>
+              {/* Center: Logo (centered on mobile, left-aligned on desktop) */}
+              <Box sx={{ flex: { xs: 1, lg: 1 }, display: 'flex', justifyContent: { xs: 'center', lg: 'flex-start' }, alignItems: 'center' }}>
+                <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Box
+                      component="img"
+                      src="/images/hero/logo-wayd-2.webp"
+                      alt="WAYD Logo"
+                      sx={{
+                        height: { xs: 48, md: 58 },
+                        width: 'auto',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+                </Link>
+              </Box>
 
-              <Button
-                variant="outlined"
-                startIcon={
-                  <Icon icon="solar:global-linear" width="25" height="25" />
-                }
-                endIcon={
-                  <Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />
-                }
-                sx={{
-                  display: { xs: 'none', sm: 'inline-flex' },
-                  width: '117px',
-                  height: '45px',
-                  flexShrink: 0,
-                  borderRadius: '68px',
-                  border: '2px solid #2A2A2A',
-                  background: 'rgba(255, 255, 255, 0)',
-                  color: '#2A2A2A',
-                  textTransform: 'none',
-                  fontWeight: 500,
-                  fontSize: '15px',
-                  padding: 0,
-                  '&:hover': {
-                    border: '2px solid #2A2A2A',
-                    bgcolor: '#2A2A2A',
+              {/* Right: Desktop nav + CTAs */}
+              <Box sx={{ flex: 1, display: 'flex', gap: { xs: 1.5, lg: 1.5, xl: 2 }, alignItems: 'center', justifyContent: 'flex-end' }}>
+                {/* Desktop Navigation */}
+                <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: { lg: 1, xl: 1.5 }, alignItems: 'center' }}>
+                  {NAV_LINKS.map((link) => (
+                    <Button
+                      key={link.label}
+                      component={Link}
+                      href={link.href}
+                      sx={{
+                        color: '#2A2A2A',
+                        fontWeight: 500,
+                        fontSize: { lg: '15px', xl: '16px' },
+                        px: { lg: 1.2, xl: 1.5 },
+                        textTransform: 'none',
+                        whiteSpace: 'nowrap',
+                        '&:hover': {
+                          opacity: 0.7,
+                          backgroundColor: 'transparent',
+                        },
+                        transition: 'opacity 0.3s ease',
+                      }}
+                    >
+                      {link.label}
+                    </Button>
+                  ))}
+                </Box>
+
+                {/* CTA Buttons */}
+                <Button
+                  variant="contained"
+                  component={Link}
+                  href="/quote"
+                  sx={{
+                    display: { xs: 'none', sm: 'inline-flex' },
+                    minWidth: { sm: '140px', lg: '130px', xl: '144px' },
+                    width: 'auto',
+                    height: '45px',
+                    flexShrink: 0,
+                    borderRadius: '68px',
+                    border: '2px solid rgba(255, 255, 255, 0)',
+                    background: '#2A2A2A',
                     color: 'white',
-                    '& svg': {
-                      color: 'white',
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '15px',
+                    px: { sm: 2.5, lg: 2, xl: 2.5 },
+                    boxShadow: 'none',
+                    whiteSpace: 'nowrap',
+                    '&:hover': {
+                      background: '#1a1a1a',
+                      transform: 'scale(1.05)',
+                      boxShadow: '0 6px 16px rgba(0,0,0,0.2)',
                     },
-                  },
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                English
-              </Button>
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  Request a Quote
+                </Button>
 
-              {/* Mobile menu button */}
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{
-                  display: { lg: 'none' },
-                  color: '#2A2A2A',
-                }}
-              >
-                <Icon icon="solar:hamburger-menu-line-duotone" width="28" height="28" />
-              </IconButton>
+                <Button
+                  variant="outlined"
+                  startIcon={<Icon icon="solar:global-linear" width="25" height="25" />}
+                  endIcon={<Icon icon="solar:alt-arrow-right-linear" width="16" height="16" />}
+                  sx={{
+                    display: { xs: 'none', sm: 'inline-flex' },
+                    minWidth: { sm: '110px', lg: '100px', xl: '117px' },
+                    width: 'auto',
+                    height: '45px',
+                    flexShrink: 0,
+                    borderRadius: '68px',
+                    border: '2px solid #2A2A2A',
+                    background: 'rgba(255, 255, 255, 0)',
+                    color: '#2A2A2A',
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '15px',
+                    px: { sm: 1.5, lg: 1, xl: 1.5 },
+                    whiteSpace: 'nowrap',
+                    '&:hover': {
+                      border: '2px solid #2A2A2A',
+                      bgcolor: '#2A2A2A',
+                      color: 'white',
+                      '& svg': {
+                        color: 'white',
+                      },
+                    },
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  English
+                </Button>
+              </Box>
             </Box>
           </Toolbar>
         </Container>

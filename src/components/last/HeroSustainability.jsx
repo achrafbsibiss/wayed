@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function HeroLast() {
+export default function HeroSustainability() {
     return (
         <Box
             sx={{

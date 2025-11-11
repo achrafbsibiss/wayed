@@ -141,7 +141,7 @@ export default function RequestQuotePage() {
             </Box>
 
             {/* Form Section */}
-            <Box sx={{ py: { xs: 6, md: 10 }}}>
+            <Box sx={{ py: { xs: 6, md: 10 } }}>
                 <Container maxWidth="md">
                     <Box sx={{ mb: 6 }}>
                         <Typography
@@ -390,13 +390,17 @@ export default function RequestQuotePage() {
 
             {/* Contact Information Section */}
             <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: 'white' }}>
-                <Container maxWidth="lg">
-                    <Grid container spacing={6}>
+                <Container>
+                    <Grid container spacing={6} alignItems="stretch">
                         {/* Visit Us */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box
@@ -453,10 +457,14 @@ export default function RequestQuotePage() {
                         </Grid>
 
                         {/* Call Us */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box
@@ -513,10 +521,14 @@ export default function RequestQuotePage() {
                         </Grid>
 
                         {/* Contact Us (Email) */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box

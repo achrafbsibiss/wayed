@@ -68,7 +68,8 @@ export default function StatsSection() {
         >
             <Container maxWidth="lg">
                 <Grid container spacing={{ xs: 3, md: 8 }} alignItems="center">
-                    <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex' }}>
+                    {/* Stats list - Order 2 on mobile (hidden), 1 on desktop */}
+                    <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: { xs: 'none', sm: 'flex' }, order: { xs: 2, sm: 1 } }}>
                         <Box
                             sx={{
                                 display: 'flex',
@@ -139,7 +140,104 @@ export default function StatsSection() {
                         </Box>
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: 'flex' }}>
+                    {/* Mobile-only centered stats card */}
+                    <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: { xs: 'flex', sm: 'none' }, order: 1 }}>
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                width: '100%',
+                                height: 400,
+                                borderRadius: '35px',
+                                overflow: 'hidden',
+                                boxShadow: 'none',
+                                flex: 1,
+                            }}
+                        >
+                            {/* Content centered for mobile view */}
+                            <Box
+                                sx={{
+                                    position: 'relative',
+                                    zIndex: 1,
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    textAlign: 'center',
+                                    p: 4,
+                                }}
+                            >
+                                <Typography
+                                    variant="h3"
+                                    sx={{
+                                        color: '#2A2A2A',
+                                        fontWeight: 500,
+                                        textAlign: 'center',
+                                        mb: 4,
+                                        fontSize: '1.75rem',
+                                        lineHeight: 1.2,
+                                        fontFamily: 'Roboto',
+                                    }}
+                                >
+                                    <span style={{ fontWeight: 700 }}>Certified</span> Moroccan<br />Quality Standards
+                                </Typography>
+
+                                {/* Stats display in mobile view */}
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: 3,
+                                        width: '100%',
+                                    }}
+                                >
+                                    {STATS.map((stat, index) => (
+                                        <Box key={index} sx={{ textAlign: 'center' }}>
+                                            <Typography
+                                                variant="h2"
+                                                sx={{
+                                                    fontWeight: 600,
+                                                    color: '#2A2A2A',
+                                                    mb: 0.5,
+                                                    fontSize: '3rem',
+                                                    lineHeight: 1.1,
+                                                    fontFamily: 'Roboto',
+                                                }}
+                                            >
+                                                <AnimatedNumber value={stat.value} inView={inView} />
+                                            </Typography>
+                                            <Typography
+                                                variant="body1"
+                                                sx={{
+                                                    fontWeight: 400,
+                                                    color: '#2A2A2A',
+                                                    fontSize: '0.9rem',
+                                                    fontFamily: 'Roboto',
+                                                }}
+                                            >
+                                                {stat.label}
+                                            </Typography>
+                                            {index < STATS.length - 1 && (
+                                                <Box
+                                                    sx={{
+                                                        width: '60px',
+                                                        height: '1px',
+                                                        bgcolor: '#2A2A2A',
+                                                        opacity: 0.3,
+                                                        mx: 'auto',
+                                                        mt: 2,
+                                                    }}
+                                                />
+                                            )}
+                                        </Box>
+                                    ))}
+                                </Box>
+                            </Box>
+                        </Box>
+                    </Grid>
+
+                    {/* Desktop certification card with background image */}
+                    <Grid size={{ xs: 12, sm: 6, md: 6 }} sx={{ display: { xs: 'none', sm: 'flex' }, order: 2 }}>
                         <Box
                             sx={{
                                 position: 'relative',

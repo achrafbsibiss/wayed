@@ -115,11 +115,11 @@ export const INNOVATIONS = [
 ];
 
 export const NAV_LINKS = [
-  { label: 'Notre Catalogue', href: '/catalogue' },
-  { label: 'Our Harvest', href: '/harvest' },
+  { label: 'Products', href: '/harvest' },
   { label: 'About us', href: '/about' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'Sustainability', href: '/sustainability' },
   { label: 'Certificates', href: '/certificates' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const FOOTER_SECTIONS = {

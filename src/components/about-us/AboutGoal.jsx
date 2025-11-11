@@ -182,34 +182,35 @@ export default function AboutGoal() {
                             sx={{
                                 mt: 8,
                                 position: 'relative',
-                                minHeight: { xs: '400px', md: '512px' },
+                                minHeight: { xs: '500px', md: '512px' },
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
+                                borderRadius: { xs: '30px', md: 0 },
+                                py: { xs: 4, md: 0 },
                             }}
                         >
-                            {/* Main Content Container */}
+                            {/* Desktop Layout - Original Design */}
                             <Box
                                 sx={{
+                                    display: { xs: 'none', md: 'flex' },
                                     position: 'relative',
-                                    width: { xs: '100%', md: '819px' },
-                                    height: { xs: 'auto', md: '512px' },
-                                    display: 'flex',
+                                    width: '819px',
+                                    height: '512px',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    px: { xs: 2, md: 0 },
                                 }}
                             >
                                 {/* Quote Text */}
                                 <Typography
                                     sx={{
                                         position: 'absolute',
-                                        width: { xs: '90%', md: '458px' },
-                                        top: { xs: '20px', md: '70px' },
-                                        left: { xs: '5%', md: '220px' },
+                                        width: '458px',
+                                        top: '70px',
+                                        left: '220px',
                                         opacity: 0.6,
                                         color: '#2A2A2A',
-                                        fontSize: { xs: '24px', md: '40px' },
+                                        fontSize: '40px',
                                         fontFamily: 'Roboto',
                                         fontWeight: 300,
                                         lineHeight: 1.2,
@@ -226,10 +227,10 @@ export default function AboutGoal() {
                                     alt=""
                                     sx={{
                                         position: 'absolute',
-                                        width: { xs: '200px', md: '300px' },
-                                        height: { xs: '200px', md: '300px' },
-                                        left: { xs: '10px', md: '8px' },
-                                        top: { xs: '100px', md: '100px' },
+                                        width: '300px',
+                                        height: '300px',
+                                        left: '8px',
+                                        top: '100px',
                                         zIndex: 1,
                                         objectFit: 'contain',
                                     }}
@@ -242,10 +243,10 @@ export default function AboutGoal() {
                                     alt=""
                                     sx={{
                                         position: 'absolute',
-                                        width: { xs: '200px', md: '300px' },
-                                        height: { xs: '200px', md: '300px' },
-                                        left: { xs: '10px', md: '140px' },
-                                        bottom: { xs: '20px', md: '40px' },
+                                        width: '300px',
+                                        height: '300px',
+                                        left: '140px',
+                                        bottom: '40px',
                                         zIndex: 1,
                                         objectFit: 'contain',
                                     }}
@@ -258,11 +259,11 @@ export default function AboutGoal() {
                                     alt={TESTIMONIALS[currentTestimonial].name}
                                     sx={{
                                         position: 'absolute',
-                                        width: { xs: '120px', md: '166px' },
-                                        height: { xs: '120px', md: '165px' },
-                                        left: { xs: 'calc(50% - 60px)', md: '370px' },
-                                        top: { xs: 'calc(50% - 60px)', md: '220px' },
-                                        borderRadius: { xs: '15px', md: '21px' },
+                                        width: '166px',
+                                        height: '165px',
+                                        left: '370px',
+                                        top: '220px',
+                                        borderRadius: '21px',
                                         objectFit: 'cover',
                                         zIndex: 3,
                                     }}
@@ -272,8 +273,8 @@ export default function AboutGoal() {
                                 <Box
                                     sx={{
                                         position: 'absolute',
-                                        left: { xs: 'calc(50% - 68px)', md: '370px' },
-                                        top: { xs: 'calc(50% + 80px)', md: '390px' },
+                                        left: '370px',
+                                        top: '390px',
                                         zIndex: 3,
                                         display: 'flex',
                                         flexDirection: 'column',
@@ -282,7 +283,7 @@ export default function AboutGoal() {
                                     <Typography
                                         sx={{
                                             color: 'black',
-                                            fontSize: { xs: '16px', md: '20px' },
+                                            fontSize: '20px',
                                             fontFamily: 'Roboto',
                                             fontWeight: 300,
                                         }}
@@ -292,7 +293,7 @@ export default function AboutGoal() {
                                     <Typography
                                         sx={{
                                             color: 'black',
-                                            fontSize: { xs: '16px', md: '20px' },
+                                            fontSize: '20px',
                                             fontFamily: 'Roboto',
                                             fontStyle: 'italic',
                                             fontWeight: 500,
@@ -304,19 +305,147 @@ export default function AboutGoal() {
                                 </Box>
                             </Box>
 
-                            {/* Navigation Arrows - Always Visible */}
+                            {/* Mobile Layout - New Design (matches image) */}
+                            <Box
+                                sx={{
+                                    display: { xs: 'flex', md: 'none' },
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
+                                    px: 3,
+                                    py: 4,
+                                    gap: 3,
+                                }}
+                            >
+                                {/* Large Opening Quote Mark */}
+                                <Box
+                                    sx={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        display: 'flex',
+                                        justifyContent: 'flex-start',
+                                        mb: -2,
+                                    }}
+                                >
+                                    <Box
+                                        component="img"
+                                        src="/images/about/quote-open.png"
+                                        alt=""
+                                        sx={{
+                                            width: '120px',
+                                            height: '120px',
+                                            objectFit: 'contain',
+                                        }}
+                                    />
+                                </Box>
+
+                                {/* Quote Text in Dark Box */}
+                                <Box
+                                    sx={{
+                                        bgcolor: '#2A2A2A',
+                                        borderRadius: '20px',
+                                        p: 3,
+                                        width: '100%',
+                                        maxWidth: '400px',
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            color: 'white',
+                                            fontSize: '18px',
+                                            fontFamily: 'Roboto',
+                                            fontWeight: 300,
+                                            lineHeight: 1.4,
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        " {TESTIMONIALS[currentTestimonial].quote} "
+                                    </Typography>
+                                </Box>
+
+                                {/* Founder Image */}
+                                <Box
+                                    component="img"
+                                    src={TESTIMONIALS[currentTestimonial].image}
+                                    alt={TESTIMONIALS[currentTestimonial].name}
+                                    sx={{
+                                        width: '160px',
+                                        height: '160px',
+                                        borderRadius: '20px',
+                                        objectFit: 'cover',
+                                        mt: 2,
+                                    }}
+                                />
+
+                                {/* Founder Name and Title */}
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        gap: 0.5,
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            color: 'black',
+                                            fontSize: '18px',
+                                            fontFamily: 'Roboto',
+                                            fontWeight: 400,
+                                        }}
+                                    >
+                                        {TESTIMONIALS[currentTestimonial].name}
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            color: 'black',
+                                            fontSize: '18px',
+                                            fontFamily: 'Roboto',
+                                            fontStyle: 'italic',
+                                            fontWeight: 500,
+                                        }}
+                                    >
+                                        {TESTIMONIALS[currentTestimonial].title}
+                                    </Typography>
+                                </Box>
+
+                                {/* Large Closing Quote Mark */}
+                                <Box
+                                    sx={{
+                                        position: 'relative',
+                                        width: '100%',
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        mt: -2,
+                                    }}
+                                >
+                                    <Box
+                                        component="img"
+                                        src="/images/about/quote-close.png"
+                                        alt=""
+                                        sx={{
+                                            width: '120px',
+                                            height: '120px',
+                                            objectFit: 'contain',
+                                        }}
+                                    />
+                                </Box>
+                            </Box>
+
+                            {/* Navigation Arrows - Desktop Only */}
                             <IconButton
                                 onClick={handlePrev}
                                 disabled={TESTIMONIALS.length <= 1}
                                 sx={{
+                                    display: { xs: 'none', md: 'flex' },
                                     position: 'absolute',
-                                    left: { xs: '5px', md: '20px' },
+                                    left: '20px',
                                     top: '50%',
                                     transform: 'translateY(-50%)',
                                     bgcolor: 'white',
                                     color: '#2A2A2A',
-                                    width: { xs: '60px', md: '80px' },
-                                    height: { xs: '60px', md: '80px' },
+                                    width: '80px',
+                                    height: '80px',
                                     '&:hover': {
                                         bgcolor: '#f5f5f5',
                                         boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
@@ -334,14 +463,15 @@ export default function AboutGoal() {
                                 onClick={handleNext}
                                 disabled={TESTIMONIALS.length <= 1}
                                 sx={{
+                                    display: { xs: 'none', md: 'flex' },
                                     position: 'absolute',
-                                    right: { xs: '5px', md: '20px' },
+                                    right: '20px',
                                     top: '50%',
                                     transform: 'translateY(-50%)',
                                     bgcolor: 'white',
                                     color: '#2A2A2A',
-                                    width: { xs: '60px', md: '80px' },
-                                    height: { xs: '60px', md: '80px' },
+                                    width: '80px',
+                                    height: '80px',
                                     '&:hover': {
                                         bgcolor: '#f5f5f5',
                                         boxShadow: '0 4px 12px rgba(0,0,0,0.15)',

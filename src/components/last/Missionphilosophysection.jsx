@@ -1,22 +1,23 @@
 'use client';
 
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Grid } from '@mui/material';
 
 export default function MissionPhilosophySection() {
     return (
         <Box
             sx={{
-                py: { xs: 8, md: 12 },
+                py: { xs: 6, md: 12 },
                 position: 'relative',
                 overflow: 'hidden',
             }}
         >
             <Container maxWidth="lg">
-                {/* Main Content Container */}
+                {/* Desktop Layout - Original Design */}
                 <Box
                     sx={{
+                        display: { xs: 'none', md: 'block' },
                         position: 'relative',
-                        minHeight: { xs: '1000px', md: '800px' },
+                        minHeight: '800px',
                     }}
                 >
                     {/* Center Text */}
@@ -36,7 +37,7 @@ export default function MissionPhilosophySection() {
                             sx={{
                                 fontWeight: 900,
                                 mb: 3,
-                                fontSize: { xs: '2rem', md: '2.5rem' },
+                                fontSize: '2.5rem',
                                 color: 'text.primary',
                             }}
                         >
@@ -46,9 +47,8 @@ export default function MissionPhilosophySection() {
                             variant="body1"
                             sx={{
                                 color: 'text.secondary',
-                                fontSize: { xs: '1rem', md: '24px' },
+                                fontSize: '24px',
                                 fontWeight: 400,
-                                horizontalAlign: 'center',
                             }}
                         >
                             Our mission is to balance productivity with responsibility. From seed to harvest, every step we take is guided by care for the land, the farmer, and the future
@@ -62,8 +62,8 @@ export default function MissionPhilosophySection() {
                             top: '50%',
                             left: '50%',
                             transform: 'translate(-50%, -50%)',
-                            width: { xs: '95%', md: '100%' },
-                            height: { xs: '95%', md: '100%' },
+                            width: '100%',
+                            height: '100%',
                             zIndex: 0,
                             pointerEvents: 'none',
                         }}
@@ -84,8 +84,8 @@ export default function MissionPhilosophySection() {
                     <Box
                         sx={{
                             position: 'absolute',
-                            top: { xs: '0', md: '70px' },
-                            left: { xs: '10%', md: '-8%' },
+                            top: '70px',
+                            left: '-8%',
                             zIndex: 1,
                         }}
                     >
@@ -94,8 +94,8 @@ export default function MissionPhilosophySection() {
                             src="/images/last/image 43.webp"
                             alt="Hands holding seedling"
                             sx={{
-                                width: { xs: '140px', md: '243px' },
-                                height: { xs: '140px', md: '217px' },
+                                width: '243px',
+                                height: '217px',
                             }}
                         />
                     </Box>
@@ -104,8 +104,8 @@ export default function MissionPhilosophySection() {
                     <Box
                         sx={{
                             position: 'absolute',
-                            top: { xs: '20px', md: '5px' },
-                            left: { xs: '50%', md: '50%' },
+                            top: '5px',
+                            left: '50%',
                             transform: 'translateX(-50%)',
                             zIndex: 1,
                         }}
@@ -115,8 +115,8 @@ export default function MissionPhilosophySection() {
                             src="/images/last/image 47.webp"
                             alt="Soil close-up"
                             sx={{
-                                width: { xs: '160px', md: '360px' },
-                                height: { xs: '120px', md: '250px' },
+                                width: '360px',
+                                height: '250px',
                             }}
                         />
                     </Box>
@@ -125,8 +125,8 @@ export default function MissionPhilosophySection() {
                     <Box
                         sx={{
                             position: 'absolute',
-                            top: { xs: '150px', md: '250px' },
-                            right: { xs: '5%', md: '-10%' },
+                            top: '250px',
+                            right: '-10%',
                             zIndex: 1,
                         }}
                     >
@@ -135,8 +135,8 @@ export default function MissionPhilosophySection() {
                             src="/images/last/image 44.webp"
                             alt="Tomatoes on vine"
                             sx={{
-                                width: { xs: '140px', md: '231px' },
-                                height: { xs: '140px', md: '264px' },
+                                width: '231px',
+                                height: '264px',
                             }}
                         />
                     </Box>
@@ -145,8 +145,8 @@ export default function MissionPhilosophySection() {
                     <Box
                         sx={{
                             position: 'absolute',
-                            bottom: { xs: '150px', md: '-35px' },
-                            right: { xs: '15%', md: '25%' },
+                            bottom: '-35px',
+                            right: '25%',
                             zIndex: 1,
                         }}
                     >
@@ -155,8 +155,8 @@ export default function MissionPhilosophySection() {
                             src="/images/last/image 46.webp"
                             alt="Greenhouse aerial view"
                             sx={{
-                                width: { xs: '140px', md: '244px' },
-                                height: { xs: '100px', md: '238px' },
+                                width: '244px',
+                                height: '238px',
                             }}
                         />
                     </Box>
@@ -165,8 +165,8 @@ export default function MissionPhilosophySection() {
                     <Box
                         sx={{
                             position: 'absolute',
-                            bottom: { xs: '50px', md: '5px' },
-                            left: { xs: '8%', md: '-5%' },
+                            bottom: '5px',
+                            left: '-5%',
                             zIndex: 1,
                         }}
                     >
@@ -175,11 +175,123 @@ export default function MissionPhilosophySection() {
                             src="/images/last/image 45.webp"
                             alt="Farm field aerial view"
                             sx={{
-                                width: { xs: '140px', md: '325px' },
-                                height: { xs: '120px', md: '291px' },
+                                width: '325px',
+                                height: '291px',
                             }}
                         />
                     </Box>
+                </Box>
+
+                {/* Mobile Layout - Simple Grid */}
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                    {/* Title and Description */}
+                    <Box sx={{ textAlign: 'center', mb: 5, px: 2 }}>
+                        <Typography
+                            variant="h2"
+                            sx={{
+                                fontWeight: 700,
+                                mb: 3,
+                                fontSize: '1.75rem',
+                                color: 'text.primary',
+                            }}
+                        >
+                            Our Mission / Philosophy
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                color: 'text.secondary',
+                                fontSize: '1rem',
+                                fontWeight: 400,
+                                lineHeight: 1.6,
+                            }}
+                        >
+                            Our mission is to balance productivity with responsibility. From seed to harvest, every step we take is guided by care for the land, the farmer, and the future
+                        </Typography>
+                    </Box>
+
+                    {/* Image Grid */}
+                    <Grid container spacing={2} sx={{ px: 2 }}>
+                        {/* Image 1 - Hands with seedling */}
+                        <Grid size={{ xs: 6 }}>
+                            <Box
+                                component="img"
+                                src="/images/last/image 43.webp"
+                                alt="Hands holding seedling"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 2,
+                                    objectFit: 'cover',
+                                    aspectRatio: '1/1',
+                                }}
+                            />
+                        </Grid>
+
+                        {/* Image 2 - Soil close-up */}
+                        <Grid size={{ xs: 6 }}>
+                            <Box
+                                component="img"
+                                src="/images/last/image 47.webp"
+                                alt="Soil close-up"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 2,
+                                    objectFit: 'cover',
+                                    aspectRatio: '1/1',
+                                }}
+                            />
+                        </Grid>
+
+                        {/* Image 3 - Tomatoes on vine (full width) */}
+                        <Grid size={{ xs: 12 }}>
+                            <Box
+                                component="img"
+                                src="/images/last/image 44.webp"
+                                alt="Tomatoes on vine"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 2,
+                                    objectFit: 'cover',
+                                    aspectRatio: '16/9',
+                                }}
+                            />
+                        </Grid>
+
+                        {/* Image 4 - Greenhouse aerial */}
+                        <Grid size={{ xs: 6 }}>
+                            <Box
+                                component="img"
+                                src="/images/last/image 46.webp"
+                                alt="Greenhouse aerial view"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 2,
+                                    objectFit: 'cover',
+                                    aspectRatio: '1/1',
+                                }}
+                            />
+                        </Grid>
+
+                        {/* Image 5 - Farm field aerial */}
+                        <Grid size={{ xs: 6 }}>
+                            <Box
+                                component="img"
+                                src="/images/last/image 45.webp"
+                                alt="Farm field aerial view"
+                                sx={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: 2,
+                                    objectFit: 'cover',
+                                    aspectRatio: '1/1',
+                                }}
+                            />
+                        </Grid>
+                    </Grid>
                 </Box>
             </Container>
         </Box>

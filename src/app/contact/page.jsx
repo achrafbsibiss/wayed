@@ -144,10 +144,14 @@ export default function ContactPage() {
                 <Container maxWidth="lg">
                     <Grid container spacing={6}>
                         {/* Visit Us */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box
@@ -204,10 +208,14 @@ export default function ContactPage() {
                         </Grid>
 
                         {/* Call Us */}
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box
@@ -264,10 +272,14 @@ export default function ContactPage() {
                         </Grid>
 
                         {/* Contact Us (Email) */}
-                        <Grid item xs={12} md={4}>
+                       <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    width: '100%',
                                 }}
                             >
                                 <Box
