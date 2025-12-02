@@ -14,18 +14,18 @@ export const SITE_CONFIG = {
 };
 
 export const STATS = [
-  { 
-    value: '50+', 
+  {
+    value: '50+',
     label: 'Years of Experience',
     description: 'More than 50 years in Moroccan agriculture have allowed us to develop unparalleled expertise in cultivating premium, fresh vegetables that meet the highest standards.'
   },
-  { 
-    value: '100+', 
+  {
+    value: '100+',
     label: 'Farms in Progress',
     description: 'Over 100 certified farms in Moroccan agriculture have been allowed us to develop unmatched expertise in cultivating premium, fresh tomatoes that meet the highest standards.'
   },
-  { 
-    value: '500+', 
+  {
+    value: '500+',
     label: 'Local Farmers Supported',
     description: 'More than 500 farmers in Moroccan agriculture have been allowed us to develop unparalleled expertise in cultivating premium, fresh tomatoes that meet the highest standards.'
   },
@@ -115,11 +115,11 @@ export const INNOVATIONS = [
 ];
 
 export const NAV_LINKS = [
-  { label: 'Products', href: '/harvest' },
-  { label: 'About us', href: '/about' },
-  { label: 'Sustainability', href: '/sustainability' },
-  { label: 'Certificates', href: '/certificates' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Products', href: '/harvest', key: 'products' },
+  { label: 'About us', href: '/about', key: 'about' },
+  { label: 'Sustainability', href: '/sustainability', key: 'sustainability' },
+  { label: 'Certificates', href: '/certificates', key: 'certificates' },
+  { label: 'Contact', href: '/contact', key: 'contact' },
 ];
 
 export const FOOTER_SECTIONS = {

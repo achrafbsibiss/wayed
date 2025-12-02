@@ -252,7 +252,7 @@ export default function StatsSection() {
                             {/* Background Image */}
                             <Box
                                 component="img"
-                                src="/images/hero/quality-badge.webp"
+                                src="/images/hero/Mask group.png"
                                 alt="Certified Moroccan Quality"
                                 sx={{
                                     position: 'absolute',
@@ -262,7 +262,6 @@ export default function StatsSection() {
                                     bottom: 0,
                                     width: '100%',
                                     height: '100%',
-                                    objectFit: 'cover',
                                 }}
                             />
 
@@ -274,7 +273,6 @@ export default function StatsSection() {
                                     left: 0,
                                     right: 0,
                                     bottom: 0,
-                                    background: 'linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)',
                                 }}
                             />
 
@@ -288,8 +286,9 @@ export default function StatsSection() {
                                     flexDirection: 'column',
                                     justifyContent: 'center',
                                     alignItems: 'flex-start',
-                                    p: { xs: 4, md: 5 },
-                                    pl: { xs: 4, md: 6 },
+                                    p: { xs: 4, md: 1 },
+                                    pl: { xs: 4, md: 2 },
+                                    pb: { xs: 4, md: 30 }
                                 }}
                             >
                                 <Typography
@@ -301,7 +300,7 @@ export default function StatsSection() {
                                         mb: 0,
                                         fontSize: { xs: '2rem', md: '55px' },
                                         lineHeight: 1.2,
-                                        textShadow: '2px 2px 8px rgba(0,0,0,0.5)',
+                                        color: '#2A2A2A',
                                         maxWidth: '350px',
                                         fontFamily: 'Roboto',
                                     }}
