@@ -1,0 +1,222 @@
+{
+  "site": {
+    "name": "WAYD Groupe",
+    "tagline": "Bringing Moroccan Harvests To The World",
+    "description": "We bring Moroccan tomatoes to the world. High quality, fresh and grown with care for both land and farmers.",
+    "email": "contact@waydgroupe.com",
+    "phone": "+212 XXX XXX XXX",
+    "address": "Morocco"
+  },
+  "nav": {
+    "products": "Products",
+    "about": "About us",
+    "sustainability": "Sustainability",
+    "certificates": "Certificates",
+    "contact": "Contact",
+    "requestQuote": "Request a Quote",
+    "language": "English"
+  },
+  "hero": {
+    "title": "Bringing Moroccan",
+    "titleLine2": "Harvests To The World",
+    "description": "We bring Moroccan tomatoes to the world. High quality, fresh and grown with care for both land and farmers.",
+    "ctaPrimary": "Explore Our Products",
+    "ctaSecondary": "Request a Quote"
+  },
+  "stats": {
+    "yearsExperience": {
+      "value": "50+",
+      "label": "Years of Experience",
+      "description": "More than 50 years in Moroccan agriculture have allowed us to develop unparalleled expertise in cultivating premium, fresh vegetables that meet the highest standards."
+    },
+    "farmsInProgress": {
+      "value": "100+",
+      "label": "Farms in Progress",
+      "description": "Over 100 certified farms in Moroccan agriculture have been allowed us to develop unmatched expertise in cultivating premium, fresh tomatoes that meet the highest standards."
+    },
+    "localFarmers": {
+      "value": "500+",
+      "label": "Local Farmers Supported",
+      "description": "More than 500 farmers in Moroccan agriculture have been allowed us to develop unparalleled expertise in cultivating premium, fresh tomatoes that meet the highest standards."
+    }
+  },
+  "mission": {
+    "title": "Our Mission",
+    "subtitle": "Empowering Moroccan Agriculture",
+    "description": "We are committed to supporting local farmers and bringing the finest Moroccan produce to global markets while maintaining sustainable practices."
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Premium Moroccan Produce",
+    "viewAll": "View All Products",
+    "items": {
+      "tomatoes": {
+        "name": "Tomatoes",
+        "description": "Premium organic tomatoes, vine-ripened for maximum flavor and nutrition",
+        "category": "Vegetables",
+        "features": {
+          "certifiedOrganic": "Certified Organic",
+          "freshDaily": "Fresh Daily",
+          "exportQuality": "Export Quality",
+          "vineRipened": "Vine-Ripened"
+        }
+      },
+      "cucumbers": {
+        "name": "Cucumbers",
+        "description": "Crisp, fresh cucumbers grown with sustainable practices",
+        "category": "Vegetables",
+        "features": {
+          "pesticideFree": "Pesticide-Free",
+          "greenhouseGrown": "Greenhouse Grown",
+          "yearRound": "Year-Round",
+          "premiumGrade": "Premium Grade"
+        }
+      },
+      "carrots": {
+        "name": "Carrots",
+        "description": "Sweet, tender carrots from mineral-rich Moroccan soil",
+        "category": "Root Vegetables",
+        "features": {
+          "highNutrition": "High Nutrition",
+          "naturalGrowth": "Natural Growth",
+          "premiumGrade": "Premium Grade",
+          "freshHarvest": "Fresh Harvest"
+        }
+      },
+      "bellPeppers": {
+        "name": "Bell Peppers",
+        "description": "Colorful, vibrant peppers packed with vitamins and antioxidants",
+        "category": "Vegetables",
+        "features": {
+          "multiColor": "Multi-Color",
+          "nutrientRich": "Nutrient-Rich",
+          "exportReady": "Export Ready",
+          "sweetFlavor": "Sweet Flavor"
+        }
+      }
+    }
+  },
+  "technology": {
+    "title": "Our Technology",
+    "subtitle": "Innovation in Agriculture",
+    "items": {
+      "precisionAgriculture": {
+        "title": "Precision Agriculture",
+        "description": "Using smart technology to monitor and control every stage of tomato cultivation: planting, watering, and harvesting for optimal results."
+      },
+      "cropMonitoring": {
+        "title": "Crop Monitoring",
+        "description": "Modern sensors and software to ensure healthy growth at every stage"
+      },
+      "smartAutomation": {
+        "title": "Smart Automation",
+        "description": "Automated irrigation and climate control systems for consistent quality"
+      }
+    }
+  },
+  "innovation": {
+    "title": "Innovation",
+    "subtitle": "Leading Agricultural Technology",
+    "description": "We leverage cutting-edge technology to ensure the highest quality produce"
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "subtitle": "Subscribe to Our Newsletter",
+    "description": "Get the latest news about our products and sustainable farming practices",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "success": "Thank you for subscribing!",
+    "error": "Please enter a valid email address"
+  },
+  "showcase": {
+    "qualityGreenhouse": {
+      "title": "Quality Greenhouse",
+      "description": "State-of-the-art greenhouse facilities"
+    },
+    "freshHarvest": {
+      "title": "Fresh Harvest",
+      "description": "Hand-picked at peak ripeness"
+    },
+    "premiumHarvest": {
+      "title": "Premium Harvest",
+      "description": "Quality you can see and taste"
+    },
+    "carefulGrowth": {
+      "title": "Careful Growth",
+      "description": "Monitored at every stage"
+    }
+  },
+  "footer": {
+    "services": "Services",
+    "resources": "Resources",
+    "products": "Products",
+    "help": "Help",
+    "blog": "Blog",
+    "information": "Information",
+    "legal": "Legal",
+    "faq": "FAQ",
+    "helpCenter": "Help Center",
+    "support": "Support",
+    "allRightsReserved": "All rights reserved",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our Story",
+    "description": "Learn more about our journey and commitment to quality"
+  },
+  "sustainability": {
+    "title": "Sustainability",
+    "subtitle": "Our Commitment",
+    "description": "We are dedicated to sustainable farming practices that benefit both people and planet"
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Quality Assurance",
+    "description": "Our certifications demonstrate our commitment to excellence"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get In Touch",
+    "description": "We'd love to hear from you",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!",
+    "error": "Please fill in all fields"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "Get Started",
+    "description": "Fill out the form below and we'll get back to you soon",
+    "company": "Company",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "product": "Product",
+    "quantity": "Quantity",
+    "message": "Message",
+    "submit": "Submit Request",
+    "success": "Quote request submitted successfully!",
+    "error": "Please fill in all required fields"
+  },
+  "harvest": {
+    "title": "Our Harvest",
+    "subtitle": "Fresh from the Farm",
+    "description": "Discover our seasonal harvests"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "viewDetails": "View Details",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!"
+  }
+}

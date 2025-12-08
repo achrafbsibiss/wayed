@@ -1,0 +1,222 @@
+{
+  "site": {
+    "name": "WAYD Groupe",
+    "tagline": "Apporter les Récoltes Marocaines au Monde",
+    "description": "Nous apportons les tomates marocaines au monde. Haute qualité, fraîches et cultivées avec soin pour la terre et les agriculteurs.",
+    "email": "contact@waydgroupe.com",
+    "phone": "+212 XXX XXX XXX",
+    "address": "Maroc"
+  },
+  "nav": {
+    "products": "Produits",
+    "about": "À propos",
+    "sustainability": "Durabilité",
+    "certificates": "Certificats",
+    "contact": "Contact",
+    "requestQuote": "Demander un Devis",
+    "language": "Français"
+  },
+  "hero": {
+    "title": "Apporter les Récoltes",
+    "titleLine2": "Marocaines au Monde",
+    "description": "Nous apportons les tomates marocaines au monde. Haute qualité, fraîches et cultivées avec soin pour la terre et les agriculteurs.",
+    "ctaPrimary": "Découvrir Nos Produits",
+    "ctaSecondary": "Demander un Devis"
+  },
+  "stats": {
+    "yearsExperience": {
+      "value": "50+",
+      "label": "Années d'Expérience",
+      "description": "Plus de 50 ans dans l'agriculture marocaine nous ont permis de développer une expertise inégalée dans la culture de légumes frais de qualité supérieure qui répondent aux normes les plus élevées."
+    },
+    "farmsInProgress": {
+      "value": "100+",
+      "label": "Fermes en Activité",
+      "description": "Plus de 100 fermes certifiées dans l'agriculture marocaine nous ont permis de développer une expertise inégalée dans la culture de tomates fraîches de qualité supérieure qui répondent aux normes les plus élevées."
+    },
+    "localFarmers": {
+      "value": "500+",
+      "label": "Agriculteurs Locaux Soutenus",
+      "description": "Plus de 500 agriculteurs dans l'agriculture marocaine nous ont permis de développer une expertise inégalée dans la culture de tomates fraîches de qualité supérieure qui répondent aux normes les plus élevées."
+    }
+  },
+  "mission": {
+    "title": "Notre Mission",
+    "subtitle": "Soutenir l'Agriculture Marocaine",
+    "description": "Nous nous engageons à soutenir les agriculteurs locaux et à apporter les meilleurs produits marocains sur les marchés mondiaux tout en maintenant des pratiques durables."
+  },
+  "products": {
+    "title": "Nos Produits",
+    "subtitle": "Produits Marocains de Qualité Supérieure",
+    "viewAll": "Voir Tous les Produits",
+    "items": {
+      "tomatoes": {
+        "name": "Tomates",
+        "description": "Tomates biologiques de qualité supérieure, mûries sur vigne pour un maximum de saveur et de nutrition",
+        "category": "Légumes",
+        "features": {
+          "certifiedOrganic": "Certifié Bio",
+          "freshDaily": "Frais du Jour",
+          "exportQuality": "Qualité Export",
+          "vineRipened": "Mûri sur Vigne"
+        }
+      },
+      "cucumbers": {
+        "name": "Concombres",
+        "description": "Concombres frais et croquants cultivés avec des pratiques durables",
+        "category": "Légumes",
+        "features": {
+          "pesticideFree": "Sans Pesticides",
+          "greenhouseGrown": "Culture en Serre",
+          "yearRound": "Toute l'Année",
+          "premiumGrade": "Qualité Premium"
+        }
+      },
+      "carrots": {
+        "name": "Carottes",
+        "description": "Carottes douces et tendres du sol marocain riche en minéraux",
+        "category": "Légumes Racines",
+        "features": {
+          "highNutrition": "Haute Nutrition",
+          "naturalGrowth": "Croissance Naturelle",
+          "premiumGrade": "Qualité Premium",
+          "freshHarvest": "Récolte Fraîche"
+        }
+      },
+      "bellPeppers": {
+        "name": "Poivrons",
+        "description": "Poivrons colorés et vibrants riches en vitamines et antioxydants",
+        "category": "Légumes",
+        "features": {
+          "multiColor": "Multi-Couleurs",
+          "nutrientRich": "Riche en Nutriments",
+          "exportReady": "Prêt à l'Export",
+          "sweetFlavor": "Saveur Douce"
+        }
+      }
+    }
+  },
+  "technology": {
+    "title": "Notre Technologie",
+    "subtitle": "Innovation en Agriculture",
+    "items": {
+      "precisionAgriculture": {
+        "title": "Agriculture de Précision",
+        "description": "Utilisation de technologies intelligentes pour surveiller et contrôler chaque étape de la culture de tomates : plantation, arrosage et récolte pour des résultats optimaux."
+      },
+      "cropMonitoring": {
+        "title": "Surveillance des Cultures",
+        "description": "Capteurs modernes et logiciels pour assurer une croissance saine à chaque étape"
+      },
+      "smartAutomation": {
+        "title": "Automatisation Intelligente",
+        "description": "Systèmes d'irrigation automatisés et contrôle climatique pour une qualité constante"
+      }
+    }
+  },
+  "innovation": {
+    "title": "Innovation",
+    "subtitle": "Leader en Technologie Agricole",
+    "description": "Nous utilisons une technologie de pointe pour garantir des produits de la plus haute qualité"
+  },
+  "newsletter": {
+    "title": "Restez Informé",
+    "subtitle": "Abonnez-vous à Notre Newsletter",
+    "description": "Recevez les dernières nouvelles sur nos produits et nos pratiques agricoles durables",
+    "emailPlaceholder": "Entrez votre email",
+    "subscribe": "S'abonner",
+    "success": "Merci de vous être abonné !",
+    "error": "Veuillez entrer une adresse email valide"
+  },
+  "showcase": {
+    "qualityGreenhouse": {
+      "title": "Serre de Qualité",
+      "description": "Installations de serre de pointe"
+    },
+    "freshHarvest": {
+      "title": "Récolte Fraîche",
+      "description": "Cueillies à la main à maturité optimale"
+    },
+    "premiumHarvest": {
+      "title": "Récolte Premium",
+      "description": "Une qualité que vous pouvez voir et goûter"
+    },
+    "carefulGrowth": {
+      "title": "Croissance Soignée",
+      "description": "Surveillée à chaque étape"
+    }
+  },
+  "footer": {
+    "services": "Services",
+    "resources": "Ressources",
+    "products": "Produits",
+    "help": "Aide",
+    "blog": "Blog",
+    "information": "Information",
+    "legal": "Légal",
+    "faq": "FAQ",
+    "helpCenter": "Centre d'Aide",
+    "support": "Support",
+    "allRightsReserved": "Tous droits réservés",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation"
+  },
+  "about": {
+    "title": "À Propos de Nous",
+    "subtitle": "Notre Histoire",
+    "description": "En savoir plus sur notre parcours et notre engagement envers la qualité"
+  },
+  "sustainability": {
+    "title": "Durabilité",
+    "subtitle": "Notre Engagement",
+    "description": "Nous nous consacrons à des pratiques agricoles durables qui profitent aux personnes et à la planète"
+  },
+  "certificates": {
+    "title": "Certificats",
+    "subtitle": "Assurance Qualité",
+    "description": "Nos certifications démontrent notre engagement envers l'excellence"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Entrer en Contact",
+    "description": "Nous serions ravis de vous entendre",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer le Message",
+    "success": "Message envoyé avec succès !",
+    "error": "Veuillez remplir tous les champs"
+  },
+  "quote": {
+    "title": "Demander un Devis",
+    "subtitle": "Commencer",
+    "description": "Remplissez le formulaire ci-dessous et nous vous répondrons bientôt",
+    "company": "Entreprise",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "product": "Produit",
+    "quantity": "Quantité",
+    "message": "Message",
+    "submit": "Soumettre la Demande",
+    "success": "Demande de devis soumise avec succès !",
+    "error": "Veuillez remplir tous les champs obligatoires"
+  },
+  "harvest": {
+    "title": "Notre Récolte",
+    "subtitle": "Frais de la Ferme",
+    "description": "Découvrez nos récoltes saisonnières"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "readMore": "Lire Plus",
+    "viewDetails": "Voir les Détails",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès !"
+  }
+}
