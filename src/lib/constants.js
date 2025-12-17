@@ -15,19 +15,16 @@ export const SITE_CONFIG = {
 
 export const STATS = [
   {
-    value: '50+',
-    label: 'Years of Experience',
-    description: 'More than 50 years in Moroccan agriculture have allowed us to develop unparalleled expertise in cultivating premium, fresh vegetables that meet the highest standards.'
+    id: 'yearsExperience',
+    image: '/images/hero/decorative-leaf.png'
   },
   {
-    value: '100+',
-    label: 'Farms in Progress',
-    description: 'Over 100 certified farms in Moroccan agriculture have been allowed us to develop unmatched expertise in cultivating premium, fresh tomatoes that meet the highest standards.'
+    id: 'farmsInProgress',
+    image: '/images/hero/decorative-leaf.png'
   },
   {
-    value: '500+',
-    label: 'Local Farmers Supported',
-    description: 'More than 500 farmers in Moroccan agriculture have been allowed us to develop unparalleled expertise in cultivating premium, fresh tomatoes that meet the highest standards.'
+    id: 'localFarmers',
+    image: '/images/hero/decorative-leaf.png'
   },
 ];
 

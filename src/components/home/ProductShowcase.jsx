@@ -5,46 +5,48 @@ import { Icon } from '@iconify/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { useRef } from 'react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const SHOWCASE_ITEMS = [
-  {
-    id: 1,
-    title: 'Quality Greenhouse',
-    image: '/images/products/image 14.webp',
-  },
-  {
-    id: 2,
-    title: 'Fresh Delivery',
-    image: '/images/products/image 16.webp',
-  },
-  {
-    id: 3,
-    title: 'Premium Harvest',
-    image: '/images/products/image 12.webp',
-  },
-  {
-    id: 4,
-    title: 'Careful Growth',
-    image: '/images/products/image 15.webp',
-  },
-];
-
 export default function ProductShowcase() {
+  const { t } = useTranslations();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const SHOWCASE_ITEMS = [
+    {
+      id: 1,
+      name: 'qualityGreenhouse',
+      image: '/images/products/image 14.webp',
+    },
+    {
+      id: 2,
+      name: 'freshDelivery', // Note: I added freshDelivery to translations but removed explicit mapping here, assuming I can use name as key part
+      image: '/images/products/image 16.webp',
+    },
+    {
+      id: 3,
+      name: 'premiumHarvest',
+      image: '/images/products/image 12.webp',
+    },
+    {
+      id: 4,
+      name: 'carefulGrowth',
+      image: '/images/products/image 15.webp',
+    },
+  ];
 
   return (
     <Box sx={{ py: { xs: 3, md: 4 }, overflow: 'hidden' }}>
       <Container maxWidth="lg" sx={{ overflow: 'hidden' }}>
         {/* Header with Navigation Button */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
+        <Box
+          sx={{
+            display: 'flex',
             alignItems: 'center',
             gap: 3,
             mb: 6,
@@ -58,9 +60,9 @@ export default function ProductShowcase() {
               fontSize: { xs: '2rem', md: '2.5rem' },
             }}
           >
-            Request a Quote
+            {t('nav.requestQuote')}
           </Typography>
-          
+
           {/* Right Arrow Button */}
           <IconButton
             sx={{
@@ -136,7 +138,7 @@ export default function ProductShowcase() {
                     <Box
                       component="img"
                       src={item.image}
-                      alt={item.title}
+                      alt={t(`showcase.${item.name}.title`)}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -144,7 +146,7 @@ export default function ProductShowcase() {
                       }}
                     />
                   </Box>
-                  
+
                   {/* Title Below Image - Bottom Right */}
                   <Box
                     sx={{
@@ -160,7 +162,7 @@ export default function ProductShowcase() {
                         fontFamily: 'Roboto',
                       }}
                     >
-                      {item.title}
+                      {t(`showcase.${item.name}.title`)}
                     </Typography>
                   </Box>
                 </Box>

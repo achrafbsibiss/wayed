@@ -4,44 +4,27 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
-
-const TABS = [
-  { id: 'goal', label: 'Our Goal' },
-  { id: 'who', label: 'Who are we' },
-  { id: 'vision', label: 'Vision' },
-  { id: 'mission', label: 'Mission' },
-];
-
-const CONTENT = {
-  goal: {
-    title: "Our goal is to share Morocco's finest tomatoes with the world—fresh, high-quality, and grown with care for both land and farmers.",
-    description: "We believe that true growth comes from more than just harvests. By investing in modern farming techniques, empowering local communities, and maintaining strict quality controls, we ensure that every tomato exported from Morocco carries not only freshness and flavor but also the values of trust, sustainability, and excellence.",
-  },
-  who: {
-    title: "We are a leading Moroccan agricultural company dedicated to bringing premium organic vegetables to global markets.",
-    description: "With decades of experience in cultivation and export, we've built strong partnerships with local farmers and international buyers. Our team combines traditional farming wisdom with modern agricultural technology to ensure the highest quality standards in every harvest.",
-  },
-  vision: {
-    title: "To become the world's most trusted source of premium Moroccan organic vegetables, setting new standards for quality and sustainability.",
-    description: "We envision a future where Moroccan agriculture is recognized globally for its excellence, innovation, and commitment to environmental stewardship. Through continuous improvement and strategic partnerships, we aim to expand our reach while maintaining our core values of quality, sustainability, and community support.",
-  },
-  mission: {
-    title: "To deliver exceptional organic vegetables while empowering Moroccan farmers and protecting our agricultural heritage.",
-    description: "Our mission is to bridge the gap between Morocco's rich agricultural tradition and global market demands. We invest in cutting-edge farming technology, provide fair pricing to local farmers, and implement sustainable practices that preserve our land for future generations. Every tomato we export represents our commitment to excellence and community development.",
-  },
-};
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function MissionSection() {
+  const { t } = useTranslations();
   const [activeTab, setActiveTab] = useState('goal');
+
+  const TABS = [
+    { id: 'goal', label: t('mission.tabs.goal') },
+    { id: 'who', label: t('mission.tabs.who') },
+    { id: 'vision', label: t('mission.tabs.vision') },
+    { id: 'mission', label: t('mission.tabs.mission') },
+  ];
 
   return (
     <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: '#FFFFFF' }}>
       <Container maxWidth="lg">
         {/* Tab Navigation */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            gap: 2, 
+        <Box
+          sx={{
+            display: 'flex',
+            gap: 2,
             mb: 6,
             flexWrap: 'wrap',
           }}
@@ -75,8 +58,8 @@ export default function MissionSection() {
         {/* Content Area */}
         <Box sx={{ display: 'flex', gap: 6, alignItems: 'flex-start' }}>
           {/* Left Side - Label with Line */}
-          <Box 
-            sx={{ 
+          <Box
+            sx={{
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
               gap: 3,
@@ -114,7 +97,7 @@ export default function MissionSection() {
                 fontSize: { xs: '1.75rem', md: '40px' },
               }}
             >
-              {CONTENT[activeTab].title}
+              {t(`mission.content.${activeTab}.title`)}
             </Typography>
 
             <Typography
@@ -125,7 +108,7 @@ export default function MissionSection() {
                 fontSize: { xs: '1rem', md: '1.1rem' },
               }}
             >
-              {CONTENT[activeTab].description}
+              {t(`mission.content.${activeTab}.description`)}
             </Typography>
 
             <Button
@@ -158,7 +141,7 @@ export default function MissionSection() {
                 },
               }}
             >
-              Learn More
+              {t('common.learnMore') || 'Learn More'}
             </Button>
           </Box>
         </Box>

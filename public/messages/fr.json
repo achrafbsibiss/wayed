@@ -38,12 +38,40 @@
       "value": "500+",
       "label": "Agriculteurs Locaux Soutenus",
       "description": "Plus de 500 agriculteurs dans l'agriculture marocaine nous ont permis de développer une expertise inégalée dans la culture de tomates fraîches de qualité supérieure qui répondent aux normes les plus élevées."
+    },
+    "certifiedQuality": {
+      "value": "Certifié",
+      "label": "Normes de Qualité Marocaines"
     }
   },
   "mission": {
     "title": "Notre Mission",
     "subtitle": "Soutenir l'Agriculture Marocaine",
-    "description": "Nous nous engageons à soutenir les agriculteurs locaux et à apporter les meilleurs produits marocains sur les marchés mondiaux tout en maintenant des pratiques durables."
+    "description": "Nous nous engageons à soutenir les agriculteurs locaux et à apporter les meilleurs produits marocains sur les marchés mondiaux tout en maintenant des pratiques durables.",
+    "tabs": {
+      "goal": "Notre Objectif",
+      "who": "Qui sommes-nous",
+      "vision": "Vision",
+      "mission": "Mission"
+    },
+    "content": {
+      "goal": {
+        "title": "Notre objectif est de partager les meilleures tomates du Maroc avec le monde—fraîches, de haute qualité et cultivées avec soin pour la terre et les agriculteurs.",
+        "description": "Nous croyons que la véritable croissance vient de plus que de simples récoltes. En investissant dans des techniques agricoles modernes, en autonomisant les communautés locales et en maintenant des contrôles de qualité stricts, nous nous assurons que chaque tomate exportée du Maroc porte non seulement la fraîcheur et la saveur, mais aussi les valeurs de confiance, de durabilité et d'excellence."
+      },
+      "who": {
+        "title": "Nous sommes une entreprise agricole marocaine de premier plan dédiée à l'apport de légumes biologiques de qualité supérieure sur les marchés mondiaux.",
+        "description": "Avec des décennies d'expérience dans la culture et l'exportation, nous avons établi de solides partenariats avec des agriculteurs locaux et des acheteurs internationaux. Notre équipe combine la sagesse agricole traditionnelle avec la technologie agricole moderne pour garantir les normes de qualité les plus élevées à chaque récolte."
+      },
+      "vision": {
+        "title": "Devenir la source la plus fiable au monde de légumes biologiques marocains de qualité supérieure, en établissant de nouvelles normes de qualité et de durabilité.",
+        "description": "Nous envisageons un avenir où l'agriculture marocaine est reconnue mondialement pour son excellence, son innovation et son engagement envers la gestion environnementale. Grâce à l'amélioration continue et aux partenariats stratégiques, nous visons à étendre notre portée tout en maintenant nos valeurs fondamentales de qualité, de durabilité et de soutien communautaire."
+      },
+      "mission": {
+        "title": "Fournir des légumes biologiques exceptionnels tout en autonomisant les agriculteurs marocains et en protégeant notre patrimoine agricole.",
+        "description": "Notre mission est de combler le fossé entre la riche tradition agricole du Maroc et les demandes du marché mondial. Nous investissons dans des technologies agricoles de pointe, offrons des prix équitables aux agriculteurs locaux et mettons en œuvre des pratiques durables qui préservent nos terres pour les générations futures. Chaque tomate que nous exportons représente notre engagement envers l'excellence et le développement communautaire."
+      }
+    }
   },
   "products": {
     "title": "Nos Produits",
@@ -99,6 +127,15 @@
   "technology": {
     "title": "Notre Technologie",
     "subtitle": "Innovation en Agriculture",
+    "weUse": "Nous Utilisons la",
+    "technology": "Technologie",
+    "slides": {
+      "slide1": {
+        "title": "Nous Utilisons la Technologie",
+        "subtitle": "Pour Cultiver et Exporter les Meilleures Tomates du Maroc avec Qualité.",
+        "description": "Techniques agricoles modernes combinées au savoir traditionnel"
+      }
+    },
     "items": {
       "precisionAgriculture": {
         "title": "Agriculture de Précision",
@@ -123,15 +160,21 @@
     "title": "Restez Informé",
     "subtitle": "Abonnez-vous à Notre Newsletter",
     "description": "Recevez les dernières nouvelles sur nos produits et nos pratiques agricoles durables",
+    "heading": "Solutions Innovantes Pour Une Croissance Optimale des Cultures",
     "emailPlaceholder": "Entrez votre email",
     "subscribe": "S'abonner",
     "success": "Merci de vous être abonné !",
     "error": "Veuillez entrer une adresse email valide"
   },
   "showcase": {
+    "title": "Demander un Devis",
     "qualityGreenhouse": {
       "title": "Serre de Qualité",
       "description": "Installations de serre de pointe"
+    },
+    "freshDelivery": {
+      "title": "Livraison Fraîche",
+      "description": "Livré frais à votre porte"
     },
     "freshHarvest": {
       "title": "Récolte Fraîche",

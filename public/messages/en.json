@@ -38,12 +38,40 @@
       "value": "500+",
       "label": "Local Farmers Supported",
       "description": "More than 500 farmers in Moroccan agriculture have been allowed us to develop unparalleled expertise in cultivating premium, fresh tomatoes that meet the highest standards."
+    },
+    "certifiedQuality": {
+      "value": "Certified",
+      "label": "Moroccan Quality Standards"
     }
   },
   "mission": {
     "title": "Our Mission",
     "subtitle": "Empowering Moroccan Agriculture",
-    "description": "We are committed to supporting local farmers and bringing the finest Moroccan produce to global markets while maintaining sustainable practices."
+    "description": "We are committed to supporting local farmers and bringing the finest Moroccan produce to global markets while maintaining sustainable practices.",
+    "tabs": {
+      "goal": "Our Goal",
+      "who": "Who are we",
+      "vision": "Vision",
+      "mission": "Mission"
+    },
+    "content": {
+      "goal": {
+        "title": "Our goal is to share Morocco's finest tomatoes with the world—fresh, high-quality, and grown with care for both land and farmers.",
+        "description": "We believe that true growth comes from more than just harvests. By investing in modern farming techniques, empowering local communities, and maintaining strict quality controls, we ensure that every tomato exported from Morocco carries not only freshness and flavor but also the values of trust, sustainability, and excellence."
+      },
+      "who": {
+        "title": "We are a leading Moroccan agricultural company dedicated to bringing premium organic vegetables to global markets.",
+        "description": "With decades of experience in cultivation and export, we've built strong partnerships with local farmers and international buyers. Our team combines traditional farming wisdom with modern agricultural technology to ensure the highest quality standards in every harvest."
+      },
+      "vision": {
+        "title": "To become the world's most trusted source of premium Moroccan organic vegetables, setting new standards for quality and sustainability.",
+        "description": "We envision a future where Moroccan agriculture is recognized globally for its excellence, innovation, and commitment to environmental stewardship. Through continuous improvement and strategic partnerships, we aim to expand our reach while maintaining our core values of quality, sustainability, and community support."
+      },
+      "mission": {
+        "title": "To deliver exceptional organic vegetables while empowering Moroccan farmers and protecting our agricultural heritage.",
+        "description": "Our mission is to bridge the gap between Morocco's rich agricultural tradition and global market demands. We invest in cutting-edge farming technology, provide fair pricing to local farmers, and implement sustainable practices that preserve our land for future generations. Every tomato we export represents our commitment to excellence and community development."
+      }
+    }
   },
   "products": {
     "title": "Our Products",
@@ -99,6 +127,15 @@
   "technology": {
     "title": "Our Technology",
     "subtitle": "Innovation in Agriculture",
+    "weUse": "We Use",
+    "technology": "Technology",
+    "slides": {
+      "slide1": {
+        "title": "We Use Technology",
+        "subtitle": "To Grow And Export Morocco's Finest Tomatoes With Quality.",
+        "description": "Modern farming techniques combined with traditional knowledge"
+      }
+    },
     "items": {
       "precisionAgriculture": {
         "title": "Precision Agriculture",
@@ -123,15 +160,22 @@
     "title": "Stay Updated",
     "subtitle": "Subscribe to Our Newsletter",
     "description": "Get the latest news about our products and sustainable farming practices",
+    "heading": "Innovative Solutions For Optimal Crop Growth",
+    "subscribe": "Subscribe",
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
     "success": "Thank you for subscribing!",
     "error": "Please enter a valid email address"
   },
   "showcase": {
+    "title": "Request a Quote",
     "qualityGreenhouse": {
       "title": "Quality Greenhouse",
       "description": "State-of-the-art greenhouse facilities"
+    },
+    "freshDelivery": {
+      "title": "Fresh Delivery",
+      "description": "Delivered fresh to your doorstep"
     },
     "freshHarvest": {
       "title": "Fresh Harvest",
