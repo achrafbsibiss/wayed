@@ -112,9 +112,10 @@ export const INNOVATIONS = [
 ];
 
 export const NAV_LINKS = [
+  { label: 'Home', href: '/', key: 'home' },
   { label: 'Products', href: '/harvest', key: 'products' },
   { label: 'About us', href: '/about', key: 'about' },
-  { label: 'Sustainability', href: '/sustainability', key: 'sustainability' },
+  //{ label: 'Sustainability', href: '/sustainability', key: 'sustainability' },
   { label: 'Certificates', href: '/certificates', key: 'certificates' },
   { label: 'Contact', href: '/contact', key: 'contact' },
 ];

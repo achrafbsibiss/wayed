@@ -4,6 +4,8 @@ import { Box, Container, Typography, IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const VALUES = [
     {
@@ -32,6 +34,54 @@ const TESTIMONIALS = [
 
 export default function CertificatesHero() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+    const downloadCertificate = async (imageSrc, certificateName) => {
+        try {
+            // Create a temporary container for the certificate
+            const tempContainer = document.createElement('div');
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.width = '800px';
+            tempContainer.style.padding = '40px';
+            tempContainer.style.backgroundColor = 'white';
+            document.body.appendChild(tempContainer);
+
+            // Create image element
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            tempContainer.appendChild(img);
+
+            // Wait for image to load
+            await new Promise((resolve) => {
+                img.onload = resolve;
+            });
+
+            // Convert to canvas
+            const canvas = await html2canvas(tempContainer, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+            });
+
+            // Create PDF
+            const imgWidth = 210; // A4 width in mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+
+            const imgData = canvas.toDataURL('image/png');
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+            // Download PDF
+            pdf.save(`${certificateName}.pdf`);
+
+            // Clean up
+            document.body.removeChild(tempContainer);
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+        }
+    };
 
     return (
         <Box sx={{ py: { xs: 8, md: 12 } }}>
@@ -110,16 +160,40 @@ export default function CertificatesHero() {
                     {/* Right - one unique image */}
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Box
-                            component="img"
-                            src="/images/certificates/globalegap-green.png"
                             sx={{
+                                position: 'relative',
                                 width: { xs: '100%', md: '318px' },
-                                height: { xs: 'auto', md: '318px' },
-                                objectFit: 'cover',
                                 marginLeft: { xs: '0', md: 'auto' },
                                 display: 'block',
                             }}
-                        />
+                        >
+                            <Box
+                                component="img"
+                                src="/images/certificates/globalegap-green.png"
+                                sx={{
+                                    width: '100%',
+                                    height: { xs: 'auto', md: '318px' },
+                                    objectFit: 'cover',
+                                }}
+                            />
+                            <IconButton
+                                onClick={() => downloadCertificate('/images/certificates/globalegap-green.png', 'Global-GAP-Certificate')}
+                                sx={{
+                                    position: 'absolute',
+                                    top: 16,
+                                    right: 16,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                                        transform: 'scale(1.1)',
+                                    },
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                }}
+                            >
+                                <Icon icon="mdi:download" width={24} height={24} color="#4CAF50" />
+                            </IconButton>
+                        </Box>
                     </Grid>
 
                     {/* Testimonial Section */}
@@ -289,16 +363,40 @@ export default function CertificatesHero() {
                     {/* Right - one unique image */}
                     <Grid size={{ xs: 12, md: 6 }}>
                         <Box
-                            component="img"
-                            src="/images/certificates/globalegap-black.png"
                             sx={{
+                                position: 'relative',
                                 width: { xs: '100%', md: '318px' },
-                                height: { xs: 'auto', md: '318px' },
-                                objectFit: 'cover',
                                 marginLeft: { xs: '0', md: 'auto' },
                                 display: 'block',
                             }}
-                        />
+                        >
+                            <Box
+                                component="img"
+                                src="/images/certificates/globalegap-black.png"
+                                sx={{
+                                    width: '100%',
+                                    height: { xs: 'auto', md: '318px' },
+                                    objectFit: 'cover',
+                                }}
+                            />
+                            <IconButton
+                                onClick={() => downloadCertificate('/images/certificates/globalegap-black.png', 'Certificate-2')}
+                                sx={{
+                                    position: 'absolute',
+                                    top: 16,
+                                    right: 16,
+                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                                        transform: 'scale(1.1)',
+                                    },
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                }}
+                            >
+                                <Icon icon="mdi:download" width={24} height={24} color="#2A2A2A" />
+                            </IconButton>
+                        </Box>
                     </Grid>
                 </Grid>
             </Container>

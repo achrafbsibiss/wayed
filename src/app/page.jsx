@@ -3,7 +3,7 @@ import StatsSection from '@/components/home/StatsSection';
 import MissionSection from '@/components/home/MissionSection';
 import ProductShowcase from '@/components/home/ProductShowcase';
 import TechnologySection from '@/components/home/TechnologySection';
-import InnovationSection from '@/components/home/InnovationSection';
+// import InnovationSection from '@/components/home/InnovationSection';
 import NewsletterSection from '@/components/home/Newslettersection';
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <MissionSection />
       <ProductShowcase />
       <TechnologySection />
-      <InnovationSection />
+      {/* <InnovationSection /> */}
       <NewsletterSection />
     </>
   );

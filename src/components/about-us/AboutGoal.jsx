@@ -28,7 +28,20 @@ const TESTIMONIALS = [
         title: 'FOUNDER',
         image: '/images/about/founder.png',
     },
-    // Add more testimonials here if needed
+    {
+        id: 2,
+        quote: "We grow with care and share Morocco's best with the world",
+        name: 'test',
+        title: 'FOUNDER',
+        image: '/images/about/founder.png',
+    },
+    {
+        id: 3,
+        quote: "We grow with care and share Morocco's best with the world",
+        name: 'Omar Bensalah',
+        title: 'FOUNDER',
+        image: '/images/about/founder.png',
+    },
 ];
 
 export default function AboutGoal() {

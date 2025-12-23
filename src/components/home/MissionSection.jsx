@@ -14,7 +14,7 @@ export default function MissionSection() {
     { id: 'goal', label: t('mission.tabs.goal') },
     { id: 'who', label: t('mission.tabs.who') },
     { id: 'vision', label: t('mission.tabs.vision') },
-    { id: 'mission', label: t('mission.tabs.mission') },
+    //{ id: 'mission', label: t('mission.tabs.mission') },
   ];
 
   return (

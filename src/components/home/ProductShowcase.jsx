@@ -4,18 +4,21 @@ import { Box, Container, Typography, IconButton } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslations } from '@/hooks/useTranslations';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { useRouter } from 'next/navigation';
 
 export default function ProductShowcase() {
   const { t } = useTranslations();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const router = useRouter();
 
   const SHOWCASE_ITEMS = [
     {
@@ -25,7 +28,7 @@ export default function ProductShowcase() {
     },
     {
       id: 2,
-      name: 'freshDelivery', // Note: I added freshDelivery to translations but removed explicit mapping here, assuming I can use name as key part
+      name: 'freshDelivery',
       image: '/images/products/image 16.webp',
     },
     {
@@ -74,6 +77,7 @@ export default function ProductShowcase() {
                 bgcolor: '#1a1a1a',
               },
             }}
+            onClick={() => router.push('/quote')}
           >
             <Icon icon="solar:arrow-right-outline" width="35" height="35" />
           </IconButton>
@@ -89,9 +93,17 @@ export default function ProductShowcase() {
               prevEl: prevRef.current,
               nextEl: nextRef.current,
             }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
+            onSwiper={(swiper) => {
+              setSwiperInstance(swiper);
+              // Delay navigation initialization to ensure refs are attached
+              setTimeout(() => {
+                if (prevRef.current && nextRef.current) {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              }, 0);
             }}
             autoplay={{
               delay: 3500,
