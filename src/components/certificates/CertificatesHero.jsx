@@ -1,9 +1,9 @@
 'use client';
 
-import { Box, Container, Typography, IconButton } from '@mui/material';
+import { Box, Container, Typography, IconButton, CircularProgress, Alert } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Icon } from '@iconify/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -34,6 +34,31 @@ const TESTIMONIALS = [
 
 export default function CertificatesHero() {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
+    const [certificates, setCertificates] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // Fetch certificates from API
+    useEffect(() => {
+        const fetchCertificates = async () => {
+            try {
+                const res = await fetch('/api/certificates');
+                const data = await res.json();
+
+                if (data.success) {
+                    setCertificates(data.data);
+                } else {
+                    setError('Failed to load certificates');
+                }
+            } catch (err) {
+                setError('An error occurred while loading certificates');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCertificates();
+    }, []);
 
     const downloadCertificate = async (imageSrc, certificateName) => {
         try {
@@ -86,319 +111,264 @@ export default function CertificatesHero() {
     return (
         <Box sx={{ py: { xs: 8, md: 12 } }}>
             <Container maxWidth="lg">
-                <Grid container spacing={4}>
-                    {/* Header Section */}
-                    <Grid size={{ xs: 12 }}>
-                        <Typography
-                            variant="h1"
-                            sx={{
-                                mb: 4,
-                                fontWeight: 700,
-                                fontSize: { xs: '2rem', md: '64px' },
-                                color: 'text.primary',
-                                whiteSpace: 'nowrap',
-                                textAlign: 'center',
-                                marginBottom: { xs: 4, md: 8 },
-                            }}
-                        >
-                            Certification
-                        </Typography>
-                    </Grid>
+                {/* Loading State */}
+                {loading && (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+                        <CircularProgress />
+                    </Box>
+                )}
 
-                    {/* Left - Goal Text */}
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Box sx={{ mb: 4 }}>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 3,
-                                    mb: 4,
-                                }}
-                            >
-                                <Typography
-                                    variant="h2"
-                                    sx={{
-                                        fontWeight: 700,
-                                        fontSize: { xs: '2rem', md: '64px' },
-                                        color: 'text.primary',
-                                        whiteSpace: 'nowrap',
-                                    }}
-                                >
-                                    Global G.A.P
-                                </Typography>
-                                <Box
-                                    sx={{
-                                        flexGrow: 1,
-                                        height: '2px',
-                                        bgcolor: 'text.primary',
-                                        maxWidth: '200px',
-                                    }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '1rem',
-                                        fontWeight: 600,
-                                        color: 'text.primary',
-                                    }}
-                                >
-                                    01
-                                </Typography>
-                            </Box>
+                {/* Error State */}
+                {error && (
+                    <Alert severity="error" sx={{ mb: 4 }}>
+                        {error}
+                    </Alert>
+                )}
 
+                {/* Content */}
+                {!loading && !error && (
+                    <Grid container spacing={4}>
+                        {/* Header Section */}
+                        <Grid size={{ xs: 12 }}>
                             <Typography
+                                variant="h1"
                                 sx={{
-                                    color: 'text.secondary',
-                                    fontSize: { xs: '0.95rem', md: '20px' },
+                                    mb: 4,
+                                    fontWeight: 700,
+                                    fontSize: { xs: '2rem', md: '64px' },
+                                    color: 'text.primary',
+                                    whiteSpace: 'nowrap',
+                                    textAlign: 'center',
+                                    marginBottom: { xs: 4, md: 8 },
                                 }}
                             >
-                                Fostering the global adoption of safer and more responsible farming practices is a collective effort, which is why GLOBALG.A.P. works with a global network of stakeholder parties. Through working groups, capacity-building partners, and more than 440 member organizations from all sides of the value chain in our GLOBALG.A.P. community, we strive to connect with as many contributors as possible.
+                                Certification
                             </Typography>
-                        </Box>
-                    </Grid>
+                        </Grid>
 
-                    {/* Right - one unique image */}
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Box
-                            sx={{
-                                position: 'relative',
-                                width: { xs: '100%', md: '318px' },
-                                marginLeft: { xs: '0', md: 'auto' },
-                                display: 'block',
-                            }}
-                        >
-                            <Box
-                                component="img"
-                                src="/images/certificates/globalegap-green.png"
-                                sx={{
-                                    width: '100%',
-                                    height: { xs: 'auto', md: '318px' },
-                                    objectFit: 'cover',
-                                }}
-                            />
-                            <IconButton
-                                onClick={() => downloadCertificate('/images/certificates/globalegap-green.png', 'Global-GAP-Certificate')}
-                                sx={{
-                                    position: 'absolute',
-                                    top: 16,
-                                    right: 16,
-                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(255, 255, 255, 1)',
-                                        transform: 'scale(1.1)',
-                                    },
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                                }}
-                            >
-                                <Icon icon="mdi:download" width={24} height={24} color="#4CAF50" />
-                            </IconButton>
-                        </Box>
-                    </Grid>
-
-                    {/* Testimonial Section */}
-                    <Grid size={{ xs: 12 }}>
-                        <Box
-                            sx={{
-                                mt: 8,
-                                position: 'relative',
-                                minHeight: { xs: '500px', md: '600px' },
-                                display: { xs: 'none', md: 'flex' },
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            {/* Main Content Container */}
-                            <Box
-                                sx={{
-                                    position: 'relative',
-                                    width: '100%',
-                                    maxWidth: '900px',
-                                    height: { xs: 'auto', md: '600px' },
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    px: { xs: 2, md: 4 },
-                                }}
-                            >
-                                {/* Opening Quote Mark - Left Side */}
-                                <Box
-                                    component="img"
-                                    src="/images/certificates/quotation-green.png"
-                                    alt=""
-                                    sx={{
-                                        position: 'absolute',
-                                        width: { xs: '180px', md: '167px' },
-                                        height: { xs: '180px', md: '145px' },
-                                        left: { xs: '0', md: '140px' },
-                                        top: { xs: '20px', md: '20px' },
-                                        zIndex: 1,
-                                        objectFit: 'contain',
-                                    }}
-                                />
-
-                                {/* Quote Text - Middle Right */}
-                                <Typography
-                                    sx={{
-                                        position: 'absolute',
-                                        width: { xs: '85%', md: '550px' },
-                                        top: { xs: '120px', md: '80px' },
-                                        left: { xs: '15%', md: '250px' },
-                                        color: '#2A2A2A',
-                                        fontSize: { xs: '18px', md: '24px' },
-                                        fontFamily: 'Roboto',
-                                        fontWeight: 500,
-                                        zIndex: 2,
-                                    }}
-                                >
-                                    {TESTIMONIALS[currentTestimonial].quote}
-                                </Typography>
-
-                                {/* Founder Section - Bottom */}
-                                <Box
-                                    sx={{
-                                        position: 'absolute',
-                                        left: { xs: '50%', md: '250px' },
-                                        bottom: { xs: '20px', md: '150px' },
-                                        transform: { xs: 'translateX(-50%)', md: 'none' },
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: 2,
-                                    }}
-                                >
-                                    {/* Founder Image */}
-                                    <Box
-                                        component="img"
-                                        src={TESTIMONIALS[currentTestimonial].image}
-                                        alt={TESTIMONIALS[currentTestimonial].name}
-                                        sx={{
-                                            width: { xs: '60px', md: '80px' },
-                                            height: { xs: '60px', md: '80px' },
-                                            borderRadius: '50%',
-                                            objectFit: 'cover',
-                                        }}
-                                    />
-
-                                    {/* Founder Name and Title */}
-                                    <Box>
-                                        <Typography
+                        {/* Dynamic Certificate Sections */}
+                        {certificates.map((certificate, index) => (
+                            <Grid container spacing={4} key={certificate.id} sx={{ mt: 4 }}>
+                                {/* Left - Certificate Text */}
+                                <Grid size={{ xs: 12, md: 6 }}>
+                                    <Box sx={{ mb: 4 }}>
+                                        <Box
                                             sx={{
-                                                color: 'black',
-                                                fontSize: { xs: '14px', md: '16px' },
-                                                fontFamily: 'Roboto',
-                                                fontWeight: 700,
-                                                textTransform: 'uppercase',
-                                                mb: 0.5,
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: 3,
+                                                mb: 4,
                                             }}
                                         >
-                                            {TESTIMONIALS[currentTestimonial].name}
-                                        </Typography>
+                                            <Typography
+                                                variant="h2"
+                                                sx={{
+                                                    fontWeight: 700,
+                                                    fontSize: { xs: '2rem', md: '64px' },
+                                                    color: 'text.primary',
+                                                    whiteSpace: 'nowrap',
+                                                }}
+                                            >
+                                                {certificate.title}
+                                            </Typography>
+                                            <Box
+                                                sx={{
+                                                    flexGrow: 1,
+                                                    height: '2px',
+                                                    bgcolor: 'text.primary',
+                                                    maxWidth: '200px',
+                                                }}
+                                            />
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '1rem',
+                                                    fontWeight: 600,
+                                                    color: 'text.primary',
+                                                }}
+                                            >
+                                                {String(index + 1).padStart(2, '0')}
+                                            </Typography>
+                                        </Box>
+
                                         <Typography
                                             sx={{
-                                                color: '#666',
-                                                fontSize: { xs: '12px', md: '14px' },
-                                                fontFamily: 'Roboto',
-                                                fontWeight: 400,
+                                                color: 'text.secondary',
+                                                fontSize: { xs: '0.95rem', md: '20px' },
                                             }}
                                         >
-                                            {TESTIMONIALS[currentTestimonial].title}
+                                            {certificate.description}
                                         </Typography>
                                     </Box>
+                                </Grid>
+
+                                {/* Right - Certificate Image */}
+                                <Grid size={{ xs: 12, md: 6 }}>
+                                    <Box
+                                        sx={{
+                                            position: 'relative',
+                                            width: { xs: '100%', md: '318px' },
+                                            marginLeft: { xs: '0', md: 'auto' },
+                                            display: 'block',
+                                        }}
+                                    >
+                                        <Box
+                                            component="img"
+                                            src={certificate.image_url}
+                                            alt={certificate.title}
+                                            sx={{
+                                                width: '100%',
+                                                height: { xs: 'auto', md: '318px' },
+                                                objectFit: 'cover',
+                                            }}
+                                        />
+                                        <IconButton
+                                            onClick={() => downloadCertificate(certificate.image_url, certificate.title)}
+                                            sx={{
+                                                position: 'absolute',
+                                                top: 16,
+                                                right: 16,
+                                                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                                                '&:hover': {
+                                                    backgroundColor: 'rgba(255, 255, 255, 1)',
+                                                    transform: 'scale(1.1)',
+                                                },
+                                                transition: 'all 0.3s ease',
+                                                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                            }}
+                                        >
+                                            <Icon icon="mdi:download" width={24} height={24} color="#4CAF50" />
+                                        </IconButton>
+                                    </Box>
+                                </Grid>
+
+                                {/* Testimonial Section - Show after first certificate */}
+                                {index === 0 && TESTIMONIALS.length > 0 && (
+                                    <Grid size={{ xs: 12 }}>
+                                        <Box
+                                            sx={{
+                                                mt: 8,
+                                                position: 'relative',
+                                                minHeight: { xs: '500px', md: '600px' },
+                                                display: { xs: 'none', md: 'flex' },
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
+                                            {/* Main Content Container */}
+                                            <Box
+                                                sx={{
+                                                    position: 'relative',
+                                                    width: '100%',
+                                                    maxWidth: '900px',
+                                                    height: { xs: 'auto', md: '600px' },
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    px: { xs: 2, md: 4 },
+                                                }}
+                                            >
+                                                {/* Opening Quote Mark - Left Side */}
+                                                <Box
+                                                    component="img"
+                                                    src="/images/certificates/quotation-green.png"
+                                                    alt=""
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        width: { xs: '180px', md: '167px' },
+                                                        height: { xs: '180px', md: '145px' },
+                                                        left: { xs: '0', md: '140px' },
+                                                        top: { xs: '20px', md: '20px' },
+                                                        zIndex: 1,
+                                                        objectFit: 'contain',
+                                                    }}
+                                                />
+
+                                                {/* Quote Text - Middle Right */}
+                                                <Typography
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        width: { xs: '85%', md: '550px' },
+                                                        top: { xs: '120px', md: '80px' },
+                                                        left: { xs: '15%', md: '250px' },
+                                                        color: '#2A2A2A',
+                                                        fontSize: { xs: '18px', md: '24px' },
+                                                        fontFamily: 'Roboto',
+                                                        fontWeight: 500,
+                                                        zIndex: 2,
+                                                    }}
+                                                >
+                                                    {TESTIMONIALS[currentTestimonial].quote}
+                                                </Typography>
+
+                                                {/* Founder Section - Bottom */}
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        left: { xs: '50%', md: '250px' },
+                                                        bottom: { xs: '20px', md: '150px' },
+                                                        transform: { xs: 'translateX(-50%)', md: 'none' },
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: 2,
+                                                    }}
+                                                >
+                                                    {/* Founder Image */}
+                                                    <Box
+                                                        component="img"
+                                                        src={TESTIMONIALS[currentTestimonial].image}
+                                                        alt={TESTIMONIALS[currentTestimonial].name}
+                                                        sx={{
+                                                            width: { xs: '60px', md: '80px' },
+                                                            height: { xs: '60px', md: '80px' },
+                                                            borderRadius: '50%',
+                                                            objectFit: 'cover',
+                                                        }}
+                                                    />
+
+                                                    {/* Founder Name and Title */}
+                                                    <Box>
+                                                        <Typography
+                                                            sx={{
+                                                                color: 'black',
+                                                                fontSize: { xs: '14px', md: '16px' },
+                                                                fontFamily: 'Roboto',
+                                                                fontWeight: 700,
+                                                                textTransform: 'uppercase',
+                                                                mb: 0.5,
+                                                            }}
+                                                        >
+                                                            {TESTIMONIALS[currentTestimonial].name}
+                                                        </Typography>
+                                                        <Typography
+                                                            sx={{
+                                                                color: '#666',
+                                                                fontSize: { xs: '12px', md: '14px' },
+                                                                fontFamily: 'Roboto',
+                                                                fontWeight: 400,
+                                                            }}
+                                                        >
+                                                            {TESTIMONIALS[currentTestimonial].title}
+                                                        </Typography>
+                                                    </Box>
+                                                </Box>
+                                            </Box>
+                                        </Box>
+                                    </Grid>
+                                )}
+                            </Grid>
+                        ))}
+
+                        {/* Empty State */}
+                        {certificates.length === 0 && (
+                            <Grid size={{ xs: 12 }}>
+                                <Box sx={{ textAlign: 'center', py: 8 }}>
+                                    <Typography variant="h5" color="text.secondary">
+                                        No certificates available at the moment.
+                                    </Typography>
                                 </Box>
-                            </Box>
-                        </Box>
+                            </Grid>
+                        )}
                     </Grid>
-
-                    {/* Left - certificate Text */}
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Box sx={{ mb: 4 }}>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 3,
-                                    mb: 4,
-                                }}
-                            >
-                                <Typography
-                                    variant="h2"
-                                    sx={{
-                                        fontWeight: 700,
-                                        fontSize: { xs: '2rem', md: '64px' },
-                                        color: 'text.primary',
-                                        whiteSpace: 'nowrap',
-                                    }}
-                                >
-                                    Certificat 2
-                                </Typography>
-                                <Box
-                                    sx={{
-                                        flexGrow: 1,
-                                        height: '2px',
-                                        bgcolor: 'text.primary',
-                                        maxWidth: '200px',
-                                    }}
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: '1rem',
-                                        fontWeight: 600,
-                                        color: 'text.primary',
-                                    }}
-                                >
-                                    02
-                                </Typography>
-                            </Box>
-
-                            <Typography
-                                sx={{
-                                    color: 'text.secondary',
-                                    fontSize: { xs: '0.95rem', md: '20px' },
-                                }}
-                            >
-                                Fostering the global adoption of safer and more responsible farming practices is a collective effort, which is why GLOBALG.A.P. works with a global network of stakeholder parties. Through working groups, capacity-building partners, and more than 440 member organizations from all sides of the value chain in our GLOBALG.A.P. community, we strive to connect with as many contributors as possible.
-                            </Typography>
-                        </Box>
-                    </Grid>
-
-                    {/* Right - one unique image */}
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Box
-                            sx={{
-                                position: 'relative',
-                                width: { xs: '100%', md: '318px' },
-                                marginLeft: { xs: '0', md: 'auto' },
-                                display: 'block',
-                            }}
-                        >
-                            <Box
-                                component="img"
-                                src="/images/certificates/globalegap-black.png"
-                                sx={{
-                                    width: '100%',
-                                    height: { xs: 'auto', md: '318px' },
-                                    objectFit: 'cover',
-                                }}
-                            />
-                            <IconButton
-                                onClick={() => downloadCertificate('/images/certificates/globalegap-black.png', 'Certificate-2')}
-                                sx={{
-                                    position: 'absolute',
-                                    top: 16,
-                                    right: 16,
-                                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(255, 255, 255, 1)',
-                                        transform: 'scale(1.1)',
-                                    },
-                                    transition: 'all 0.3s ease',
-                                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                                }}
-                            >
-                                <Icon icon="mdi:download" width={24} height={24} color="#2A2A2A" />
-                            </IconButton>
-                        </Box>
-                    </Grid>
-                </Grid>
+                )}
             </Container>
         </Box>
     );
