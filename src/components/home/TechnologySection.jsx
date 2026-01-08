@@ -3,33 +3,22 @@
 import { Box, Container, Typography, IconButton } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
-
-const SLIDES = [
-    {
-        id: 1,
-        title: 'We Use Technology',
-        subtitle: 'To Grow And Export Morocco\'s Finest Tomatoes With Quality.',
-        image: '/images/technology/image-technology.webp',
-        description: 'Modern farming techniques combined with traditional knowledge',
-    },
-    //   {
-    //     id: 2,
-    //     title: 'Sustainable Farming',
-    //     subtitle: 'Protecting Our Land For Future Generations',
-    //     image: '/images/technology/sustainable.jpg',
-    //     description: 'Eco-friendly practices that preserve soil health',
-    //   },
-    //   {
-    //     id: 3,
-    //     title: 'Quality Control',
-    //     subtitle: 'Every Tomato Meets Our High Standards',
-    //     image: '/images/technology/quality.jpg',
-    //     description: 'Rigorous testing and inspection at every stage',
-    //   },
-];
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function TechnologySection() {
+    const { t } = useTranslations();
     const [currentSlide, setCurrentSlide] = useState(0);
+
+    const SLIDES = [
+        {
+            id: 1,
+            title: t('technology.weUse'),
+            subtitle: t('technology.slides.slide1.subtitle'),
+            image: '/images/technology/image-technology.webp',
+            description: t('technology.slides.slide1.description'),
+        },
+        // Additional slides can be added here with translations
+    ];
 
     const handlePrev = () => {
         setCurrentSlide((prev) => (prev === 0 ? SLIDES.length - 1 : prev - 1));
@@ -98,7 +87,7 @@ export default function TechnologySection() {
                                     animation: 'fadeInLeft 0.6s ease-out',
                                 }}
                             >
-                                We Use <span style={{ fontWeight: 700 }}>Technology</span>
+                                {t('technology.weUse')} <span style={{ fontWeight: 700 }}>{t('technology.technology')}</span>
                             </Typography>
                             <Typography
                                 sx={{

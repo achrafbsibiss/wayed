@@ -16,6 +16,7 @@ import {
   Menu,
   MenuItem,
   Typography,
+  Tooltip,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { NAV_LINKS } from '@/lib/constants';
@@ -99,7 +100,7 @@ export default function Header() {
             {t('nav.requestQuote')}
           </Button>
         </ListItem>
-        
+
         {/* Language selector for mobile */}
         <ListItem sx={{ mt: 2, px: 2 }}>
           <Box sx={{ width: '100%' }}>
@@ -360,6 +361,26 @@ export default function Header() {
                     )}
                   </MenuItem>
                 </Menu>
+
+                {/* Admin Link - Subtle icon for easy access */}
+                <Tooltip title="Admin Panel">
+                  <IconButton
+                    component={Link}
+                    href="/admin/login"
+                    sx={{
+                      display: { xs: 'none', sm: 'flex' },
+                      color: '#163266 ',
+                      opacity: 0.5,
+                      '&:hover': {
+                        opacity: 1,
+                        bgcolor: 'rgba(14, 20, 107, 0.05)',
+                      },
+                      transition: 'opacity 0.3s ease',
+                    }}
+                  >
+                    <Icon icon="solar:login-3-bold-duotone" width="25" height="25" />
+                  </IconButton>
+                </Tooltip>
               </Box>
             </Box>
           </Toolbar>
