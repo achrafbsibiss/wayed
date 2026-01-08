@@ -4,79 +4,66 @@ import { Box, Container, Typography, Button, Card, CardContent, Chip } from '@mu
 import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+import { motion, AnimatePresence } from 'framer-motion';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import { Icon } from '@iconify/react';
 
 const PRODUCTS = {
     tomato: {
         name: 'Tomato',
         variants: [
-            { id: 'round', label: 'Round', active: true },
-            { id: 'plum', label: 'Plum tomato', active: false },
+            { id: 'round', label: 'Round' },
+            { id: 'plum', label: 'Plum tomato' },
         ],
-        mainImage: '/images/harvest/tomato big.webp',
-        sliderImages: [
-            '/images/harvest/Rectangle 26.webp',
-            '/images/harvest/Rectangle 26.webp',
-            '/images/harvest/Rectangle 26.webp',
-        ],
-        health: {
-            servingSize: '1 large',
-            servingWeight: '100g',
-            calories: 18,
-            totalFat: 0,
-            saturatedFat: 0,
-            transFat: 0,
-            protein: 0.9,
-            water: 94,
-            carbohydrates: 0,
-            dietaryFiber: 2,
-            sugar: 1,
-            vitamins: [
-                { name: 'Vitamine A', value: '350μg' },
-                { name: 'Vitamine C', value: '14mg' },
-                { name: 'Calcium', value: '10mg' },
-                { name: 'Iron', value: '0.3mg' },
-            ],
-            description: 'Packed with essential vitamins and minerals, our tomatoes provide Vitamin A and B, Calcium, and Iron to support a healthy, balanced diet.',
+        variantData: {
+            round: {
+                mainImage: '/images/harvest/tomato big.webp',
+                sliderImages: [
+                    '/images/harvest/Rectangle 26.webp',
+                    '/images/harvest/Rectangle 26.webp',
+                    '/images/harvest/Rectangle 26.webp',
+                ],
+                size: 'LARGE',
+                insight: {
+                    description: 'Our partners gain a competitive advantage by aligning with WAYD. Access to our carefully cultivated catalogue means capitalizing on market trends, high performing tomatoes that elevate your offerings. Ensuring your business benefits from our finest produce, season after season.',
+                },
+            },
+            plum: {
+                mainImage: '/images/harvest/plume_tomato.webp',
+                sliderImages: [
+                    '/images/harvest/left_plum_tomato.webp',
+                    '/images/harvest/left_plum_tomato.webp',
+                    '/images/harvest/left_plum_tomato.webp',
+                ],
+                size: 'MEDIUM',
+                insight: {
+                    description: 'Plum tomatoes are perfect for sauces and cooking. Our carefully selected varieties offer rich flavor and consistent quality that professional chefs and food manufacturers trust season after season.',
+                },
+            },
         },
-        size: 'LARGE',
         hasSeasonChart: true,
     },
     cucumber: {
         name: 'Cucumber',
         variants: [
-            { id: 'regular', label: 'Regular', active: true },
-            { id: 'mini', label: 'Mini cucumber', active: false },
+            { id: 'regular', label: 'Regular' },
         ],
-        mainImage: '/images/harvest/big-cucumber.png',
-        sliderImages: [
-            '/images/harvest/cucumber-card1.png',
-            '/images/harvest/cucumber-card1.png',
-            '/images/harvest/cucumber-card1.png',
-        ],
-        health: {
-            servingSize: '1 medium',
-            servingWeight: '100g',
-            calories: 15,
-            totalFat: 0,
-            saturatedFat: 0,
-            transFat: 0,
-            protein: 0.7,
-            water: 96,
-            carbohydrates: 0,
-            dietaryFiber: 1,
-            sugar: 2,
-            vitamins: [
-                { name: 'Vitamine K', value: '16.4μg' },
-                { name: 'Vitamine C', value: '2.8mg' },
-                { name: 'Potassium', value: '147mg' },
-                { name: 'Magnesium', value: '13mg' },
-            ],
-            description: 'Low in calories and high in water content, cucumbers are refreshing and provide essential nutrients for hydration and wellness.',
+        variantData: {
+            regular: {
+                mainImage: '/images/harvest/big_cucumber.webp',
+                sliderImages: [
+                    '/images/harvest/left_cucumbers.webp',
+                    '/images/harvest/left_cucumbers.webp',
+                    '/images/harvest/left_cucumbers.webp',
+                ],
+                size: 'MEDIUM',
+                insight: {
+                    description: 'Our regular cucumbers deliver exceptional crispness and freshness. Cultivated with precision to meet the highest standards, they provide consistent quality that elevates any dish or product offering.',
+                },
+            },
         },
-        size: 'MEDIUM',
         hasSeasonChart: true,
     },
 };
@@ -84,8 +71,25 @@ const PRODUCTS = {
 export default function HarvestHero() {
     const [activeProduct, setActiveProduct] = useState('tomato');
     const [activeVariant, setActiveVariant] = useState('round');
+    const [direction, setDirection] = useState(0); // 1 for next, -1 for prev, 0 for variant change
 
     const currentProduct = PRODUCTS[activeProduct];
+    // Safety check: fallback to first variant if current variant doesn't exist
+    const currentVariantData = currentProduct.variantData[activeVariant] ||
+        currentProduct.variantData[currentProduct.variants[0].id];
+
+    const handleProductChange = (productKey, animDirection) => {
+        const newProduct = PRODUCTS[productKey];
+        const firstVariant = newProduct.variants[0];
+        setDirection(animDirection);
+        setActiveProduct(productKey);
+        setActiveVariant(firstVariant.id);
+    };
+
+    const handleVariantChange = (variantId) => {
+        setDirection(0); // No slide animation for variant changes
+        setActiveVariant(variantId);
+    };
 
     return (
         <Box
@@ -98,19 +102,86 @@ export default function HarvestHero() {
             }}
         >
             <Container>
-                {/* Title */}
-                <Typography
-                    variant="h1"
+                {/* Title with Product Navigation */}
+                <Box
                     sx={{
-                        textAlign: 'center',
-                        fontWeight: 700,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: { xs: 2, md: 4 },
                         mb: 4,
-                        fontSize: { xs: '2.5rem', md: '4rem' },
-                        color: '#1a1a1a',
                     }}
                 >
-                    {currentProduct.name}
-                </Typography>
+                    {/* Previous Product Arrow */}
+                    <Button
+                        onClick={() => {
+                            const productKeys = Object.keys(PRODUCTS);
+                            const currentIndex = productKeys.indexOf(activeProduct);
+                            const prevIndex = currentIndex === 0 ? productKeys.length - 1 : currentIndex - 1;
+                            handleProductChange(productKeys[prevIndex], -1);
+                        }}
+                        sx={{
+                            minWidth: 'auto',
+                            width: { xs: 40, md: 50 },
+                            height: { xs: 40, md: 50 },
+                            borderRadius: '50%',
+                            color: '#1a1a1a',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            '&:hover': {
+                                bgcolor: '#e5e7eb',
+                                transform: 'scale(1.1)',
+                            },
+                            '& svg': { flexShrink: 0 },
+                            transition: 'all 0.3s ease',
+                        }}
+                    >
+                        <Icon icon="solar:alt-arrow-left-bold-duotone" width={24} height={24} />
+                    </Button>
+
+                    {/* Product Title */}
+                    <Typography
+                        variant="h1"
+                        sx={{
+                            textAlign: 'center',
+                            fontWeight: 700,
+                            fontSize: { xs: '2.5rem', md: '4rem' },
+                            color: '#1a1a1a',
+                            minWidth: { xs: '200px', md: '300px' },
+                        }}
+                    >
+                        {currentProduct.name}
+                    </Typography>
+
+                    {/* Next Product Arrow */}
+                    <Button
+                        onClick={() => {
+                            const productKeys = Object.keys(PRODUCTS);
+                            const currentIndex = productKeys.indexOf(activeProduct);
+                            const nextIndex = currentIndex === productKeys.length - 1 ? 0 : currentIndex + 1;
+                            handleProductChange(productKeys[nextIndex], 1);
+                        }}
+                        sx={{
+                            minWidth: 'auto',
+                            width: { xs: 40, md: 50 },
+                            height: { xs: 40, md: 50 },
+                            borderRadius: '50%',
+                            color: '#1a1a1a',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            '&:hover': {
+                                bgcolor: '#e5e7eb',
+                                transform: 'scale(1.1)',
+                            },
+                            '& svg': { flexShrink: 0 },
+                            transition: 'all 0.3s ease',
+                        }}
+                    >
+                        <Icon icon="solar:alt-arrow-right-bold-duotone" width={24} height={24} />
+                    </Button>
+                </Box>
 
                 {/* Variant Tabs */}
                 <Box
@@ -124,7 +195,7 @@ export default function HarvestHero() {
                     {currentProduct.variants.map((variant) => (
                         <Button
                             key={variant.id}
-                            onClick={() => setActiveVariant(variant.id)}
+                            onClick={() => handleVariantChange(variant.id)}
                             sx={{
                                 px: 4,
                                 py: 1.5,
@@ -191,7 +262,7 @@ export default function HarvestHero() {
                         loop
                         modules={[EffectCoverflow, Pagination, Autoplay]}
                     >
-                        {currentProduct.sliderImages.map((image, index) => (
+                        {currentVariantData.sliderImages.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <Box
                                     component="img"
@@ -208,12 +279,12 @@ export default function HarvestHero() {
             <Box
                 sx={{
                     position: 'relative',
-                    height: { xs: '750px', md: '1150px' },
+                    height: { xs: '750px', md: '900px' },
                     mb: { xs: 6, md: 0 },
                     '&::before': {
                         content: '""',
                         position: 'absolute',
-                        top: { xs: '30%', md: '50%' },
+                        top: { xs: '30%', md: '45%' },
                         left: 0,
                         right: 0,
                         bottom: 0,
@@ -223,289 +294,141 @@ export default function HarvestHero() {
                 }}
             >
                 {/* Desktop Layout */}
-                <Box
-                    sx={{
-                        display: { xs: 'none', md: 'grid' },
-                        position: 'relative',
-                        gridTemplateColumns: { xs: '1fr', lg: '400px 1fr 400px' },
-                        gap: 4,
-                        padding: 8,
-                        alignItems: 'center',
-                        mb: 6,
-                        zIndex: 1,
-                    }}
-                >
-                    {/* Left - Health Card */}
-                    <Card
-                        sx={{
-                            borderRadius: 3,
-                            boxShadow: '0px 4px 28.299999237060547px 2px rgba(0, 0, 0, 0.25)',
-                            height: 'fit-content',
-                            position: 'relative',
-                        }}
-                    >
-                        <CardContent sx={{ p: 3 }}>
-                            <Typography
-                                variant="h5"
+                <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'relative' }}>
+                    <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                            key={`${activeProduct}-${activeVariant}`}
+                            custom={direction}
+                            initial={{
+                                opacity: 0,
+                                x: direction === 1 ? 300 : direction === -1 ? -300 : 0,
+                                scale: direction === 0 ? 0.95 : 1
+                            }}
+                            animate={{
+                                opacity: 1,
+                                x: 0,
+                                scale: 1
+                            }}
+                            exit={{
+                                opacity: 0,
+                                x: direction === 1 ? -300 : direction === -1 ? 300 : 0,
+                                scale: direction === 0 ? 0.95 : 1
+                            }}
+                            transition={{
+                                duration: 0.5,
+                                ease: [0.4, 0.0, 0.2, 1]
+                            }}
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: '400px 1fr 400px',
+                                gap: '32px',
+                                padding: '64px',
+                                alignItems: 'center',
+                                marginBottom: '48px',
+                                zIndex: 1
+                            }}
+                        >
+                            {/* Left - Insight Card */}
+                            <Card
                                 sx={{
-                                    fontWeight: 700,
-                                    mb: 3,
-                                    color: '#1a1a1a',
+                                    borderRadius: 3,
+                                    boxShadow: '0px 4px 28.299999237060547px 2px rgba(0, 0, 0, 0.25)',
+                                    height: 'fit-content',
+                                    position: 'relative',
+                                    bgcolor: 'white',
                                 }}
                             >
-                                Health
-                            </Typography>
-
-                            {/* Serving Info */}
-                            <Box sx={{ mb: 3 }}>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        pb: 2,
-                                        borderBottom: '3px solid #1a1a1a',
-                                    }}
-                                >
-                                    <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                        Serving size {currentProduct.health.servingSize}
+                                <CardContent sx={{ p: 4 }}>
+                                    <Typography
+                                        variant="h4"
+                                        sx={{
+                                            fontWeight: 700,
+                                            mb: 3,
+                                            color: '#1a1a1a',
+                                            fontStyle: 'italic',
+                                            fontSize: '2rem',
+                                        }}
+                                    >
+                                        INSIGHT
                                     </Typography>
-                                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                        {currentProduct.health.servingWeight}
+
+                                    {/* Description */}
+                                    <Typography
+                                        variant="body1"
+                                        sx={{
+                                            color: '#1a1a1a',
+                                            lineHeight: 1.8,
+                                            fontSize: '1rem',
+                                            fontWeight: 600,
+                                        }}
+                                    >
+                                        {currentVariantData.insight.description}
                                     </Typography>
-                                </Box>
-                            </Box>
+                                </CardContent>
+                            </Card>
 
-                            {/* Nutrition Facts */}
-                            <Box sx={{ mb: 3 }}>
-                                <Typography
-                                    variant="body2"
-                                    sx={{ fontWeight: 600, mb: 2, color: '#1a1a1a' }}
-                                >
-                                    Amount per Serving
-                                </Typography>
-
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            Calories
-                                        </Typography>
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            {currentProduct.health.calories}Cal
-                                        </Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            Total Fat
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.totalFat}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            pl: 2,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                            Saturated Fat
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.saturatedFat}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            pl: 2,
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                            Trans Fat
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.transFat}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            Protein
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.protein}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            Water
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.water}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                            Total Carbohydrate
-                                        </Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            pl: 2,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                            Dietary Fiber
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.dietaryFiber}g</Typography>
-                                    </Box>
-
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            pl: 2,
-                                            borderTop: '1px solid #e5e7eb',
-                                            pt: 1,
-                                            mb: 2,
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                            Sugar
-                                        </Typography>
-                                        <Typography variant="body2">{currentProduct.health.sugar}g</Typography>
-                                    </Box>
-                                </Box>
-                            </Box>
-
-                            {/* Vitamins */}
+                            {/* Center - Main Product Image */}
                             <Box
                                 sx={{
-                                    borderTop: '3px solid #1a1a1a',
-                                    pt: 2,
-                                    mb: 2,
-                                    display: 'grid',
-                                    gridTemplateColumns: '1fr 1fr',
-                                    gap: 2,
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    position: 'relative',
                                 }}
                             >
-                                {currentProduct.health.vitamins.map((vitamin, index) => (
-                                    <Box key={index}>
-                                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#1a1a1a' }}>
-                                            {vitamin.name}
-                                        </Typography>
-                                        <Typography variant="body2" sx={{ fontWeight: 600, color: '#1a1a1a' }}>
-                                            {vitamin.value}
-                                        </Typography>
-                                    </Box>
-                                ))}
+                                <Box
+                                    component="img"
+                                    src={currentVariantData.mainImage}
+                                    alt={currentProduct.name}
+                                    sx={{
+                                        maxWidth: '100%',
+                                        height: 'auto',
+                                        maxHeight: '500px',
+                                        objectFit: 'contain',
+                                        filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
+                                        animation: 'fadeIn 0.5s ease-in',
+                                    }}
+                                />
                             </Box>
 
-                            {/* Description */}
-                            <Typography
-                                variant="body2"
+                            {/* Right - Image Slider */}
+                            <Box
                                 sx={{
-                                    color: '#6b7280',
-                                    lineHeight: 1.6,
-                                    fontSize: '0.875rem',
+                                    height: { xs: 300, md: 500 },
+                                    overflow: 'hidden',
+                                    position: 'relative',
+                                    '& .swiper-pagination': {
+                                        bottom: '170px !important',
+                                        left: '45% !important',
+                                        transform: 'translateX(-110%) !important',
+                                        width: 'auto !important',
+                                    },
                                 }}
                             >
-                                {currentProduct.health.description}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-
-                    {/* Center - Main Product Image */}
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            position: 'relative',
-                        }}
-                    >
-                        <Box
-                            component="img"
-                            src={currentProduct.mainImage}
-                            alt={currentProduct.name}
-                            sx={{
-                                maxWidth: '100%',
-                                height: 'auto',
-                                maxHeight: '500px',
-                                objectFit: 'contain',
-                                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.15))',
-                                animation: 'fadeIn 0.5s ease-in',
-                            }}
-                        />
-                    </Box>
-
-                    {/* Right - Image Slider */}
-                    <Box
-                        sx={{
-                            height: { xs: 300, md: 450 },
-                            overflow: 'hidden',
-                            position: 'relative',
-                            '& .swiper-pagination': {
-                                bottom: '120px !important',
-                                left: '45% !important',
-                                transform: 'translateX(-110%) !important',
-                                width: 'auto !important',
-                            },
-                        }}
-                    >
-                        <Swiper
-                            modules={[Pagination, Autoplay]}
-                            pagination={{ clickable: true }}
-                            autoplay={{ delay: 5000, disableOnInteraction: false }}
-                            loop
-                            style={{ height: '100%' }}
-                        >
-                            {currentProduct.sliderImages.map((image, index) => (
-                                <SwiperSlide key={index}>
-                                    <Box
-                                        component="img"
-                                        src={image}
-                                        alt={`${currentProduct.name} ${index + 1}`}
-                                        sx={{
-                                            height: '300px',
-                                            objectFit: 'cover',
-                                        }}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </Box>
+                                <Swiper
+                                    modules={[Pagination, Autoplay]}
+                                    pagination={{ clickable: true }}
+                                    autoplay={{ delay: 5000, disableOnInteraction: false }}
+                                    loop
+                                    style={{ height: '100%' }}
+                                >
+                                    {currentVariantData.sliderImages.map((image, index) => (
+                                        <SwiperSlide key={index}>
+                                            <Box
+                                                component="img"
+                                                src={image}
+                                                alt={`${currentProduct.name} ${index + 1}`}
+                                                sx={{
+                                                    height: '300px',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            </Box>
+                        </motion.div>
+                    </AnimatePresence>
                 </Box>
 
                 {/* Mobile Layout - Main Product Image, Button, Size, Health Card */}
@@ -523,7 +446,7 @@ export default function HarvestHero() {
                         >
                             <Box
                                 component="img"
-                                src={currentProduct.mainImage}
+                                src={currentVariantData.mainImage}
                                 alt={currentProduct.name}
                                 sx={{
                                     maxWidth: '100%',
@@ -579,7 +502,7 @@ export default function HarvestHero() {
                                     textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
                                 }}
                             >
-                                {currentProduct.size}
+                                {currentVariantData.size}
                             </Typography>
                         </Box>
 
@@ -612,12 +535,13 @@ export default function HarvestHero() {
                             ))}
                         </Box>
 
-                        {/* Health Card */}
+                        {/* Insight Card */}
                         <Card
                             sx={{
                                 borderRadius: 3,
                                 boxShadow: '0px 4px 28.299999237060547px 2px rgba(0, 0, 0, 0.25)',
                                 mb: 4,
+                                bgcolor: 'white',
                             }}
                         >
                             <CardContent sx={{ p: 3 }}>
@@ -627,197 +551,22 @@ export default function HarvestHero() {
                                         fontWeight: 700,
                                         mb: 3,
                                         color: '#1a1a1a',
+                                        fontStyle: 'italic',
                                     }}
                                 >
-                                    Health
+                                    INSIGHT
                                 </Typography>
-
-                                {/* Serving Info */}
-                                <Box sx={{ mb: 3 }}>
-                                    <Box
-                                        sx={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                            pb: 2,
-                                            borderBottom: '3px solid #1a1a1a',
-                                        }}
-                                    >
-                                        <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                            Serving size {currentProduct.health.servingSize}
-                                        </Typography>
-                                        <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                                            {currentProduct.health.servingWeight}
-                                        </Typography>
-                                    </Box>
-                                </Box>
-
-                                {/* Nutrition Facts */}
-                                <Box sx={{ mb: 3 }}>
-                                    <Typography
-                                        variant="body2"
-                                        sx={{ fontWeight: 600, mb: 2, color: '#1a1a1a' }}
-                                    >
-                                        Amount per Serving
-                                    </Typography>
-
-                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                Calories
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                {currentProduct.health.calories}Cal
-                                            </Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                Total Fat
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.totalFat}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                pl: 2,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                                Saturated Fat
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.saturatedFat}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                pl: 2,
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                                Trans Fat
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.transFat}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                Protein
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.protein}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                Water
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.water}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                Total Carbohydrate
-                                            </Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                pl: 2,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                                Dietary Fiber
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.dietaryFiber}g</Typography>
-                                        </Box>
-
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                pl: 2,
-                                                borderTop: '1px solid #e5e7eb',
-                                                pt: 1,
-                                                mb: 2,
-                                            }}
-                                        >
-                                            <Typography variant="body2" sx={{ color: '#6b7280' }}>
-                                                Sugar
-                                            </Typography>
-                                            <Typography variant="body2">{currentProduct.health.sugar}g</Typography>
-                                        </Box>
-                                    </Box>
-                                </Box>
-
-                                {/* Vitamins */}
-                                <Box
-                                    sx={{
-                                        borderTop: '3px solid #1a1a1a',
-                                        pt: 2,
-                                        mb: 2,
-                                        display: 'grid',
-                                        gridTemplateColumns: '1fr 1fr',
-                                        gap: 2,
-                                    }}
-                                >
-                                    {currentProduct.health.vitamins.map((vitamin, index) => (
-                                        <Box key={index}>
-                                            <Typography variant="body2" sx={{ fontWeight: 600, color: '#1a1a1a' }}>
-                                                {vitamin.name}
-                                            </Typography>
-                                            <Typography variant="body2" sx={{ fontWeight: 600, color: '#1a1a1a' }}>
-                                                {vitamin.value}
-                                            </Typography>
-                                        </Box>
-                                    ))}
-                                </Box>
 
                                 {/* Description */}
                                 <Typography
-                                    variant="body2"
+                                    variant="body1"
                                     sx={{
-                                        color: '#6b7280',
-                                        lineHeight: 1.6,
-                                        fontSize: '0.875rem',
+                                        color: '#1a1a1a',
+                                        lineHeight: 1.8,
+                                        fontWeight: 600,
                                     }}
                                 >
-                                    {currentProduct.health.description}
+                                    {currentVariantData.insight.description}
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -851,31 +600,6 @@ export default function HarvestHero() {
                             Request a Quote
                         </Button>
                     </Box>
-
-                    {/* Bottom Info */}
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'end',
-                            alignItems: 'center',
-                            px: { xs: 2, md: 1 },
-                            position: 'relative',
-                        }}
-                    >
-
-                        {currentProduct.hasSeasonChart && (
-                            <Typography
-                                variant="body1"
-                                sx={{
-                                    color: 'white',
-                                    fontWeight: 500,
-                                    textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-                                }}
-                            >
-                                Seasons Chart
-                            </Typography>
-                        )}
-                    </Box>
                     <Box
                         sx={{
                             display: 'flex',
@@ -893,7 +617,7 @@ export default function HarvestHero() {
                                 textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
                             }}
                         >
-                            {currentProduct.size}
+                            {currentVariantData.size}
                         </Typography>
                     </Box>
 
