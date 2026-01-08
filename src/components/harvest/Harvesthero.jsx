@@ -1,7 +1,7 @@
 'use client';
 
-import { Box, Container, Typography, Button, Card, CardContent, Chip } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Box, Container, Typography, Button, Card, CardContent, Chip, CircularProgress } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,85 +10,68 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import { Icon } from '@iconify/react';
 
-const PRODUCTS = {
-    tomato: {
-        name: 'Tomato',
-        variants: [
-            { id: 'round', label: 'Round' },
-            { id: 'plum', label: 'Plum tomato' },
-        ],
-        variantData: {
-            round: {
-                mainImage: '/images/harvest/tomato big.webp',
-                sliderImages: [
-                    '/images/harvest/Rectangle 26.webp',
-                    '/images/harvest/Rectangle 26.webp',
-                    '/images/harvest/Rectangle 26.webp',
-                ],
-                size: 'LARGE',
-                insight: {
-                    description: 'Our partners gain a competitive advantage by aligning with WAYD. Access to our carefully cultivated catalogue means capitalizing on market trends, high performing tomatoes that elevate your offerings. Ensuring your business benefits from our finest produce, season after season.',
-                },
-            },
-            plum: {
-                mainImage: '/images/harvest/plume_tomato.webp',
-                sliderImages: [
-                    '/images/harvest/left_plum_tomato.webp',
-                    '/images/harvest/left_plum_tomato.webp',
-                    '/images/harvest/left_plum_tomato.webp',
-                ],
-                size: 'MEDIUM',
-                insight: {
-                    description: 'Plum tomatoes are perfect for sauces and cooking. Our carefully selected varieties offer rich flavor and consistent quality that professional chefs and food manufacturers trust season after season.',
-                },
-            },
-        },
-        hasSeasonChart: true,
-    },
-    cucumber: {
-        name: 'Cucumber',
-        variants: [
-            { id: 'regular', label: 'Regular' },
-        ],
-        variantData: {
-            regular: {
-                mainImage: '/images/harvest/big_cucumber.webp',
-                sliderImages: [
-                    '/images/harvest/left_cucumbers.webp',
-                    '/images/harvest/left_cucumbers.webp',
-                    '/images/harvest/left_cucumbers.webp',
-                ],
-                size: 'MEDIUM',
-                insight: {
-                    description: 'Our regular cucumbers deliver exceptional crispness and freshness. Cultivated with precision to meet the highest standards, they provide consistent quality that elevates any dish or product offering.',
-                },
-            },
-        },
-        hasSeasonChart: true,
-    },
-};
-
 export default function HarvestHero() {
-    const [activeProduct, setActiveProduct] = useState('tomato');
-    const [activeVariant, setActiveVariant] = useState('round');
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [activeProduct, setActiveProduct] = useState(null);
+    const [activeVariant, setActiveVariant] = useState(null);
     const [direction, setDirection] = useState(0); // 1 for next, -1 for prev, 0 for variant change
 
-    const currentProduct = PRODUCTS[activeProduct];
-    // Safety check: fallback to first variant if current variant doesn't exist
-    const currentVariantData = currentProduct.variantData[activeVariant] ||
-        currentProduct.variantData[currentProduct.variants[0].id];
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                if (data.success && data.data.length > 0) {
+                    setProducts(data.data);
+                    setActiveProduct(data.data[0].slug);
+                    setActiveVariant(data.data[0].variants[0]?.variant_id);
+                }
+            } catch (error) {
+                console.error('Failed to fetch products', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, []);
 
-    const handleProductChange = (productKey, animDirection) => {
-        const newProduct = PRODUCTS[productKey];
-        const firstVariant = newProduct.variants[0];
-        setDirection(animDirection);
-        setActiveProduct(productKey);
-        setActiveVariant(firstVariant.id);
+    if (loading) {
+        return (
+            <Box sx={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <CircularProgress />
+            </Box>
+        );
+    }
+
+    if (!activeProduct || products.length === 0) return null;
+
+    const currentProduct = products.find(p => p.slug === activeProduct);
+    if (!currentProduct) return null;
+
+    const currentVariantData = currentProduct.variants.find(v => v.variant_id === activeVariant) || currentProduct.variants[0];
+
+    const handleProductChange = (productSlug, animDirection) => {
+        const newProduct = products.find(p => p.slug === productSlug);
+        if (newProduct) {
+            setDirection(animDirection);
+            setActiveProduct(productSlug);
+            setActiveVariant(newProduct.variants[0]?.variant_id);
+        }
     };
 
     const handleVariantChange = (variantId) => {
-        setDirection(0); // No slide animation for variant changes
+        setDirection(0);
         setActiveVariant(variantId);
+    };
+
+    // Helper to get mapped variant data structure for rendering
+    // This maps the API structure to the props used in the JSX below
+    const activeVariantProps = {
+        mainImage: currentVariantData?.main_image_url,
+        sliderImages: currentVariantData?.slider_images || [],
+        size: currentVariantData?.size,
+        description: currentVariantData?.description,
     };
 
     return (
@@ -115,10 +98,10 @@ export default function HarvestHero() {
                     {/* Previous Product Arrow */}
                     <Button
                         onClick={() => {
-                            const productKeys = Object.keys(PRODUCTS);
-                            const currentIndex = productKeys.indexOf(activeProduct);
-                            const prevIndex = currentIndex === 0 ? productKeys.length - 1 : currentIndex - 1;
-                            handleProductChange(productKeys[prevIndex], -1);
+                            const productSlugs = products.map(p => p.slug);
+                            const currentIndex = productSlugs.indexOf(activeProduct);
+                            const prevIndex = currentIndex === 0 ? productSlugs.length - 1 : currentIndex - 1;
+                            handleProductChange(productSlugs[prevIndex], -1);
                         }}
                         sx={{
                             minWidth: 'auto',
@@ -157,10 +140,10 @@ export default function HarvestHero() {
                     {/* Next Product Arrow */}
                     <Button
                         onClick={() => {
-                            const productKeys = Object.keys(PRODUCTS);
-                            const currentIndex = productKeys.indexOf(activeProduct);
-                            const nextIndex = currentIndex === productKeys.length - 1 ? 0 : currentIndex + 1;
-                            handleProductChange(productKeys[nextIndex], 1);
+                            const productSlugs = products.map(p => p.slug);
+                            const currentIndex = productSlugs.indexOf(activeProduct);
+                            const nextIndex = currentIndex === productSlugs.length - 1 ? 0 : currentIndex + 1;
+                            handleProductChange(productSlugs[nextIndex], 1);
                         }}
                         sx={{
                             minWidth: 'auto',
@@ -195,7 +178,7 @@ export default function HarvestHero() {
                     {currentProduct.variants.map((variant) => (
                         <Button
                             key={variant.id}
-                            onClick={() => handleVariantChange(variant.id)}
+                            onClick={() => handleVariantChange(variant.variant_id)}
                             sx={{
                                 px: 4,
                                 py: 1.5,
@@ -203,12 +186,12 @@ export default function HarvestHero() {
                                 fontSize: '1rem',
                                 fontWeight: 500,
                                 textTransform: 'none',
-                                bgcolor: activeVariant === variant.id ? '#1a1a1a' : 'transparent',
-                                color: activeVariant === variant.id ? 'white' : '#1a1a1a',
-                                border: activeVariant === variant.id ? 'none' : '2px solid #e5e7eb',
+                                bgcolor: activeVariant === variant.variant_id ? '#1a1a1a' : 'transparent',
+                                color: activeVariant === variant.variant_id ? 'white' : '#1a1a1a',
+                                border: activeVariant === variant.variant_id ? 'none' : '2px solid #e5e7eb',
                                 transition: 'all 0.3s ease',
                                 '&:hover': {
-                                    bgcolor: activeVariant === variant.id ? '#2a2a2a' : '#f9fafb',
+                                    bgcolor: activeVariant === variant.variant_id ? '#2a2a2a' : '#f9fafb',
                                 },
                             }}
                         >
@@ -262,7 +245,7 @@ export default function HarvestHero() {
                         loop
                         modules={[EffectCoverflow, Pagination, Autoplay]}
                     >
-                        {currentVariantData.sliderImages.map((image, index) => (
+                        {activeVariantProps.sliderImages.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <Box
                                     component="img"
@@ -362,7 +345,7 @@ export default function HarvestHero() {
                                             fontWeight: 600,
                                         }}
                                     >
-                                        {currentVariantData.insight.description}
+                                        {activeVariantProps.description}
                                     </Typography>
                                 </CardContent>
                             </Card>
@@ -378,7 +361,7 @@ export default function HarvestHero() {
                             >
                                 <Box
                                     component="img"
-                                    src={currentVariantData.mainImage}
+                                    src={activeVariantProps.mainImage}
                                     alt={currentProduct.name}
                                     sx={{
                                         maxWidth: '100%',
@@ -412,7 +395,7 @@ export default function HarvestHero() {
                                     loop
                                     style={{ height: '100%' }}
                                 >
-                                    {currentVariantData.sliderImages.map((image, index) => (
+                                    {activeVariantProps.sliderImages.map((image, index) => (
                                         <SwiperSlide key={index}>
                                             <Box
                                                 component="img"
@@ -446,7 +429,7 @@ export default function HarvestHero() {
                         >
                             <Box
                                 component="img"
-                                src={currentVariantData.mainImage}
+                                src={activeVariantProps.mainImage}
                                 alt={currentProduct.name}
                                 sx={{
                                     maxWidth: '100%',
@@ -502,7 +485,7 @@ export default function HarvestHero() {
                                     textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
                                 }}
                             >
-                                {currentVariantData.size}
+                                {activeVariantProps.size}
                             </Typography>
                         </Box>
 
@@ -515,15 +498,15 @@ export default function HarvestHero() {
                                 mb: 6,
                             }}
                         >
-                            {Object.keys(PRODUCTS).map((productKey) => (
+                            {products.map((p) => (
                                 <Box
-                                    key={productKey}
-                                    onClick={() => setActiveProduct(productKey)}
+                                    key={p.slug}
+                                    onClick={() => setActiveProduct(p.slug)}
                                     sx={{
                                         width: 12,
                                         height: 12,
                                         borderRadius: '50%',
-                                        bgcolor: activeProduct === productKey ? 'white' : 'rgba(255,255,255,0.4)',
+                                        bgcolor: activeProduct === p.slug ? 'white' : 'rgba(255,255,255,0.4)',
                                         cursor: 'pointer',
                                         transition: 'all 0.3s ease',
                                         '&:hover': {
@@ -566,7 +549,7 @@ export default function HarvestHero() {
                                         fontWeight: 600,
                                     }}
                                 >
-                                    {currentVariantData.insight.description}
+                                    {activeVariantProps.description}
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -617,7 +600,7 @@ export default function HarvestHero() {
                                 textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
                             }}
                         >
-                            {currentVariantData.size}
+                            {activeVariantProps.size}
                         </Typography>
                     </Box>
 
@@ -631,15 +614,15 @@ export default function HarvestHero() {
                             position: 'relative',
                         }}
                     >
-                        {Object.keys(PRODUCTS).map((productKey) => (
+                        {products.map((p) => (
                             <Box
-                                key={productKey}
-                                onClick={() => setActiveProduct(productKey)}
+                                key={p.slug}
+                                onClick={() => setActiveProduct(p.slug)}
                                 sx={{
                                     width: 12,
                                     height: 12,
                                     borderRadius: '50%',
-                                    bgcolor: activeProduct === productKey ? 'white' : 'rgba(255,255,255,0.4)',
+                                    bgcolor: activeProduct === p.slug ? 'white' : 'rgba(255,255,255,0.4)',
                                     cursor: 'pointer',
                                     transition: 'all 0.3s ease',
                                     '&:hover': {

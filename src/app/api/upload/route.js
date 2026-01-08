@@ -46,13 +46,17 @@ export async function POST(request) {
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
 
+        // Get bucket from search params or default to 'certificates'
+        const { searchParams } = new URL(request.url);
+        const bucket = searchParams.get('bucket') || 'certificates';
+
         // Convert file to buffer
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
         // Upload to Supabase storage
         const { data, error } = await supabaseAdmin.storage
-            .from('certificates')
+            .from(bucket)
             .upload(fileName, buffer, {
                 contentType: file.type,
                 upsert: false,
@@ -65,7 +69,7 @@ export async function POST(request) {
 
         // Get public URL
         const { data: publicUrlData } = supabaseAdmin.storage
-            .from('certificates')
+            .from(bucket)
             .getPublicUrl(fileName);
 
         return NextResponse.json({

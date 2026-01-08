@@ -23,89 +23,54 @@ import {
     Chip,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
-import Image from 'next/image';
-import CertificateForm from '@/components/admin/CertificateForm';
+import { useRouter } from 'next/navigation';
 
-export default function AdminCertificates() {
-    const [certificates, setCertificates] = useState([]);
+export default function AdminProducts() {
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [showForm, setShowForm] = useState(false);
-    const [editingCertificate, setEditingCertificate] = useState(null);
     const [deleteDialog, setDeleteDialog] = useState({ open: false, id: null });
+    const router = useRouter();
 
-    const fetchCertificates = async () => {
+    const fetchProducts = async () => {
         try {
-            const res = await fetch('/api/certificates');
+            const res = await fetch('/api/products');
             const data = await res.json();
 
             if (data.success) {
-                setCertificates(data.data);
+                setProducts(data.data);
             } else {
-                setError('Failed to fetch certificates');
+                setError('Failed to fetch products');
             }
         } catch (err) {
-            setError('An error occurred while fetching certificates');
+            setError('An error occurred while fetching products');
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchCertificates();
+        fetchProducts();
     }, []);
 
     const handleDelete = async (id) => {
         try {
-            const res = await fetch(`/api/certificates/${id}`, {
+            const res = await fetch(`/api/products/${id}`, {
                 method: 'DELETE',
             });
 
             const data = await res.json();
 
             if (data.success) {
-                setCertificates(certificates.filter((cert) => cert.id !== id));
+                setProducts(products.filter((p) => p.id !== id));
                 setDeleteDialog({ open: false, id: null });
             } else {
-                setError(data.error || 'Failed to delete certificate');
+                setError(data.error || 'Failed to delete product');
             }
         } catch (err) {
-            setError('An error occurred while deleting certificate');
+            setError('An error occurred while deleting product');
         }
     };
-
-    const handleFormSuccess = () => {
-        setShowForm(false);
-        setEditingCertificate(null);
-        fetchCertificates();
-    };
-
-    const handleEdit = (certificate) => {
-        setEditingCertificate(certificate);
-        setShowForm(true);
-    };
-
-    const handleAdd = () => {
-        setEditingCertificate(null);
-        setShowForm(true);
-    };
-
-    if (showForm) {
-        return (
-            <Box sx={{ bgcolor: '#f8f9fa', minHeight: 'calc(100vh - 64px)' }}>
-                <Container maxWidth="lg" sx={{ py: 4 }}>
-                    <CertificateForm
-                        certificate={editingCertificate}
-                        onSuccess={handleFormSuccess}
-                        onCancel={() => {
-                            setShowForm(false);
-                            setEditingCertificate(null);
-                        }}
-                    />
-                </Container>
-            </Box>
-        );
-    }
 
     return (
         <Box sx={{ bgcolor: '#f8f9fa', minHeight: 'calc(100vh - 64px)' }}>
@@ -113,31 +78,31 @@ export default function AdminCertificates() {
                 <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
                     <Box>
                         <Typography variant="h4" sx={{ fontWeight: 700, mb: 0.5 }}>
-                            Certificates Management
+                            Products Management
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Manage your certification documents
+                            Manage your harvest products and variants
                         </Typography>
                     </Box>
                     <Button
                         variant="contained"
                         startIcon={<Icon icon="solar:add-circle-linear" />}
-                        onClick={handleAdd}
+                        onClick={() => router.push('/admin/products/new')}
                         sx={{
-                            background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                             textTransform: 'none',
                             px: 3,
                             py: 1.5,
                             borderRadius: 2,
                             fontWeight: 600,
-                            boxShadow: '0 4px 12px rgba(245, 87, 108, 0.3)',
+                            boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
                             '&:hover': {
-                                background: 'linear-gradient(135deg, #f5576c 0%, #f093fb 100%)',
-                                boxShadow: '0 6px 20px rgba(245, 87, 108, 0.4)',
+                                background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
+                                boxShadow: '0 6px 20px rgba(102, 126, 234, 0.4)',
                             },
                         }}
                     >
-                        Add Certificate
+                        Add Product
                     </Button>
                 </Box>
 
@@ -154,9 +119,9 @@ export default function AdminCertificates() {
 
                 {loading ? (
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', py: 12 }}>
-                        <CircularProgress sx={{ color: '#f5576c' }} />
+                        <CircularProgress sx={{ color: '#667eea' }} />
                     </Box>
-                ) : certificates.length === 0 ? (
+                ) : products.length === 0 ? (
                     <Card elevation={0} sx={{ p: 8, textAlign: 'center', border: '1px solid', borderColor: 'divider', borderRadius: 3 }}>
                         <Box
                             sx={{
@@ -171,20 +136,20 @@ export default function AdminCertificates() {
                                 mb: 3,
                             }}
                         >
-                            <Icon icon="solar:document-medicine-linear" width={40} style={{ color: '#9ca3af' }} />
+                            <Icon icon="solar:box-minimalistic-linear" width={40} style={{ color: '#9ca3af' }} />
                         </Box>
                         <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>
-                            No certificates yet
+                            No products yet
                         </Typography>
                         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                            Get started by adding your first certificate
+                            Get started by adding your first product
                         </Typography>
                         <Button
                             variant="contained"
                             startIcon={<Icon icon="solar:add-circle-linear" />}
-                            onClick={handleAdd}
+                            onClick={() => router.push('/admin/products/new')}
                             sx={{
-                                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                                 textTransform: 'none',
                                 px: 3,
                                 py: 1.25,
@@ -192,7 +157,7 @@ export default function AdminCertificates() {
                                 fontWeight: 600,
                             }}
                         >
-                            Add Your First Certificate
+                            Add Your First Product
                         </Button>
                     </Card>
                 ) : (
@@ -201,42 +166,22 @@ export default function AdminCertificates() {
                             <Table>
                                 <TableHead>
                                     <TableRow sx={{ bgcolor: '#f8f9fa' }}>
-                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Image</TableCell>
-                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Title</TableCell>
-                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Description</TableCell>
+                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Name</TableCell>
+                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Slug</TableCell>
+                                        <TableCell sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Variants</TableCell>
                                         <TableCell align="center" sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Order</TableCell>
                                         <TableCell align="center" sx={{ fontWeight: 600, color: 'text.secondary', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {certificates.map((cert) => (
+                                    {products.map((product) => (
                                         <TableRow 
-                                            key={cert.id} 
+                                            key={product.id} 
                                             sx={{ 
                                                 '&:hover': { bgcolor: '#f8f9fa' },
                                                 '&:last-child td': { borderBottom: 0 },
                                             }}
                                         >
-                                            <TableCell>
-                                                <Box
-                                                    sx={{
-                                                        position: 'relative',
-                                                        width: 64,
-                                                        height: 64,
-                                                        borderRadius: 2,
-                                                        overflow: 'hidden',
-                                                        border: '2px solid',
-                                                        borderColor: 'divider',
-                                                    }}
-                                                >
-                                                    <Image
-                                                        src={cert.image_url}
-                                                        alt={cert.title}
-                                                        fill
-                                                        style={{ objectFit: 'contain', padding: '4px' }}
-                                                    />
-                                                </Box>
-                                            </TableCell>
                                             <TableCell>
                                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                                                     <Box
@@ -247,35 +192,43 @@ export default function AdminCertificates() {
                                                             display: 'flex',
                                                             alignItems: 'center',
                                                             justifyContent: 'center',
-                                                            background: 'linear-gradient(135deg, #f093fb20 0%, #f5576c40 100%)',
+                                                            background: 'linear-gradient(135deg, #667eea20 0%, #764ba240 100%)',
                                                         }}
                                                     >
-                                                        <Icon icon="solar:document-medicine-bold" width={18} style={{ color: '#f5576c' }} />
+                                                        <Icon icon="solar:box-bold" width={18} style={{ color: '#667eea' }} />
                                                     </Box>
                                                     <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                        {cert.title}
+                                                        {product.name}
                                                     </Typography>
                                                 </Box>
                                             </TableCell>
                                             <TableCell>
-                                                <Typography
-                                                    variant="body2"
-                                                    color="text.secondary"
-                                                    sx={{
-                                                        maxWidth: 350,
-                                                        overflow: 'hidden',
-                                                        textOverflow: 'ellipsis',
-                                                        display: '-webkit-box',
-                                                        WebkitLineClamp: 2,
-                                                        WebkitBoxOrient: 'vertical',
+                                                <Chip
+                                                    label={product.slug}
+                                                    size="small"
+                                                    sx={{ 
+                                                        fontFamily: 'monospace', 
+                                                        fontSize: '0.75rem',
+                                                        bgcolor: '#f3f4f6',
+                                                        border: 'none',
                                                     }}
-                                                >
-                                                    {cert.description}
-                                                </Typography>
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Chip
+                                                    label={`${product.variants?.length || 0} variants`}
+                                                    size="small"
+                                                    sx={{ 
+                                                        bgcolor: '#667eea15',
+                                                        color: '#667eea',
+                                                        fontWeight: 600,
+                                                        border: 'none',
+                                                    }}
+                                                />
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Chip
-                                                    label={cert.display_order}
+                                                    label={product.display_order}
                                                     size="small"
                                                     sx={{ 
                                                         minWidth: 32,
@@ -289,12 +242,12 @@ export default function AdminCertificates() {
                                                 <Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'center' }}>
                                                     <IconButton
                                                         size="small"
-                                                        onClick={() => handleEdit(cert)}
+                                                        onClick={() => router.push(`/admin/products/${product.id}`)}
                                                         sx={{
-                                                            bgcolor: '#f093fb15',
-                                                            color: '#f5576c',
+                                                            bgcolor: '#667eea15',
+                                                            color: '#667eea',
                                                             '&:hover': { 
-                                                                bgcolor: '#f093fb25',
+                                                                bgcolor: '#667eea25',
                                                             },
                                                         }}
                                                     >
@@ -302,7 +255,7 @@ export default function AdminCertificates() {
                                                     </IconButton>
                                                     <IconButton
                                                         size="small"
-                                                        onClick={() => setDeleteDialog({ open: true, id: cert.id })}
+                                                        onClick={() => setDeleteDialog({ open: true, id: product.id })}
                                                         sx={{
                                                             bgcolor: '#fee2e2',
                                                             color: '#ef4444',
@@ -333,11 +286,11 @@ export default function AdminCertificates() {
                 >
                     <DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 1.5, pb: 2 }}>
                         <Icon icon="solar:trash-bin-trash-bold" width={24} style={{ color: '#ef4444' }} />
-                        <span>Delete Certificate?</span>
+                        <span>Delete Product?</span>
                     </DialogTitle>
                     <DialogContent>
                         <Typography>
-                            Are you sure you want to delete this certificate? This action cannot be undone.
+                            Are you sure you want to delete this product? All its variants and images will be deleted. This action cannot be undone.
                         </Typography>
                     </DialogContent>
                     <DialogActions sx={{ px: 3, pb: 2 }}>
@@ -359,7 +312,7 @@ export default function AdminCertificates() {
                                 },
                             }}
                         >
-                            Delete Certificate
+                            Delete Product
                         </Button>
                     </DialogActions>
                 </Dialog>
