@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import { Icon } from '@iconify/react';
+import { useRouter } from 'next/navigation';
 
 export default function HarvestHero() {
     const [products, setProducts] = useState([]);
@@ -16,6 +17,7 @@ export default function HarvestHero() {
     const [activeProduct, setActiveProduct] = useState(null);
     const [activeVariant, setActiveVariant] = useState(null);
     const [direction, setDirection] = useState(0); // 1 for next, -1 for prev, 0 for variant change
+    const router = useRouter();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -444,6 +446,7 @@ export default function HarvestHero() {
                         {/* Request a Quote Button */}
                         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
                             <Button
+                                onClick={() => router.push("/quote")} 
                                 variant="contained"
                                 size="large"
                                 sx={{
@@ -560,6 +563,7 @@ export default function HarvestHero() {
                 <Container sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', mb: 6, position: 'relative' }}>
                         <Button
+                            onClick={() => router.push("/quote")}
                             variant="contained"
                             size="large"
                             sx={{
