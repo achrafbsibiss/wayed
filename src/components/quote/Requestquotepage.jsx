@@ -1,7 +1,8 @@
 'use client';
 
-import { Box, Container, Typography, TextField, Button, Grid, Card } from '@mui/material';
+import { Box, Container, Typography, TextField, Button, Card } from '@mui/material';
 import { Icon } from '@iconify/react';
+import { Grid } from '@mui/material';
 import { useState } from 'react';
 
 export default function RequestQuotePage() {
@@ -177,7 +178,7 @@ export default function RequestQuotePage() {
                     >
                         {/* Name Fields */}
                         <Grid container spacing={3} sx={{ mb: 3 }}>
-                            <Grid item xs={12} md={6}>
+                            <Grid size={{ xs: 12, md: 6 }}>
                                 <Typography
                                     variant="body2"
                                     sx={{
@@ -201,18 +202,8 @@ export default function RequestQuotePage() {
                                         },
                                     }}
                                 />
-                                <Typography
-                                    variant="caption"
-                                    sx={{
-                                        color: 'text.secondary',
-                                        mt: 0.5,
-                                        display: 'block',
-                                    }}
-                                >
-                                    First
-                                </Typography>
                             </Grid>
-                            <Grid item xs={12} md={6}>
+                            <Grid size={{ xs: 12, md: 6 }}>
                                 <Typography
                                     variant="body2"
                                     sx={{
@@ -237,16 +228,6 @@ export default function RequestQuotePage() {
                                         },
                                     }}
                                 />
-                                <Typography
-                                    variant="caption"
-                                    sx={{
-                                        color: 'text.secondary',
-                                        mt: 0.5,
-                                        display: 'block',
-                                    }}
-                                >
-                                    Last
-                                </Typography>
                             </Grid>
                         </Grid>
 
