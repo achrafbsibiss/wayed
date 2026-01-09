@@ -1,6 +1,7 @@
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import ThemeRegistry from '@/components/ThemeRegistry';
+import { TranslationProvider } from '@/contexts/TranslationProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -37,9 +38,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={roboto.variable} suppressHydrationWarning>
       <body className={roboto.className} suppressHydrationWarning>
         <ThemeRegistry>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <TranslationProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </TranslationProvider>
         </ThemeRegistry>
       </body>
     </html>

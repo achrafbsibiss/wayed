@@ -4,47 +4,52 @@ import { Box, Container, Typography, IconButton } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-const SHOWCASE_ITEMS = [
-  {
-    id: 1,
-    title: 'Quality Greenhouse',
-    image: '/images/products/image 14.webp',
-  },
-  {
-    id: 2,
-    title: 'Fresh Delivery',
-    image: '/images/products/image 16.webp',
-  },
-  {
-    id: 3,
-    title: 'Premium Harvest',
-    image: '/images/products/image 12.webp',
-  },
-  {
-    id: 4,
-    title: 'Careful Growth',
-    image: '/images/products/image 15.webp',
-  },
-];
+import { useRouter } from 'next/navigation';
 
 export default function ProductShowcase() {
+  const { t } = useTranslations();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+  const router = useRouter();
+
+  const SHOWCASE_ITEMS = [
+    {
+      id: 1,
+      name: 'qualityGreenhouse',
+      image: '/images/products/image 14.webp',
+    },
+    {
+      id: 2,
+      name: 'freshDelivery',
+      image: '/images/products/image 16.webp',
+    },
+    {
+      id: 3,
+      name: 'premiumHarvest',
+      image: '/images/products/image 12.webp',
+    },
+    {
+      id: 4,
+      name: 'carefulGrowth',
+      image: '/images/products/image 15.webp',
+    },
+  ];
 
   return (
     <Box sx={{ py: { xs: 3, md: 4 }, overflow: 'hidden' }}>
       <Container maxWidth="lg" sx={{ overflow: 'hidden' }}>
         {/* Header with Navigation Button */}
-        <Box 
-          sx={{ 
-            display: 'flex', 
+        <Box
+          sx={{
+            display: 'flex',
             alignItems: 'center',
             gap: 3,
             mb: 6,
@@ -58,9 +63,9 @@ export default function ProductShowcase() {
               fontSize: { xs: '2rem', md: '2.5rem' },
             }}
           >
-            Request a Quote
+            {t('nav.requestQuote')}
           </Typography>
-          
+
           {/* Right Arrow Button */}
           <IconButton
             sx={{
@@ -72,6 +77,7 @@ export default function ProductShowcase() {
                 bgcolor: '#1a1a1a',
               },
             }}
+            onClick={() => router.push('/quote')}
           >
             <Icon icon="solar:arrow-right-outline" width="35" height="35" />
           </IconButton>
@@ -87,9 +93,17 @@ export default function ProductShowcase() {
               prevEl: prevRef.current,
               nextEl: nextRef.current,
             }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
+            onSwiper={(swiper) => {
+              setSwiperInstance(swiper);
+              // Delay navigation initialization to ensure refs are attached
+              setTimeout(() => {
+                if (prevRef.current && nextRef.current) {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }
+              }, 0);
             }}
             autoplay={{
               delay: 3500,
@@ -136,7 +150,7 @@ export default function ProductShowcase() {
                     <Box
                       component="img"
                       src={item.image}
-                      alt={item.title}
+                      alt={t(`showcase.${item.name}.title`)}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -144,7 +158,7 @@ export default function ProductShowcase() {
                       }}
                     />
                   </Box>
-                  
+
                   {/* Title Below Image - Bottom Right */}
                   <Box
                     sx={{
@@ -160,7 +174,7 @@ export default function ProductShowcase() {
                         fontFamily: 'Roboto',
                       }}
                     >
-                      {item.title}
+                      {t(`showcase.${item.name}.title`)}
                     </Typography>
                   </Box>
                 </Box>

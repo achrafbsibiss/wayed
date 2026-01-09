@@ -4,9 +4,11 @@ import { Box, Container, Typography, Grid } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { STATS } from '@/lib/constants';
 import { useEffect, useState, useRef } from 'react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 function AnimatedNumber({ value, inView }) {
     const [count, setCount] = useState(0);
+    // Extract number from string (e.g., "50+" -> 50)
     const numericValue = parseInt(value);
 
     useEffect(() => {
@@ -29,10 +31,13 @@ function AnimatedNumber({ value, inView }) {
         }
     }, [inView, numericValue]);
 
-    return <>{inView ? `${count}+` : value}</>;
+    // Preserve the suffix (e.g., "+") if present in the original value
+    const suffix = value.toString().replace(/[0-9]/g, '');
+    return <>{inView ? `${count}${suffix}` : value}</>;
 }
 
 export default function StatsSection() {
+    const { t } = useTranslations();
     const [inView, setInView] = useState(false);
     const ref = useRef(null);
 
@@ -93,7 +98,7 @@ export default function StatsSection() {
                                             wordWrap: 'break-word',
                                         }}
                                     >
-                                        <AnimatedNumber value={stat.value} inView={inView} />
+                                        <AnimatedNumber value={t(`stats.${stat.id}.value`)} inView={inView} />
                                     </Typography>
                                     <Typography
                                         variant="h6"
@@ -106,15 +111,15 @@ export default function StatsSection() {
                                             wordWrap: 'break-word',
                                         }}
                                     >
-                                        {stat.label}
+                                        {t(`stats.${stat.id}.label`)}
                                     </Typography>
 
                                     {/* Description with leaf icon */}
                                     <Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
                                         <Box
                                             component="img"
-                                            src={stat.image || "/images/hero/decorative-leaf.png"}
-                                            alt={stat.label}
+                                            src={stat.image}
+                                            alt={t(`stats.${stat.id}.label`)}
                                             sx={{
                                                 width: { xs: 40, md: 43 },
                                                 height: { xs: 40, md: 19 },
@@ -132,7 +137,7 @@ export default function StatsSection() {
                                                 fontWeight: 400,
                                             }}
                                         >
-                                            {stat.description}
+                                            {t(`stats.${stat.id}.description`)}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -179,7 +184,18 @@ export default function StatsSection() {
                                         fontFamily: 'Roboto',
                                     }}
                                 >
-                                    <span style={{ fontWeight: 700 }}>Certified</span> Moroccan<br />Quality Standards
+                                    <span style={{ fontWeight: 700 }}>{t('stats.certifiedQuality.value')}</span> {t('stats.certifiedQuality.label').replace('Moroccan Quality Standards', `\nMoroccan Quality Standards`).split('\n').map((line, i) => i === 0 ? <>{line}<br /></> : line)}
+                                    {/* Simplification: Just allow HTML or split manually. The design had a break. 
+                                        Original: Certified <br/> Moroccan Quality Standards.
+                                        New: t('stats.certifiedQuality.value') + t('stats.certifiedQuality.label')
+                                        Let's assume the label translations might need structure or just render straightforwardly.
+                                        The original code had: <span style={{ fontWeight: 700 }}>Certified</span> Moroccan<br />Quality Standards
+                                        I can put "Moroccan\nQuality Standards" in the translation label or handle it here.
+                                        I'll stick to a simpler rendering for now or use the translated string directly.
+                                     */}
+                                    <span style={{ fontWeight: 700 }}>{t('stats.certifiedQuality.value')}</span>
+                                    <br />
+                                    {t('stats.certifiedQuality.label')}
                                 </Typography>
 
                                 {/* Stats display in mobile view */}
@@ -204,7 +220,7 @@ export default function StatsSection() {
                                                     fontFamily: 'Roboto',
                                                 }}
                                             >
-                                                <AnimatedNumber value={stat.value} inView={inView} />
+                                                <AnimatedNumber value={t(`stats.${stat.id}.value`)} inView={inView} />
                                             </Typography>
                                             <Typography
                                                 variant="body1"
@@ -215,7 +231,7 @@ export default function StatsSection() {
                                                     fontFamily: 'Roboto',
                                                 }}
                                             >
-                                                {stat.label}
+                                                {t(`stats.${stat.id}.label`)}
                                             </Typography>
                                             {index < STATS.length - 1 && (
                                                 <Box
@@ -252,8 +268,8 @@ export default function StatsSection() {
                             {/* Background Image */}
                             <Box
                                 component="img"
-                                src="/images/hero/quality-badge.webp"
-                                alt="Certified Moroccan Quality"
+                                src="/images/hero/Mask group.png"
+                                alt={t('stats.certifiedQuality.label')}
                                 sx={{
                                     position: 'absolute',
                                     top: 0,
@@ -262,7 +278,6 @@ export default function StatsSection() {
                                     bottom: 0,
                                     width: '100%',
                                     height: '100%',
-                                    objectFit: 'cover',
                                 }}
                             />
 
@@ -274,7 +289,6 @@ export default function StatsSection() {
                                     left: 0,
                                     right: 0,
                                     bottom: 0,
-                                    background: 'linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)',
                                 }}
                             />
 
@@ -288,8 +302,9 @@ export default function StatsSection() {
                                     flexDirection: 'column',
                                     justifyContent: 'center',
                                     alignItems: 'flex-start',
-                                    p: { xs: 4, md: 5 },
-                                    pl: { xs: 4, md: 6 },
+                                    p: { xs: 4, md: 1 },
+                                    pl: { xs: 4, md: 2 },
+                                    pb: { xs: 4, md: 30 }
                                 }}
                             >
                                 <Typography
@@ -301,12 +316,12 @@ export default function StatsSection() {
                                         mb: 0,
                                         fontSize: { xs: '2rem', md: '55px' },
                                         lineHeight: 1.2,
-                                        textShadow: '2px 2px 8px rgba(0,0,0,0.5)',
+                                        color: '#2A2A2A',
                                         maxWidth: '350px',
                                         fontFamily: 'Roboto',
                                     }}
                                 >
-                                    Certified <span style={{ fontWeight: 300 }}>Moroccan Quality Standards</span>
+                                    {t('stats.certifiedQuality.value')} <span style={{ fontWeight: 300 }}>{t('stats.certifiedQuality.label')}</span>
                                 </Typography>
                             </Box>
                         </Box>

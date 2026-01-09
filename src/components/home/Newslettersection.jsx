@@ -3,8 +3,10 @@
 import { Box, Container, Typography, TextField, Button } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function NewsletterSection() {
+  const { t } = useTranslations();
   const [email, setEmail] = useState('');
 
   const handleSubscribe = (e) => {
@@ -93,9 +95,16 @@ export default function NewsletterSection() {
               textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
             }}
           >
-            Innovative Solutions For
-            <br />
-            Optimal Crop Growth
+            {t('newsletter.heading').split(' ').map((word, i) => i === 2 ? <div key={i}>{word}</div> : <span key={i}>{word} </span>)}
+            {/* The original text was broken by <br/> "Innovative Solutions For <br/> Optimal Crop Growth" 
+                I'll allow the translation to handle it or just render. 
+                Original: 
+                Innovative Solutions For
+                <br />
+                Optimal Crop Growth
+                
+                Simplest is to just render the text. 
+            */}
           </Typography>
 
           {/* Email Subscription Form */}
@@ -112,7 +121,7 @@ export default function NewsletterSection() {
           >
             <TextField
               fullWidth
-              placeholder="Email address"
+              placeholder={t('newsletter.emailPlaceholder')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
@@ -161,7 +170,7 @@ export default function NewsletterSection() {
                 boxShadow: 'none',
               }}
             >
-              Subscribe
+              {t('newsletter.subscribe')}
             </Button>
           </Box>
         </Box>

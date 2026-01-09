@@ -4,8 +4,10 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function HeroSection() {
+    const { t } = useTranslations();
     return (
         <Box
             sx={{
@@ -92,9 +94,9 @@ export default function HeroSection() {
                             px: 2,
                         }}
                     >
-                        Bringing Moroccan
+                        {t('hero.title')}
                         <br />
-                        Harvests To The World
+                        {t('hero.titleLine2')}
                     </Typography>
 
                     <Typography
@@ -109,8 +111,7 @@ export default function HeroSection() {
                             px: 1,
                         }}
                     >
-                        We bring Moroccan farmers to the world stage by exporting
-                        fresh, high-quality crops.
+                        {t('hero.description')}
                     </Typography>
 
                     <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', px: 2 }}>
@@ -118,9 +119,9 @@ export default function HeroSection() {
                             variant="contained"
                             component={Link}
                             href="/harvest"
-                            endIcon={<Icon icon="solar:arrow-right-outline" width="25.612" height="25.612" />}
+                            endIcon={<Icon icon="solar:arrow-right-outline" width="25" height="25" />}
                             sx={{
-                                width: { xs: '100%', sm: '164px' },
+                                width: { xs: '100%', sm: '190px', md: '210px' },
                                 maxWidth: '300px',
                                 height: { xs: '50px', sm: '45px' },
                                 flexShrink: 0,
@@ -151,7 +152,7 @@ export default function HeroSection() {
                                 },
                             }}
                         >
-                            Learn Services
+                            {t('hero.ctaPrimary')}
                         </Button>
                     </Box>
                 </Box>

@@ -3,11 +3,11 @@ import { Box, Button, Divider, Grid, Typography } from "@mui/material";
 export default function HarvestSeason() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, py: { xs: 6, md: 4 }, pt: { xs: 70 } }}>
-            <Typography 
-                variant="h2" 
-                sx={{ 
-                    textAlign: 'center', 
-                    mb: 2, 
+            <Typography
+                variant="h2"
+                sx={{
+                    textAlign: 'center',
+                    mb: 2,
                     fontSize: { xs: '2rem', md: '64px' },
                     display: { xs: 'none', md: 'block' }
                 }}
@@ -24,11 +24,11 @@ export default function HarvestSeason() {
                     maxWidth: '100%',
                 }}
             />
-            <Typography 
-                variant="h2" 
-                sx={{ 
-                    textAlign: 'center', 
-                    mb: { xs: 3, md: 2 }, 
+            <Typography
+                variant="h2"
+                sx={{
+                    textAlign: 'center',
+                    mb: { xs: 3, md: 2 },
                     fontSize: { xs: '1.75rem', md: '48px' },
                     fontWeight: 700,
                     color: '#1a1a1a',
@@ -193,23 +193,23 @@ export default function HarvestSeason() {
                 </Typography>
 
                 {/* Download Button */}
-                <Button 
-                    variant="contained" 
-                    sx={{ 
+                <Button
+                    variant="contained"
+                    sx={{
                         width: '100%',
                         maxWidth: '300px',
                         py: 1.5,
-                        background: '#67BE4E', 
-                        borderRadius: '68px', 
+                        background: '#FA4309',
+                        borderRadius: '68px',
                         border: '2px solid transparent',
                         color: '#fff',
                         textTransform: 'none',
                         fontSize: '1rem',
                         fontWeight: 500,
-                        '&:hover': { 
-                            background: '#5aaa44',
+                        '&:hover': {
+                            background: '#bb2f04ff',
                             border: '2px solid transparent'
-                        } 
+                        }
                     }}
                 >
                     DOWNLOAD CATALOG
@@ -392,15 +392,15 @@ export default function HarvestSeason() {
             </Grid>
 
             {/* Desktop Download Button */}
-            <Button 
-                variant="contained" 
-                sx={{ 
+            <Button
+                variant="contained"
+                sx={{
                     display: { xs: 'none', md: 'block' },
-                    margin: '0 auto', 
+                    margin: '0 auto',
                     marginBottom: '70px',
                     marginTop: '40px',
-                    background: '#67BE4E', 
-                    borderRadius: '68px', 
+                    background: '#FA4309',
+                    borderRadius: '68px',
                     border: '2px solid transparent',
                     color: '#fff',
                     textTransform: 'none',
@@ -408,10 +408,10 @@ export default function HarvestSeason() {
                     py: 1.5,
                     fontSize: '1rem',
                     fontWeight: 500,
-                    '&:hover': { 
-                        background: '#5aaa44',
+                    '&:hover': {
+                        background: '#bb2f04ff',
                         border: '2px solid transparent'
-                    } 
+                    }
                 }}
             >
                 Download Catalog
