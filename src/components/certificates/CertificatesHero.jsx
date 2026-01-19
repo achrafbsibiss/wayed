@@ -97,51 +97,67 @@ export default function CertificatesHero() {
         fetchCertificates();
     }, []);
 
-    const downloadCertificate = async (imageSrc, certificateName) => {
+    const downloadCertificate = async (certificate) => {
         try {
-            // Create a temporary container for the certificate
-            const tempContainer = document.createElement('div');
-            tempContainer.style.position = 'absolute';
-            tempContainer.style.left = '-9999px';
-            tempContainer.style.width = '800px';
-            tempContainer.style.padding = '40px';
-            tempContainer.style.backgroundColor = 'white';
-            document.body.appendChild(tempContainer);
+            // If a PDF file is available, download it directly
+            if (certificate.pdf_file) {
+                // Create a temporary link to trigger download
+                const link = document.createElement('a');
+                link.href = certificate.pdf_file;
+                link.download = `${certificate.title}.pdf`;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                // Fallback: Convert image to PDF if no PDF file is uploaded
+                const imageSrc = certificate.image_url;
+                const certificateName = certificate.title;
 
-            // Create image element
-            const img = document.createElement('img');
-            img.src = imageSrc;
-            img.style.width = '100%';
-            img.style.height = 'auto';
-            tempContainer.appendChild(img);
+                // Create a temporary container for the certificate
+                const tempContainer = document.createElement('div');
+                tempContainer.style.position = 'absolute';
+                tempContainer.style.left = '-9999px';
+                tempContainer.style.width = '800px';
+                tempContainer.style.padding = '40px';
+                tempContainer.style.backgroundColor = 'white';
+                document.body.appendChild(tempContainer);
 
-            // Wait for image to load
-            await new Promise((resolve) => {
-                img.onload = resolve;
-            });
+                // Create image element
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                tempContainer.appendChild(img);
 
-            // Convert to canvas
-            const canvas = await html2canvas(tempContainer, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-            });
+                // Wait for image to load
+                await new Promise((resolve) => {
+                    img.onload = resolve;
+                });
 
-            // Create PDF
-            const imgWidth = 210; // A4 width in mm
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-            const pdf = new jsPDF('p', 'mm', 'a4');
+                // Convert to canvas
+                const canvas = await html2canvas(tempContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                });
 
-            const imgData = canvas.toDataURL('image/png');
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                // Create PDF
+                const imgWidth = 210; // A4 width in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                const pdf = new jsPDF('p', 'mm', 'a4');
 
-            // Download PDF
-            pdf.save(`${certificateName}.pdf`);
+                const imgData = canvas.toDataURL('image/png');
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
 
-            // Clean up
-            document.body.removeChild(tempContainer);
+                // Download PDF
+                pdf.save(`${certificateName}.pdf`);
+
+                // Clean up
+                document.body.removeChild(tempContainer);
+            }
         } catch (error) {
-            console.error('Error generating PDF:', error);
+            console.error('Error downloading certificate:', error);
         }
     };
 
@@ -293,7 +309,7 @@ export default function CertificatesHero() {
                                                         }}
                                                     />
                                                     <IconButton
-                                                        onClick={() => downloadCertificate(certificate.image_url, certificate.title)}
+                                                        onClick={() => downloadCertificate(certificate)}
                                                         sx={{
                                                             position: 'absolute',
                                                             top: 16,

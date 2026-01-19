@@ -17,13 +17,14 @@ export async function PUT(request, { params }) {
 
         const { id } = await params;
         const body = await request.json();
-        const { title, description, image_url, display_order } = body;
+        const { title, description, image_url, display_order, pdf_file } = body;
 
         const updateData = {};
         if (title !== undefined) updateData.title = title;
         if (description !== undefined) updateData.description = description;
         if (image_url !== undefined) updateData.image_url = image_url;
         if (display_order !== undefined) updateData.display_order = display_order;
+        if (pdf_file !== undefined) updateData.pdf_file = pdf_file;
 
         const { data, error } = await supabaseAdmin
             .from('certificates')
@@ -58,10 +59,10 @@ export async function DELETE(request, { params }) {
 
         const { id } = await params;
 
-        // First, get the certificate to find the image URL
+        // First, get the certificate to find the image URL and PDF URL
         const { data: certificate, error: fetchError } = await supabaseAdmin
             .from('certificates')
-            .select('image_url')
+            .select('image_url, pdf_file')
             .eq('id', id)
             .single();
 
@@ -76,6 +77,18 @@ export async function DELETE(request, { params }) {
 
             if (storageError) {
                 console.error('Error deleting image from storage:', storageError);
+            }
+        }
+
+        // Delete the PDF from storage if it exists
+        if (certificate?.pdf_file) {
+            const pdfPath = certificate.pdf_file.split('/').pop();
+            const { error: storageError } = await supabaseAdmin.storage
+                .from('certificates')
+                .remove([pdfPath]);
+
+            if (storageError) {
+                console.error('Error deleting PDF from storage:', storageError);
             }
         }
 

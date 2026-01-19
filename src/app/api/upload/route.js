@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth/auth-options';
 import { supabaseAdmin } from '@/lib/supabase/server';
 
-// POST /api/upload - Upload image to Supabase storage (admin only)
+// POST /api/upload - Upload image or PDF to Supabase storage (admin only)
 export async function POST(request) {
     try {
         const session = await getServerSession(authOptions);
@@ -25,19 +25,24 @@ export async function POST(request) {
             );
         }
 
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
+        // Validate file type - accept images and PDFs
+        const isImage = file.type.startsWith('image/');
+        const isPdf = file.type === 'application/pdf';
+
+        if (!isImage && !isPdf) {
             return NextResponse.json(
-                { success: false, error: 'File must be an image' },
+                { success: false, error: 'File must be an image or PDF' },
                 { status: 400 }
             );
         }
 
-        // Validate file size (5MB max)
-        const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+        // Validate file size - 5MB for images, 10MB for PDFs
+        const maxSize = isPdf ? 10 * 1024 * 1024 : 5 * 1024 * 1024;
+        const sizeLimit = isPdf ? '10MB' : '5MB';
+
         if (file.size > maxSize) {
             return NextResponse.json(
-                { success: false, error: 'File size must be less than 5MB' },
+                { success: false, error: `File size must be less than ${sizeLimit}` },
                 { status: 400 }
             );
         }

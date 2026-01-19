@@ -36,7 +36,7 @@ export async function POST(request) {
         }
 
         const body = await request.json();
-        const { title, description, image_url, display_order } = body;
+        const { title, description, image_url, display_order, pdf_file } = body;
 
         if (!title || !description || !image_url) {
             return NextResponse.json(
@@ -45,16 +45,21 @@ export async function POST(request) {
             );
         }
 
+        const insertData = {
+            title,
+            description,
+            image_url,
+            display_order: display_order || 1,
+        };
+
+        // Add pdf_file if provided
+        if (pdf_file) {
+            insertData.pdf_file = pdf_file;
+        }
+
         const { data, error } = await supabaseAdmin
             .from('certificates')
-            .insert([
-                {
-                    title,
-                    description,
-                    image_url,
-                    display_order: display_order || 1,
-                },
-            ])
+            .insert([insertData])
             .select()
             .single();
 

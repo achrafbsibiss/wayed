@@ -21,9 +21,12 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
     });
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(certificate?.image_url || null);
+    const [pdfFile, setPdfFile] = useState(null);
+    const [pdfFileName, setPdfFileName] = useState(certificate?.pdf_file ? certificate.pdf_file.split('/').pop() : null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const fileInputRef = useRef(null);
+    const pdfInputRef = useRef(null);
 
     const handleChange = (e) => {
         setFormData({
@@ -53,6 +56,27 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
         }
     };
 
+    const handlePdfChange = (e) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            // Validate file type
+            if (file.type !== 'application/pdf') {
+                setError('Please select a PDF file');
+                return;
+            }
+
+            // Validate file size (10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                setError('PDF size must be less than 10MB');
+                return;
+            }
+
+            setPdfFile(file);
+            setPdfFileName(file.name);
+            setError('');
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -60,6 +84,7 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
 
         try {
             let imageUrl = certificate?.image_url || '';
+            let pdfUrl = certificate?.pdf_file || '';
 
             // Upload new image if selected
             if (imageFile) {
@@ -80,6 +105,25 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
                 imageUrl = uploadData.data.publicUrl;
             }
 
+            // Upload new PDF if selected
+            if (pdfFile) {
+                const uploadFormData = new FormData();
+                uploadFormData.append('file', pdfFile);
+
+                const uploadRes = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: uploadFormData,
+                });
+
+                const uploadData = await uploadRes.json();
+
+                if (!uploadData.success) {
+                    throw new Error(uploadData.error || 'Failed to upload PDF');
+                }
+
+                pdfUrl = uploadData.data.publicUrl;
+            }
+
             // Validate required fields
             if (!formData.title || !formData.description || !imageUrl) {
                 throw new Error('Please fill in all fields and upload an image');
@@ -92,15 +136,22 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
 
             const method = certificate ? 'PUT' : 'POST';
 
+            const requestBody = {
+                ...formData,
+                image_url: imageUrl,
+            };
+
+            // Only include pdf_file if it exists
+            if (pdfUrl) {
+                requestBody.pdf_file = pdfUrl;
+            }
+
             const res = await fetch(url, {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    ...formData,
-                    image_url: imageUrl,
-                }),
+                body: JSON.stringify(requestBody),
             });
 
             const data = await res.json();
@@ -212,6 +263,53 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
                     </Button>
                     <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
                         Maximum file size: 5MB. Supported formats: JPG, PNG, WebP
+                    </Typography>
+                </Box>
+
+                {/* PDF Upload */}
+                <Box sx={{ mb: 3 }}>
+                    <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
+                        Certificate PDF (Optional)
+                    </Typography>
+
+                    {pdfFileName && (
+                        <Box
+                            sx={{
+                                p: 2,
+                                mb: 2,
+                                borderRadius: 2,
+                                border: '2px solid',
+                                borderColor: 'divider',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 1,
+                            }}
+                        >
+                            <Icon icon="mdi:file-pdf-box" width={24} height={24} color="#f44336" />
+                            <Typography variant="body2" sx={{ flex: 1 }}>
+                                {pdfFileName}
+                            </Typography>
+                        </Box>
+                    )}
+
+                    <input
+                        ref={pdfInputRef}
+                        type="file"
+                        accept="application/pdf"
+                        onChange={handlePdfChange}
+                        style={{ display: 'none' }}
+                    />
+
+                    <Button
+                        variant="outlined"
+                        startIcon={<Icon icon="mdi:file-pdf-box" />}
+                        onClick={() => pdfInputRef.current?.click()}
+                        fullWidth
+                    >
+                        {pdfFileName ? 'Change PDF' : 'Upload PDF'}
+                    </Button>
+                    <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+                        Maximum file size: 10MB. This PDF will be downloaded when users click the download button.
                     </Typography>
                 </Box>
 
