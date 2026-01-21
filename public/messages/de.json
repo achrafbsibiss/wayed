@@ -1,0 +1,38 @@
+{
+    "site": {
+        "name": "WAYD Groupe",
+        "tagline": "Bringen Sie marokkanische Ernten in die Welt",
+        "description": "Wir bringen marokkanische Tomaten in die Welt. Hohe Qualität, frisch und mit Sorgfalt für Land und Bauern angebaut.",
+        "email": "contact@waydgroupe.com",
+        "phone": "+212 XXX XXX XXX",
+        "address": "Marokko"
+    },
+    "nav": {
+        "products": "Produkte",
+        "about": "Über uns",
+        "sustainability": "Nachhaltigkeit",
+        "certificates": "Zertifikate",
+        "contact": "Kontakt",
+        "requestQuote": "Angebot anfordern",
+        "language": "Deutsch"
+    },
+    "hero": {
+        "title": "Bringen Sie marokkanische",
+        "titleLine2": "Ernten in die Welt",
+        "description": "Wir bringen marokkanische Tomaten in die Welt. Hohe Qualität, frisch und mit Sorgfalt für Land und Bauern angebaut.",
+        "ctaPrimary": "Entdecken Sie unsere Produkte",
+        "ctaSecondary": "Angebot anfordern"
+    },
+    "common": {
+        "learnMore": "Mehr erfahren",
+        "readMore": "Weiterlesen",
+        "viewDetails": "Details anzeigen",
+        "close": "Schließen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Vorherige",
+        "loading": "Wird geladen...",
+        "error": "Ein Fehler ist aufgetreten",
+        "success": "Erfolg!"
+    }
+}

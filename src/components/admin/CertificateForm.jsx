@@ -9,14 +9,17 @@ import {
     Paper,
     Alert,
     CircularProgress,
+    Tabs,
+    Tab,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
 
 export default function CertificateForm({ certificate, onSuccess, onCancel }) {
+    const [currentLang, setCurrentLang] = useState('en');
     const [formData, setFormData] = useState({
-        title: certificate?.title || '',
-        description: certificate?.description || '',
+        title: certificate?.title || { en: '', fr: '', ar: '', de: '' },
+        description: certificate?.description || { en: '', fr: '', ar: '', de: '' },
         display_order: certificate?.display_order || 1,
     });
     const [imageFile, setImageFile] = useState(null);
@@ -28,11 +31,25 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
     const fileInputRef = useRef(null);
     const pdfInputRef = useRef(null);
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+    const handleChange = (e, lang = null) => {
+        const { name, value } = e.target;
+
+        // If lang is provided, we're updating a translation field
+        if (lang) {
+            setFormData({
+                ...formData,
+                [name]: {
+                    ...formData[name],
+                    [lang]: value,
+                },
+            });
+        } else {
+            // For non-translation fields like display_order
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
     };
 
     const handleImageChange = (e) => {
@@ -124,9 +141,9 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
                 pdfUrl = uploadData.data.publicUrl;
             }
 
-            // Validate required fields
-            if (!formData.title || !formData.description || !imageUrl) {
-                throw new Error('Please fill in all fields and upload an image');
+            // Validate required fields (English is required as fallback)
+            if (!formData.title?.en || !formData.description?.en || !imageUrl) {
+                throw new Error('Please fill in English title, description and upload an image');
             }
 
             // Create or update certificate
@@ -181,28 +198,46 @@ export default function CertificateForm({ certificate, onSuccess, onCancel }) {
             )}
 
             <form onSubmit={handleSubmit}>
+                {/* Language Tabs */}
+                <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
+                    <Tabs
+                        value={currentLang}
+                        onChange={(e, newLang) => setCurrentLang(newLang)}
+                        aria-label="language tabs"
+                    >
+                        <Tab label="English" value="en" />
+                        <Tab label="Français" value="fr" />
+                        <Tab label="العربية" value="ar" />
+                        <Tab label="Deutsch" value="de" />
+                    </Tabs>
+                </Box>
+
+                {/* Title Input for Current Language */}
                 <TextField
                     fullWidth
-                    label="Title"
+                    label={`Title (${currentLang.toUpperCase()})${currentLang === 'en' ? ' *' : ''}`}
                     name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
+                    value={formData.title[currentLang] || ''}
+                    onChange={(e) => handleChange(e, currentLang)}
+                    required={currentLang === 'en'}
                     sx={{ mb: 3 }}
-                    placeholder="e.g., Global G.A.P"
+                    placeholder={`Certificate title in ${currentLang.toUpperCase()}`}
+                    inputProps={{ dir: currentLang === 'ar' ? 'rtl' : 'ltr' }}
                 />
 
+                {/* Description Input for Current Language */}
                 <TextField
                     fullWidth
-                    label="Description"
+                    label={`Description (${currentLang.toUpperCase()})${currentLang === 'en' ? ' *' : ''}`}
                     name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    required
+                    value={formData.description[currentLang] || ''}
+                    onChange={(e) => handleChange(e, currentLang)}
+                    required={currentLang === 'en'}
                     multiline
                     rows={4}
                     sx={{ mb: 3 }}
-                    placeholder="Certificate description..."
+                    placeholder={`Certificate description in ${currentLang.toUpperCase()}`}
+                    inputProps={{ dir: currentLang === 'ar' ? 'rtl' : 'ltr' }}
                 />
 
                 <TextField

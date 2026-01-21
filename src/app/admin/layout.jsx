@@ -94,7 +94,7 @@ function AdminNavBar() {
                         </Box>
                         <Box>
                             <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1.2 }}>
-                                Wayed Groupe
+                                Wayd Groupe
                             </Typography>
                             <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                                 Admin Panel

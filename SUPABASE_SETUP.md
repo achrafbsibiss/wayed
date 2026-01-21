@@ -1,4 +1,4 @@
-# Supabase Setup Guide - Wayed Groupe Certificate Management
+# Supabase Setup Guide - Wayd Groupe Certificate Management
 
 ## ✅ Step 1: Supabase Project (COMPLETED)
 

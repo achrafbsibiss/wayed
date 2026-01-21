@@ -1,0 +1,39 @@
+{
+    "site": {
+        "name": "WAYD Groupe",
+        "tagline": "جلب المحاصيل المغربية إلى العالم",
+        "description": "نحن نجلب الطماطم المغربية إلى العالم. جودة عالية، طازجة ومزروعة بعناية من أجل الأرض والمزارعين.",
+        "email": "contact@waydgroupe.com",
+        "phone": "+212 XXX XXX XXX",
+        "address": "المغرب"
+    },
+    "nav": {
+        "home": "الرئيسية",
+        "products": "المنتجات",
+        "about": "معلومات عنا",
+        "sustainability": "الاستدامة",
+        "certificates": "الشهادات",
+        "contact": "اتصل بنا",
+        "requestQuote": "طلب عرض أسعار",
+        "language": "العربية"
+    },
+    "hero": {
+        "title": "جلب المحاصيل",
+        "titleLine2": "المغربية إلى العالم",
+        "description": "نحن نجلب الطماطم المغربية إلى العالم. جودة عالية، طازجة ومزروعة بعناية من أجل الأرض والمزارعين.",
+        "ctaPrimary": "استكشف منتجاتنا",
+        "ctaSecondary": "طلب عرض أسعار"
+    },
+    "common": {
+        "learnMore": "اعرف المزيد",
+        "readMore": "اقرأ المزيد",
+        "viewDetails": "عرض التفاصيل",
+        "close": "إغلاق",
+        "back": "رجوع",
+        "next": "التالي",
+        "previous": "السابق",
+        "loading": "جار التحميل...",
+        "error": "حدث خطأ",
+        "success": "نجح!"
+    }
+}

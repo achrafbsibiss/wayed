@@ -236,7 +236,7 @@ export default function AdminLogin() {
                         variant="caption"
                         sx={{ display: 'block', textAlign: 'center', mt: 4, color: 'text.secondary' }}
                     >
-                        Wayed Groupe © {new Date().getFullYear()}
+                        Wayd Groupe © {new Date().getFullYear()}
                     </Typography>
                 </Card>
             </Container>

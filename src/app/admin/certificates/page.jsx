@@ -34,6 +34,13 @@ export default function AdminCertificates() {
     const [editingCertificate, setEditingCertificate] = useState(null);
     const [deleteDialog, setDeleteDialog] = useState({ open: false, id: null });
 
+    // Helper function to get English text from translation object
+    const getEnglishText = (translationObj) => {
+        if (!translationObj) return '';
+        if (typeof translationObj === 'string') return translationObj; // Backward compatibility
+        return translationObj.en || '';
+    };
+
     const fetchCertificates = async () => {
         try {
             const res = await fetch('/api/certificates');
@@ -142,10 +149,10 @@ export default function AdminCertificates() {
                 </Box>
 
                 {error && (
-                    <Alert 
-                        severity="error" 
+                    <Alert
+                        severity="error"
                         icon={<Icon icon="solar:danger-circle-bold" width={22} />}
-                        sx={{ mb: 3, borderRadius: 2 }} 
+                        sx={{ mb: 3, borderRadius: 2 }}
                         onClose={() => setError('')}
                     >
                         {error}
@@ -210,9 +217,9 @@ export default function AdminCertificates() {
                                 </TableHead>
                                 <TableBody>
                                     {certificates.map((cert) => (
-                                        <TableRow 
-                                            key={cert.id} 
-                                            sx={{ 
+                                        <TableRow
+                                            key={cert.id}
+                                            sx={{
                                                 '&:hover': { bgcolor: '#f8f9fa' },
                                                 '&:last-child td': { borderBottom: 0 },
                                             }}
@@ -231,7 +238,7 @@ export default function AdminCertificates() {
                                                 >
                                                     <Image
                                                         src={cert.image_url}
-                                                        alt={cert.title}
+                                                        alt={getEnglishText(cert.title)}
                                                         fill
                                                         style={{ objectFit: 'contain', padding: '4px' }}
                                                     />
@@ -253,7 +260,7 @@ export default function AdminCertificates() {
                                                         <Icon icon="solar:document-medicine-bold" width={18} style={{ color: '#f5576c' }} />
                                                     </Box>
                                                     <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                        {cert.title}
+                                                        {getEnglishText(cert.title)}
                                                     </Typography>
                                                 </Box>
                                             </TableCell>
@@ -270,14 +277,14 @@ export default function AdminCertificates() {
                                                         WebkitBoxOrient: 'vertical',
                                                     }}
                                                 >
-                                                    {cert.description}
+                                                    {getEnglishText(cert.description)}
                                                 </Typography>
                                             </TableCell>
                                             <TableCell align="center">
                                                 <Chip
                                                     label={cert.display_order}
                                                     size="small"
-                                                    sx={{ 
+                                                    sx={{
                                                         minWidth: 32,
                                                         bgcolor: '#f3f4f6',
                                                         fontWeight: 600,
@@ -293,7 +300,7 @@ export default function AdminCertificates() {
                                                         sx={{
                                                             bgcolor: '#f093fb15',
                                                             color: '#f5576c',
-                                                            '&:hover': { 
+                                                            '&:hover': {
                                                                 bgcolor: '#f093fb25',
                                                             },
                                                         }}
@@ -306,7 +313,7 @@ export default function AdminCertificates() {
                                                         sx={{
                                                             bgcolor: '#fee2e2',
                                                             color: '#ef4444',
-                                                            '&:hover': { 
+                                                            '&:hover': {
                                                                 bgcolor: '#fecaca',
                                                             },
                                                         }}
@@ -324,8 +331,8 @@ export default function AdminCertificates() {
                 )}
 
                 {/* Delete Confirmation Dialog */}
-                <Dialog 
-                    open={deleteDialog.open} 
+                <Dialog
+                    open={deleteDialog.open}
                     onClose={() => setDeleteDialog({ open: false, id: null })}
                     PaperProps={{
                         sx: { borderRadius: 3, p: 1 }
@@ -341,7 +348,7 @@ export default function AdminCertificates() {
                         </Typography>
                     </DialogContent>
                     <DialogActions sx={{ px: 3, pb: 2 }}>
-                        <Button 
+                        <Button
                             onClick={() => setDeleteDialog({ open: false, id: null })}
                             sx={{ textTransform: 'none' }}
                         >

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { useTranslations } from '@/hooks/useTranslations';
 
 const VALUES = [
     {
@@ -74,6 +75,14 @@ export default function CertificatesHero() {
     const [certificates, setCertificates] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { locale } = useTranslations();
+
+    // Helper function to get translated text with fallback
+    const getTranslatedText = (translationObj) => {
+        if (!translationObj) return '';
+        // Return current locale, fallback to English, or empty string
+        return translationObj[locale] || translationObj.en || '';
+    };
 
     // Fetch certificates from API
     useEffect(() => {
@@ -248,7 +257,7 @@ export default function CertificatesHero() {
                                                                 whiteSpace: 'nowrap',
                                                             }}
                                                         >
-                                                            {certificate.title}
+                                                            {getTranslatedText(certificate.title)}
                                                         </Typography>
                                                         <Box
                                                             sx={{
@@ -275,7 +284,7 @@ export default function CertificatesHero() {
                                                             fontSize: { xs: '0.95rem', md: '20px' },
                                                         }}
                                                     >
-                                                        {certificate.description}
+                                                        {getTranslatedText(certificate.description)}
                                                     </Typography>
                                                 </Box>
                                             </motion.div>

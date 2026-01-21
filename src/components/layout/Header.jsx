@@ -193,6 +193,7 @@ export default function Header() {
                       sx={{
                         height: { xs: 48, md: 58 },
                         width: 'auto',
+                        mr: { xs: 0, lg: 32 },
                         display: 'block',
                       }}
                     />
@@ -357,6 +358,28 @@ export default function Header() {
                   >
                     <Box>Français</Box>
                     {locale === 'fr' && (
+                      <Icon icon="solar:check-circle-bold" width="20" height="20" color="#2A2A2A" />
+                    )}
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => handleLanguageSelect('ar')}
+                    selected={locale === 'ar'}
+                    sx={{
+                      py: 1.5,
+                      px: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.5,
+                      '&.Mui-selected': {
+                        bgcolor: 'rgba(42, 42, 42, 0.08)',
+                        '&:hover': {
+                          bgcolor: 'rgba(42, 42, 42, 0.12)',
+                        },
+                      },
+                    }}
+                  >
+                    <Box>العربية</Box>
+                    {locale === 'ar' && (
                       <Icon icon="solar:check-circle-bold" width="20" height="20" color="#2A2A2A" />
                     )}
                   </MenuItem>
