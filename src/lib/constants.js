@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'WAYD Groupe',
-  tagline: 'Bringing Moroccan Harvests To The World',
-  description: 'We bring Moroccan tomatoes to the world. High quality, fresh and grown with care for both land and farmers.',
+  tagline: 'Generational Roots Global React',
+  description: 'Minimizing The Distance Between Moroccan Farmers and The international Markets.',
   email: 'contact@waydgroupe.com',
   phone: '+212 XXX XXX XXX',
   address: 'Morocco',

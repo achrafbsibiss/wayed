@@ -95,17 +95,13 @@ export default function NewsletterSection() {
               textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
             }}
           >
-            {t('newsletter.heading').split(' ').map((word, i) => i === 2 ? <div key={i}>{word}</div> : <span key={i}>{word} </span>)}
-            {/* The original text was broken by <br/> "Innovative Solutions For <br/> Optimal Crop Growth" 
-                I'll allow the translation to handle it or just render. 
-                Original: 
-                Innovative Solutions For
-                <br />
-                Optimal Crop Growth
-                
-                Simplest is to just render the text. 
-            */}
+            {t('newsletter.heading')
+              .split('\n')
+              .map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
           </Typography>
+
 
           {/* Email Subscription Form */}
           <Box

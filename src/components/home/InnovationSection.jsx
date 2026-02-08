@@ -45,7 +45,7 @@ export default function InnovationSection() {
                                     lineHeight: 1.2,
                                 }}
                             >
-                                Innovative Solutions For Optimal Crop Growth
+                                EMPOWERING FARMERS ELEVATING STANDARDS
                             </Typography>
                         </Box>
                     </Grid>
