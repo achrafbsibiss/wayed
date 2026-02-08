@@ -208,7 +208,23 @@
   "about": {
     "title": "About Us",
     "subtitle": "Our Story",
-    "description": "Learn more about our journey and commitment to quality"
+    "description": "Learn more about our journey and commitment to quality",
+    "hero_description_paragraphs": [
+      "WAYD is built on 45 years of family savoir-faire in agricultural activities. Since 1980 our Family been dedicated to quality, trust, sustainability and excellence with a simple mission, grow and deliver with care.",
+      "Today, Under the leadership of the 3rd generation, all of the values above turn into ethics we live by, they guide everything from the way we grow to the way we work with partners.",
+      "We focus on innovation, we believe in transparency, New vision that still rooted to tradition, bringing fresh products from Morocco straight to the world, we expanded our farms and built strong export partnerships minimizing the distance between the farmers and the international markets.",
+      "Our Goal is to bring our goods even closer to people worldwide flavored with a touch that reflects our passion for excellence."
+    ],
+    "goal_description_paragraphs": [
+      "Progress is our mindset and to grow is non negotiable.\nWe believe that true growth is collective and those who share our drive grow with us.",
+      "We aim to grow collectively with our team, partners and our customers together. Our strength lies in constant innovation, enabling us to stay advanced and future ready",
+      "Creating an environment where our people can work safely, grow professionally, and thrive as we expand while upholding the highest standards of quality and sustainability."
+    ],
+    "vision_description_paragraphs": [
+      "Redefining quality and sustainability across agriculture, proving that true mastery lies in the art of growing, where strong disciplined standards safeguard and enhance our creativity.",
+      "Diversifying our products through smarter farming and sustainable expansion, reaching new countries, opening new markets, and building a wider global presence",
+      "We aim to grow our land, develop and cultivate more farms, and launch products that innovation with the finest tradition of Moroccan agriculture."
+    ]
   },
   "sustainability": {
     "title": "Sustainability",

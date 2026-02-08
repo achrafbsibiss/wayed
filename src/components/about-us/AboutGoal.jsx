@@ -4,6 +4,7 @@ import { Box, Container, Typography, IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
+import { useTranslations } from '../../contexts/TranslationProvider';
 
 const VALUES = [
     {
@@ -45,6 +46,9 @@ const TESTIMONIALS = [
 ];
 
 export default function AboutGoal() {
+    const { t } = useTranslations();
+    const goalDescriptions = t('about.goal_description_paragraphs');
+    const descriptionList = Array.isArray(goalDescriptions) ? goalDescriptions : [];
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
     const handlePrev = () => {
@@ -104,21 +108,32 @@ export default function AboutGoal() {
                                         </Typography>
                                     </Box>
 
-                                    <Typography
-                                        sx={{
-                                            color: 'text.secondary',
-                                            fontSize: { xs: '0.95rem', md: '20px' },
-                                        }}
-                                    >
-                                        Our goal is to position Morocco as a trusted source of premium
-                                        tomatoes on the global market by combining tradition, innovation,
-                                        and sustainability. We aim to empower local farmers, implement
-                                        the latest farming technologies, and ensure that every harvest
-                                        reflects the richness of our land. By maintaining the highest
-                                        standards of quality and care, we strive to deliver fresh, healthy,
-                                        and reliable produce that connects Moroccan agriculture to tables
-                                        worldwide.
-                                    </Typography>
+                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                                        {descriptionList.map((text, index) => (
+                                            <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                                                <Box
+                                                    component="img"
+                                                    src="/images/hero/decorative-leaf.png"
+                                                    alt=""
+                                                    sx={{
+                                                        width: { xs: 20, md: 24 },
+                                                        height: 'auto',
+                                                        mt: 0.5,
+                                                        opacity: 0.8
+                                                    }}
+                                                />
+                                                <Typography
+                                                    sx={{
+                                                        color: 'text.secondary',
+                                                        fontSize: { xs: '0.95rem', md: '20px' },
+                                                        lineHeight: 1.6
+                                                    }}
+                                                >
+                                                    {text}
+                                                </Typography>
+                                            </Box>
+                                        ))}
+                                    </Box>
                                 </Box>
                             </Grid>
 
