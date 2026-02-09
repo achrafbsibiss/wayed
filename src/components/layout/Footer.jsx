@@ -55,7 +55,7 @@ export default function Footer() {
               maxWidth: '600px',
             }}
           >
-            We bring Moroccan farmers to the world stage by exporting fresh, high-quality crops.
+            We Are Your Dream
           </Typography>
 
           {/* Separator Line */}

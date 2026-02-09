@@ -3,7 +3,12 @@
 import { Box, Container, Typography, Grid } from '@mui/material';
 import Link from 'next/link';
 
+import { useTranslations } from '../../contexts/TranslationProvider';
+
 export default function AboutVision() {
+    const { t } = useTranslations();
+    const visionDescriptions = t('about.vision_description_paragraphs');
+    const descriptionList = Array.isArray(visionDescriptions) ? visionDescriptions : [];
     return (
         <Box sx={{ py: { xs: 8, md: 12 } }}>
             <Container maxWidth="lg">
@@ -61,16 +66,33 @@ export default function AboutVision() {
                             </Box>
 
                             {/* Description Text */}
-                            <Typography
-                                sx={{
-                                    color: 'text.secondary',
-                                    fontSize: { xs: '0.95rem', md: '20px' },
-                                    lineHeight: 1.8,
-                                    maxWidth: '900px',
-                                }}
-                            >
-                                Our vision is to establish Morocco as a global leader in high-quality tomato production and export, recognized for both tradition and innovation. We strive to create a sustainable agricultural model that empowers local farmers, embraces advanced technologies, and ensures consistent excellence from seed to shipment. By combining modern precision farming with respect for the land and its people, we aim to deliver products that meet the highest international standards while preserving the authenticity of Moroccan agriculture. Through this vision, we seek not only to nourish communities worldwide but also to build lasting trust, expand Morocco’s presence in global markets, and inspire the next generation of sustainable farming practices.
-                            </Typography>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                                {descriptionList.map((text, index) => (
+                                    <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                                        <Box
+                                            component="img"
+                                            src="/images/hero/decorative-leaf.png"
+                                            alt=""
+                                            sx={{
+                                                width: { xs: 20, md: 24 },
+                                                height: 'auto',
+                                                mt: 0.5,
+                                                opacity: 0.8
+                                            }}
+                                        />
+                                        <Typography
+                                            sx={{
+                                                color: 'text.secondary',
+                                                fontSize: { xs: '0.95rem', md: '20px' },
+                                                lineHeight: 1.8,
+                                                maxWidth: '900px',
+                                            }}
+                                        >
+                                            {text}
+                                        </Typography>
+                                    </Box>
+                                ))}
+                            </Box>
 
                             {/* //bold Typography */}
                             <Typography
@@ -78,7 +100,7 @@ export default function AboutVision() {
                                     color: 'text.primary',
                                     fontSize: { xs: '0.95rem', md: '20px' },
                                     fontWeight: 500,
-                                    mt:'15px'
+                                    mt: '15px'
                                 }}
                             >
                                 Empowering Farmers, Elevating Standards, Sharing Morocco With The World

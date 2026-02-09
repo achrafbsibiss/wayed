@@ -15,12 +15,12 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: 'WAYD Groupe - Bringing Moroccan Harvests To The World',
+  title: 'WAYD Groupe - Generational Roots Global Reach',
   description: 'High-quality organic vegetables from Morocco. Certified organic tomatoes, cucumbers, carrots, and more exported internationally.',
   keywords: 'organic vegetables, Morocco, export, tomatoes, agriculture, sustainable farming',
   metadataBase: new URL('https://waydgroupe.com'),
   openGraph: {
-    title: 'WAYD Groupe - Bringing Moroccan Harvests To The World',
+    title: 'WAYD Groupe - Generational Roots Global Reach',
     description: 'High-quality organic vegetables from Morocco.',
     siteName: 'WAYD Groupe',
     type: 'website',

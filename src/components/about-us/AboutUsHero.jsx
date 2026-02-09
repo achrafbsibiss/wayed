@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Grid } from '@mui/material';
 import Link from 'next/link';
+import { useTranslations } from '../../contexts/TranslationProvider';
 
 const SIDEBAR_LINKS = [
     { label: 'About us', href: '/about' },
@@ -9,6 +10,10 @@ const SIDEBAR_LINKS = [
 ];
 
 export default function AboutHero() {
+    const { t } = useTranslations();
+    const descriptions = t('about.hero_description_paragraphs');
+    const descriptionList = Array.isArray(descriptions) ? descriptions : [];
+
     return (
         <Box sx={{ py: { xs: 8, md: 12 } }}>
             <Container maxWidth="lg">
@@ -75,27 +80,34 @@ export default function AboutHero() {
                                 </Typography>
                             </Box>
 
-                            {/* Description Text */}
-                            <Typography
-                                sx={{
-                                    color: 'text.secondary',
-                                    fontSize: { xs: '0.95rem', md: '20px' },
-                                    maxWidth: '900px',
-                                }}
-                            >
-                                We are proud to stand at the intersection of tradition and innovation, representing
-                                Morocco's agricultural excellence on the global stage. For decades, our farms have
-                                cultivated tomatoes under the Moroccan sun, combining the knowledge of generations
-                                with modern techniques that ensure consistent quality and sustainability. By investing
-                                in advanced greenhouses, precision farming, and software-driven monitoring systems,
-                                we maintain full control over every stage of production—from seed selection and growth
-                                to harvesting and export. Our commitment extends beyond the fields: we support
-                                hundreds of local farmers, create sustainable jobs, and uphold the highest Moroccan
-                                and international quality standards. Every tomato we grow carries a story of care,
-                                innovation, and respect for the land, making its way from our farms to tables around the
-                                world. Through this mission, we not only deliver freshness and flavor but also showcase
-                                the pride and potential of Moroccan agriculture on a global scale.
-                            </Typography>
+                            {/* Description Text Split into 4 Parts */}
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                                {descriptionList.map((text, index) => (
+                                    <Box key={index} sx={{ display: 'flex', alignItems: 'flex-start', gap: 2.5 }}>
+                                        <Box
+                                            component="img"
+                                            src="/images/hero/decorative-leaf.png"
+                                            alt=""
+                                            sx={{
+                                                width: { xs: 20, md: 24 },
+                                                height: 'auto',
+                                                mt: 0.5,
+                                                opacity: 0.8
+                                            }}
+                                        />
+                                        <Typography
+                                            sx={{
+                                                color: 'text.secondary',
+                                                fontSize: { xs: '0.95rem', md: '20px' },
+                                                maxWidth: '900px',
+                                                lineHeight: 1.6
+                                            }}
+                                        >
+                                            {text}
+                                        </Typography>
+                                    </Box>
+                                ))}
+                            </Box>
                         </Box>
 
 

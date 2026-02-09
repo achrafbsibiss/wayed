@@ -10,9 +10,11 @@ let currentLocale = 'en';
 let isInitialized = false;
 
 // Load translations for a given locale
+// NOTE: These files are loaded from the /public/messages directory
 async function loadTranslations(locale) {
   try {
-    const response = await fetch(`/messages/${locale}.json`);
+    // Add cache-busting version parameter to ensure changes are reflected immediately
+    const response = await fetch(`/messages/${locale}.json?v=${Date.now()}`);
     const data = await response.json();
     translations = data;
     currentLocale = locale;
@@ -28,7 +30,7 @@ async function loadTranslations(locale) {
 function getTranslation(key) {
   const keys = key.split('.');
   let value = translations;
-  
+
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {
       value = value[k];
@@ -36,7 +38,7 @@ function getTranslation(key) {
       return key; // Return key if translation not found
     }
   }
-  
+
   return value;
 }
 
@@ -48,7 +50,7 @@ export function TranslationProvider({ children }) {
     // Load saved locale from localStorage
     const savedLocale = localStorage.getItem('locale') || 'en';
     setLocale(savedLocale);
-    
+
     // Load translations
     loadTranslations(savedLocale).then(() => {
       // Small delay to ensure everything is ready
@@ -61,10 +63,10 @@ export function TranslationProvider({ children }) {
   const changeLocale = (newLocale) => {
     // Show loading immediately
     setIsLoading(true);
-    
+
     // Save the new locale
     localStorage.setItem('locale', newLocale);
-    
+
     // Reload immediately - the loading screen will persist until page reloads
     window.location.reload();
   };

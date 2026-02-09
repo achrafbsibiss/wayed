@@ -184,7 +184,7 @@ export default function StatsSection() {
                                         fontFamily: 'Roboto',
                                     }}
                                 >
-                                    <span style={{ fontWeight: 700 }}>{t('stats.certifiedQuality.value')}</span> {t('stats.certifiedQuality.label').replace('Moroccan Quality Standards', `\nMoroccan Quality Standards`).split('\n').map((line, i) => i === 0 ? <>{line}<br /></> : line)}
+                                    <span style={{ fontWeight: 700 }}>{t('stats.certifiedQuality.value')}</span> {t('stats.certifiedQuality.label').replace('Products GLOBAL G.A.P.', `\nProducts GLOBAL G.A.P.`).split('\n').map((line, i) => i === 0 ? <>{line}<br /></> : line)}
                                     {/* Simplification: Just allow HTML or split manually. The design had a break. 
                                         Original: Certified <br/> Moroccan Quality Standards.
                                         New: t('stats.certifiedQuality.value') + t('stats.certifiedQuality.label')

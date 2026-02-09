@@ -1,8 +1,8 @@
 {
   "site": {
     "name": "WAYD Groupe",
-    "tagline": "Bringing Moroccan Harvests To The World",
-    "description": "We bring Moroccan tomatoes to the world. High quality, fresh and grown with care for both land and farmers.",
+    "tagline": "Generational Roots Global Reach",
+    "description": "Minimizing The Distance Between Moroccan Farmers and The international Markets. ",
     "email": "contact@waydgroupe.com",
     "phone": "+212 XXX XXX XXX",
     "address": "Morocco"
@@ -18,31 +18,31 @@
     "language": "English"
   },
   "hero": {
-    "title": "Bringing Moroccan",
-    "titleLine2": "Harvests To The World",
-    "description": "We bring Moroccan tomatoes to the world. High quality, fresh and grown with care for both land and farmers.",
-    "ctaPrimary": "Explore Our Products",
+    "title": "Generational Roots",
+    "titleLine2": "Global Reach",
+    "description": "Minimizing The Distance Between Moroccan Farmers and The international Markets. ",
+    "ctaPrimary": "Learn Services",
     "ctaSecondary": "Request a Quote"
   },
   "stats": {
     "yearsExperience": {
       "value": "50+",
       "label": "Years of Experience",
-      "description": "More than 50 years in Moroccan agriculture have allowed us to develop unparalleled expertise in cultivating premium, fresh vegetables that meet the highest standards."
+      "description": "45 years of family savoir faire in agricultural activities, dedicated to sustainability and excellence. For over 20 years, we have exported our own products, delivering consistency and trusted quality in every shipment."
     },
     "farmsInProgress": {
-      "value": "100+",
-      "label": "Farms in Progress",
-      "description": "Over 100 certified farms in Moroccan agriculture have been allowed us to develop unmatched expertise in cultivating premium, fresh tomatoes that meet the highest standards."
+      "value": "7+",
+      "label": "OWNED FARMS",
+      "description": "With more than 50 hectares across more than seven owned farms, we maintain full control of supply, quality and traceability from seed to shipment."
     },
     "localFarmers": {
-      "value": "500+",
-      "label": "Local Farmers Supported",
-      "description": "More than 500 farmers in Moroccan agriculture have been allowed us to develop unparalleled expertise in cultivating premium, fresh tomatoes that meet the highest standards."
+      "value": "6000+",
+      "label": "Tons of Tomatoes each year",
+      "description": "More than 6000 tons of high quality tomatoes offered in various varieties produced and exported annually, provided in full compliance with international standards for freshness, health and safety."
     },
     "certifiedQuality": {
       "value": "Certified",
-      "label": "Moroccan Quality Standards"
+      "label": "Products GLOBAL G.A.P."
     }
   },
   "mission": {
@@ -50,15 +50,15 @@
     "subtitle": "Empowering Moroccan Agriculture",
     "description": "We are committed to supporting local farmers and bringing the finest Moroccan produce to global markets while maintaining sustainable practices.",
     "tabs": {
-      "goal": "Our Goal",
+      "goal": "VISION",
       "who": "Who are we",
       "vision": "Vision",
       "mission": "Mission"
     },
     "content": {
       "goal": {
-        "title": "Our goal is to share Morocco's finest tomatoes with the world—fresh, high-quality, and grown with care for both land and farmers.",
-        "description": "We believe that true growth comes from more than just harvests. By investing in modern farming techniques, empowering local communities, and maintaining strict quality controls, we ensure that every tomato exported from Morocco carries not only freshness and flavor but also the values of trust, sustainability, and excellence."
+        "title": "Expanding our reach, elevating our standards. ",
+        "description": "Developing more farms, reaching new markets and diversifying our products through smarter farming and sustainable expansion."
       },
       "who": {
         "title": "We are a leading Moroccan agricultural company dedicated to bringing premium organic vegetables to global markets.",
@@ -128,13 +128,13 @@
   "technology": {
     "title": "Our Technology",
     "subtitle": "Innovation in Agriculture",
-    "weUse": "We Use",
-    "technology": "Technology",
+    "weUse": "",
+    "technology": "",
     "slides": {
       "slide1": {
         "title": "We Use Technology",
-        "subtitle": "To Grow And Export Morocco's Finest Tomatoes With Quality.",
-        "description": "Modern farming techniques combined with traditional knowledge"
+        "subtitle": "PROTECTING THE LAND WHILE GROWING RESPONSIBLY AND PROVIDING TRUSTED PRODUCE.",
+        "description": "PROTECTING THE LAND WHILE GROWING RESPONSIBLY AND PROVIDING TRUSTED PRODUCE."
       }
     },
     "items": {
@@ -161,8 +161,7 @@
     "title": "Stay Updated",
     "subtitle": "Subscribe to Our Newsletter",
     "description": "Get the latest news about our products and sustainable farming practices",
-    "heading": "Innovative Solutions For Optimal Crop Growth",
-    "subscribe": "Subscribe",
+    "heading": "EMPOWERING FARMERS\nELEVATING STANDARDS",
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
     "success": "Thank you for subscribing!",
@@ -209,7 +208,23 @@
   "about": {
     "title": "About Us",
     "subtitle": "Our Story",
-    "description": "Learn more about our journey and commitment to quality"
+    "description": "Learn more about our journey and commitment to quality",
+    "hero_description_paragraphs": [
+      "WAYD is built on 45 years of family savoir-faire in agricultural activities. Since 1980 our Family been dedicated to quality, trust, sustainability and excellence with a simple mission, grow and deliver with care.",
+      "Today, Under the leadership of the 3rd generation, all of the values above turn into ethics we live by, they guide everything from the way we grow to the way we work with partners.",
+      "We focus on innovation, we believe in transparency, New vision that still rooted to tradition, bringing fresh products from Morocco straight to the world, we expanded our farms and built strong export partnerships minimizing the distance between the farmers and the international markets.",
+      "Our Goal is to bring our goods even closer to people worldwide flavored with a touch that reflects our passion for excellence."
+    ],
+    "goal_description_paragraphs": [
+      "Progress is our mindset and to grow is non negotiable.\nWe believe that true growth is collective and those who share our drive grow with us.",
+      "We aim to grow collectively with our team, partners and our customers together. Our strength lies in constant innovation, enabling us to stay advanced and future ready",
+      "Creating an environment where our people can work safely, grow professionally, and thrive as we expand while upholding the highest standards of quality and sustainability."
+    ],
+    "vision_description_paragraphs": [
+      "Redefining quality and sustainability across agriculture, proving that true mastery lies in the art of growing, where strong disciplined standards safeguard and enhance our creativity.",
+      "Diversifying our products through smarter farming and sustainable expansion, reaching new countries, opening new markets, and building a wider global presence",
+      "We aim to grow our land, develop and cultivate more farms, and launch products that innovation with the finest tradition of Moroccan agriculture."
+    ]
   },
   "sustainability": {
     "title": "Sustainability",

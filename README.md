@@ -1,4 +1,4 @@
-# WAYD Groupe - Bringing Moroccan Harvests To The World
+# WAYD Groupe - Generational Roots Global Reach
 
 A modern, high-performance website for WAYD Groupe, showcasing Morocco's finest agricultural exports with a focus on quality, sustainability, and innovation.
 
