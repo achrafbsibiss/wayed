@@ -4,8 +4,10 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function HeroSustainability() {
+    const { t } = useTranslations();
     return (
         <Box
             sx={{
@@ -92,7 +94,7 @@ export default function HeroSustainability() {
                             px: 2,
                         }}
                     >
-                        Committed to a Greener Future
+                        {t('sustainability.hero.title')}
                     </Typography>
 
                     <Typography
@@ -107,7 +109,7 @@ export default function HeroSustainability() {
                             px: 1,
                         }}
                     >
-                        We believe in sustainable farming and eco-friendly innovation that protects our planet for generations.
+                        {t('sustainability.hero.description')}
                     </Typography>
 
                     <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -147,7 +149,7 @@ export default function HeroSustainability() {
                                 },
                             }}
                         >
-                            Our Initiatives
+                            {t('sustainability.hero.ctaButton')}
                         </Button>
                     </Box>
                 </Box>

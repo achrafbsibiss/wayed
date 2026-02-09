@@ -208,33 +208,91 @@
   "about": {
     "title": "À Propos de Nous",
     "subtitle": "Notre Histoire",
-    "description": "En savoir plus sur notre parcours et notre engagement envers la qualité"
+    "description": "En savoir plus sur notre parcours et notre engagement envers la qualité",
+    "hero_description_paragraphs": [
+      "WAYD est construit sur 45 ans de savoir-faire familial dans les activités agricoles. Depuis 1980, notre famille s'est consacrée à la qualité, à la confiance, à la durabilité et à l'excellence avec une mission simple : cultiver et livrer avec soin.",
+      "Aujourd'hui, sous la direction de la 3ème génération, toutes les valeurs ci-dessus se transforment en éthique par laquelle nous vivons, elles guident tout, de la façon dont nous cultivons à la façon dont nous travaillons avec nos partenaires.",
+      "Nous nous concentrons sur l'innovation, nous croyons en la transparence, nouvelle vision qui reste enracinée dans la tradition, apportant des produits frais du Maroc directement au monde, nous avons étendu nos fermes et construit de solides partenariats d'exportation minimisant la distance entre les agriculteurs et les marchés internationaux.",
+      "Notre objectif est de rapprocher encore plus nos produits des gens du monde entier, aromatisés d'une touche qui reflète notre passion pour l'excellence."
+    ],
+    "goal_description_paragraphs": [
+      "Le progrès est notre état d'esprit et grandir est non négociable.\\nNous croyons que la véritable croissance est collective et ceux qui partagent notre dynamisme grandissent avec nous.",
+      "Nous visons à croître collectivement avec notre équipe, nos partenaires et nos clients ensemble. Notre force réside dans l'innovation constante, nous permettant de rester avancés et prêts pour l'avenir",
+      "Créer un environnement où nos collaborateurs peuvent travailler en toute sécurité, se développer professionnellement et s'épanouir à mesure que nous nous développons tout en maintenant les normes les plus élevées de qualité et de durabilité."
+    ],
+    "vision_description_paragraphs": [
+      "Redéfinir la qualité et la durabilité dans l'agriculture, prouvant que la véritable maîtrise réside dans l'art de cultiver, où des normes disciplinées fortes protègent et améliorent notre créativité.",
+      "Diversifier nos produits grâce à une agriculture plus intelligente et une expansion durable, atteindre de nouveaux pays, ouvrir de nouveaux marchés et construire une présence mondiale plus large",
+      "Nous visons à agrandir nos terres, développer et cultiver davantage de fermes, et lancer des produits qui innovent avec la meilleure tradition de l'agriculture marocaine."
+    ]
   },
   "sustainability": {
     "title": "Durabilité",
     "subtitle": "Notre Engagement",
-    "description": "Nous nous consacrons à des pratiques agricoles durables qui profitent aux personnes et à la planète"
+    "description": "Nous nous consacrons à des pratiques agricoles durables qui profitent aux personnes et à la planète",
+    "hero": {
+      "title": "Engagés pour un Avenir Plus Vert",
+      "description": "Nous croyons en une agriculture durable et une innovation écologique qui protège notre planète pour les générations futures.",
+      "ctaButton": "Nos Initiatives"
+    },
+    "missionPhilosophy": {
+      "title": "Notre Mission / Philosophie",
+      "description": "Notre mission est d'équilibrer productivité et responsabilité. De la graine à la récolte, chaque étape est guidée par le soin de la terre, de l'agriculteur et de l'avenir"
+    },
+    "storytelling": {
+      "title": "Notre Histoire / Section Visuelle"
+    }
   },
   "certificates": {
     "title": "Certificats",
     "subtitle": "Assurance Qualité",
-    "description": "Nos certifications démontrent notre engagement envers l'excellence"
+    "description": "Nos certifications démontrent notre engagement envers l'excellence",
+    "pageTitle": "Certification",
+    "errors": {
+      "loadFailed": "Échec du chargement des certificats",
+      "genericError": "Une erreur s'est produite lors du chargement des certificats"
+    },
+    "emptyState": "Aucun certificat disponible pour le moment.",
+    "testimonial": {
+      "quote": "Travaillant avec les normes GLOBALG.A.P depuis 1997, j'ai vu les changements qu'elles ont apportés non seulement du point de vue de la sécurité alimentaire, si importante pour les consommateurs, mais aussi comme un outil pratique qui aide à améliorer les aspects sociaux et environnementaux dans la vie des petits exploitants du monde entier.",
+      "name": "OMAR BENSALAH",
+      "title": "Fondateur et directeur général de Wayd groupe"
+    }
   },
   "contact": {
     "title": "Contactez-nous",
     "subtitle": "Entrer en Contact",
     "description": "Nous serions ravis de vous entendre",
+    "heroTitle": "CONTACTEZ-NOUS",
+    "heroDescription": "Des questions ou envie d'en savoir plus ? Contactez-nous, nous serons ravis de vous répondre !",
     "name": "Nom",
     "email": "Email",
     "message": "Message",
     "send": "Envoyer le Message",
     "success": "Message envoyé avec succès !",
-    "error": "Veuillez remplir tous les champs"
+    "error": "Veuillez remplir tous les champs",
+    "visitUs": {
+      "title": "RENDEZ-NOUS VISITE",
+      "address": "123 Route de la Ferme, Taddart, Maroc",
+      "description": "Venez voir nos champs et serres en personne !"
+    },
+    "callUs": {
+      "title": "APPELEZ-NOUS",
+      "phone": "+212 600 123 456",
+      "description": "Nous sommes heureux de répondre à vos questions et de vous aider"
+    },
+    "emailUs": {
+      "title": "ÉCRIVEZ-NOUS",
+      "email": "info@WaydGroupe.com",
+      "description": "Envoyez-nous un email et nous vous répondrons rapidement"
+    }
   },
   "quote": {
     "title": "Demander un Devis",
     "subtitle": "Commencer",
     "description": "Remplissez le formulaire ci-dessous et nous vous répondrons bientôt",
+    "heroTitle": "Demander un Devis",
+    "heroDescription": "Faites-nous part de vos besoins et nous vous fournirons un devis détaillé",
     "company": "Entreprise",
     "name": "Nom",
     "email": "Email",
@@ -244,12 +302,48 @@
     "message": "Message",
     "submit": "Soumettre la Demande",
     "success": "Demande de devis soumise avec succès !",
-    "error": "Veuillez remplir tous les champs obligatoires"
+    "error": "Veuillez remplir tous les champs obligatoires",
+    "form": {
+      "aboutYourself": "À propos de vous",
+      "aboutYourselfDescription": "Parlez-nous un peu de vous",
+      "nameLabel": "Nom",
+      "firstPlaceholder": "Prénom",
+      "lastPlaceholder": "Nom",
+      "businessLabel": "Entreprise/Organisation",
+      "emailLabel": "Email",
+      "websiteLabel": "Site Web",
+      "textLabel": "Texte",
+      "submitButton": "Demander un Devis"
+    }
   },
   "harvest": {
     "title": "Notre Récolte",
     "subtitle": "Frais de la Ferme",
-    "description": "Découvrez nos récoltes saisonnières"
+    "description": "Découvrez nos récoltes saisonnières",
+    "insight": "APERÇU",
+    "requestQuote": "Demander un Devis",
+    "season": {
+      "title": "Saison de Récolte",
+      "qualityTitle": "Développement & Qualité",
+      "resultsTitle": "Résultats en 2025",
+      "stats": {
+        "varietiesTested": "600+ Variétés Testées Annuellement Avec les Partenaires Semenciers",
+        "preCommercial": "28 Variétés en Essais Pré-Commerciaux",
+        "production": "24 Variétés en Production Pour les Clients",
+        "exclusive": "3 Variétés Exclusives à Duroc"
+      },
+      "description": "Dans nos fermes, l'innovation rencontre la tradition. Nous investissons continuellement dans la recherche et le développement pour améliorer les performances des cultures, la résistance aux maladies et la qualité globale. Chaque tomate est soigneusement surveillée de la graine à la récolte, garantissant qu'elle répond aux normes les plus élevées de fraîcheur, de nutrition et de saveur. En combinant technologie avancée, pratiques durables et expertise, nous livrons des produits qui reflètent l'excellence et la fierté de l'agriculture marocaine.",
+      "commitmentTitle": "Notre Engagement",
+      "commitments": {
+        "sustainable": "Pratiques agricoles durables",
+        "quality": "Récolte contrôlée qualité",
+        "technology": "Intégration de technologie avancée",
+        "fresh": "Produits frais garantis"
+      },
+      "commitmentDescription": "Nos processus de développement et de qualité garantissent que chaque tomate que nous récoltons répond aux normes les plus élevées. Grâce à l'innovation continue et au contrôle qualité rigoureux, nous livrons des produits qui reflètent notre engagement envers l'excellence. De la graine à la récolte, nous surveillons chaque étape pour garantir la fraîcheur, la saveur et la valeur nutritionnelle en qui nos clients peuvent avoir confiance.",
+      "downloadCatalog": "TÉLÉCHARGER LE CATALOGUE",
+      "downloadButton": "Télécharger le Catalogue"
+    }
   },
   "common": {
     "learnMore": "En Savoir Plus",

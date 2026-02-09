@@ -303,7 +303,7 @@ export default function StatsSection() {
                                     justifyContent: 'center',
                                     alignItems: 'flex-start',
                                     p: { xs: 4, md: 1 },
-                                    pl: { xs: 4, md: 2 },
+                                    pl: { xs: 4, md: 0 },
                                     pb: { xs: 4, md: 30 }
                                 }}
                             >
@@ -314,10 +314,10 @@ export default function StatsSection() {
                                         fontWeight: 500,
                                         textAlign: 'left',
                                         mb: 0,
-                                        fontSize: { xs: '2rem', md: '55px' },
+                                        fontSize: { xs: '2rem', md: '53px' },
                                         lineHeight: 1.2,
                                         color: '#2A2A2A',
-                                        maxWidth: '350px',
+                                        maxWidth: '300px',
                                         fontFamily: 'Roboto',
                                     }}
                                 >

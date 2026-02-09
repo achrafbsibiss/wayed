@@ -1,8 +1,10 @@
 'use client';
 
 import { Box, Container, Typography, Grid } from '@mui/material';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function MissionPhilosophySection() {
+    const { t } = useTranslations();
     return (
         <Box
             sx={{
@@ -41,7 +43,7 @@ export default function MissionPhilosophySection() {
                                 color: 'text.primary',
                             }}
                         >
-                            Our Mission / Philosophy
+                            {t('sustainability.missionPhilosophy.title')}
                         </Typography>
                         <Typography
                             variant="body1"
@@ -51,7 +53,7 @@ export default function MissionPhilosophySection() {
                                 fontWeight: 400,
                             }}
                         >
-                            Our mission is to balance productivity with responsibility. From seed to harvest, every step we take is guided by care for the land, the farmer, and the future
+                            {t('sustainability.missionPhilosophy.description')}
                         </Typography>
                     </Box>
 
@@ -195,7 +197,7 @@ export default function MissionPhilosophySection() {
                                 color: 'text.primary',
                             }}
                         >
-                            Our Mission / Philosophy
+                            {t('sustainability.missionPhilosophy.title')}
                         </Typography>
                         <Typography
                             variant="body1"
@@ -206,7 +208,7 @@ export default function MissionPhilosophySection() {
                                 lineHeight: 1.6,
                             }}
                         >
-                            Our mission is to balance productivity with responsibility. From seed to harvest, every step we take is guided by care for the land, the farmer, and the future
+                            {t('sustainability.missionPhilosophy.description')}
                         </Typography>
                     </Box>
 

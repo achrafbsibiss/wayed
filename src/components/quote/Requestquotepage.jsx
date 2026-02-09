@@ -4,8 +4,10 @@ import { Box, Container, Typography, TextField, Button, Card } from '@mui/materi
 import { Icon } from '@iconify/react';
 import { Grid } from '@mui/material';
 import { useState } from 'react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function RequestQuotePage() {
+    const { t } = useTranslations();
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -106,7 +108,7 @@ export default function RequestQuotePage() {
                                 textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
                             }}
                         >
-                            Request a Quote
+                            {t('quote.heroTitle')}
                         </Typography>
 
                         <Typography
@@ -122,7 +124,7 @@ export default function RequestQuotePage() {
                                 textShadow: '1px 1px 4px rgba(0,0,0,0.3)',
                             }}
                         >
-                            Let us know your requirements and we'll provide a detailed quote
+                            {t('quote.heroDescription')}
                         </Typography>
                     </Box>
                 </Container>
@@ -153,7 +155,7 @@ export default function RequestQuotePage() {
                                 color: 'text.primary',
                             }}
                         >
-                            About yourself
+                            {t('quote.form.aboutYourself')}
                         </Typography>
                         <Typography
                             variant="body2"
@@ -162,7 +164,7 @@ export default function RequestQuotePage() {
                                 fontSize: '0.95rem',
                             }}
                         >
-                            Tell us a bit about yourself
+                            {t('quote.form.aboutYourselfDescription')}
                         </Typography>
                     </Box>
 
@@ -187,12 +189,12 @@ export default function RequestQuotePage() {
                                         color: 'text.primary',
                                     }}
                                 >
-                                    Name
+                                    {t('quote.form.nameLabel')}
                                 </Typography>
                                 <TextField
                                     fullWidth
                                     name="firstName"
-                                    placeholder="First"
+                                    placeholder={t('quote.form.firstPlaceholder')}
                                     value={formData.firstName}
                                     onChange={handleChange}
                                     variant="outlined"
@@ -218,7 +220,7 @@ export default function RequestQuotePage() {
                                 <TextField
                                     fullWidth
                                     name="lastName"
-                                    placeholder="Last"
+                                    placeholder={t('quote.form.lastPlaceholder')}
                                     value={formData.lastName}
                                     onChange={handleChange}
                                     variant="outlined"
@@ -241,7 +243,7 @@ export default function RequestQuotePage() {
                                     color: 'text.primary',
                                 }}
                             >
-                                Business/Organisation
+                                {t('quote.form.businessLabel')}
                             </Typography>
                             <TextField
                                 fullWidth
@@ -267,7 +269,7 @@ export default function RequestQuotePage() {
                                     color: 'text.primary',
                                 }}
                             >
-                                Email
+                                {t('quote.form.emailLabel')}
                             </Typography>
                             <TextField
                                 fullWidth
@@ -294,7 +296,7 @@ export default function RequestQuotePage() {
                                     color: 'text.primary',
                                 }}
                             >
-                                Website
+                                {t('quote.form.websiteLabel')}
                             </Typography>
                             <TextField
                                 fullWidth
@@ -320,7 +322,7 @@ export default function RequestQuotePage() {
                                     color: 'text.primary',
                                 }}
                             >
-                                Text
+                                {t('quote.form.textLabel')}
                             </Typography>
                             <TextField
                                 fullWidth
@@ -362,7 +364,7 @@ export default function RequestQuotePage() {
                                     transition: 'all 0.3s ease',
                                 }}
                             >
-                                Request a Quote
+                                {t('quote.form.submitButton')}
                             </Button>
                         </Box>
                     </Box>
@@ -410,7 +412,7 @@ export default function RequestQuotePage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    VISIT US
+                                    {t('contact.visitUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -421,7 +423,7 @@ export default function RequestQuotePage() {
                                         mb: 1,
                                     }}
                                 >
-                                    123 Farm Road, Taddart, Morocco
+                                    {t('contact.visitUs.address')}
                                 </Typography>
 
                                 <Typography
@@ -432,7 +434,7 @@ export default function RequestQuotePage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    Come see our fields and greenhouses in person!
+                                    {t('contact.visitUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>
@@ -474,7 +476,7 @@ export default function RequestQuotePage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    CALL US
+                                    {t('contact.callUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -485,7 +487,7 @@ export default function RequestQuotePage() {
                                         mb: 1,
                                     }}
                                 >
-                                    +212 600 123 456
+                                    {t('contact.callUs.phone')}
                                 </Typography>
 
                                 <Typography
@@ -496,7 +498,7 @@ export default function RequestQuotePage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    We're happy to answer your questions and provide support
+                                    {t('contact.callUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>
@@ -538,7 +540,7 @@ export default function RequestQuotePage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    CONTACT US
+                                    {t('contact.emailUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -549,7 +551,7 @@ export default function RequestQuotePage() {
                                         mb: 1,
                                     }}
                                 >
-                                    info@WaydGroupe.com
+                                    {t('contact.emailUs.email')}
                                 </Typography>
 
                                 <Typography
@@ -560,7 +562,7 @@ export default function RequestQuotePage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    Send us an email and we'll get back to you promptly
+                                    {t('contact.emailUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>

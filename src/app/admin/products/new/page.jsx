@@ -12,18 +12,33 @@ import {
     CircularProgress,
     FormControlLabel,
     Switch,
+    Tabs,
+    Tab,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useRouter } from 'next/navigation';
 
+const LANGUAGES = [
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+    { code: 'es', label: 'Español' },
+    { code: 'gr', label: 'Deutsch' },
+];
+
 export default function NewProduct() {
     const router = useRouter();
     const [formData, setFormData] = useState({
-        name: '',
+        name: {
+            en: '',
+            fr: '',
+            es: '',
+            gr: '',
+        },
         slug: '',
         has_season_chart: true,
         display_order: 1,
     });
+    const [activeTab, setActiveTab] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -35,20 +50,33 @@ export default function NewProduct() {
         });
     };
 
+    const handleMultilingualChange = (lang, value) => {
+        setFormData({
+            ...formData,
+            name: {
+                ...formData.name,
+                [lang]: value,
+            },
+        });
+
+        // Auto-generate slug from English name
+        if (lang === 'en') {
+            setFormData({
+                ...formData,
+                name: {
+                    ...formData.name,
+                    [lang]: value,
+                },
+                slug: generateSlug(value),
+            });
+        }
+    };
+
     const generateSlug = (name) => {
         return name
             .toLowerCase()
             .replace(/ /g, '-')
             .replace(/[^\w-]+/g, '');
-    };
-
-    const handleNameChange = (e) => {
-        const name = e.target.value;
-        setFormData({
-            ...formData,
-            name,
-            slug: generateSlug(name),
-        });
     };
 
     const handleSubmit = async (e) => {
@@ -57,6 +85,11 @@ export default function NewProduct() {
         setError('');
 
         try {
+            // Validate English name is required
+            if (!formData.name.en) {
+                throw new Error('English name is required');
+            }
+
             const res = await fetch('/api/products', {
                 method: 'POST',
                 headers: {
@@ -74,11 +107,13 @@ export default function NewProduct() {
                 setError(data.error || 'Failed to create product');
             }
         } catch (err) {
-            setError('An error occurred while creating product');
+            setError(err.message || 'An error occurred while creating product');
         } finally {
             setLoading(false);
         }
     };
+
+    const currentLang = LANGUAGES[activeTab].code;
 
     return (
         <Box sx={{ bgcolor: '#f8f9fa', minHeight: 'calc(100vh - 64px)' }}>
@@ -94,8 +129,8 @@ export default function NewProduct() {
                     </Box>
 
                     {error && (
-                        <Alert 
-                            severity="error" 
+                        <Alert
+                            severity="error"
                             icon={<Icon icon="solar:danger-circle-bold" width={22} />}
                             sx={{ mb: 3, borderRadius: 2 }}
                         >
@@ -104,13 +139,42 @@ export default function NewProduct() {
                     )}
 
                     <form onSubmit={handleSubmit}>
+                        {/* Language Tabs for Product Name */}
+                        <Box sx={{ mb: 3, borderBottom: 1, borderColor: 'divider' }}>
+                            <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600, color: 'text.secondary' }}>
+                                Product Name (Multilingual)
+                            </Typography>
+                            <Tabs
+                                value={activeTab}
+                                onChange={(e, v) => setActiveTab(v)}
+                                sx={{
+                                    '& .MuiTab-root': {
+                                        minWidth: 80,
+                                        fontWeight: 600,
+                                    }
+                                }}
+                            >
+                                {LANGUAGES.map((lang) => (
+                                    <Tab
+                                        key={lang.code}
+                                        label={lang.label}
+                                        icon={
+                                            lang.code === 'en' ? (
+                                                <Typography variant="caption" color="error">*</Typography>
+                                            ) : null
+                                        }
+                                        iconPosition="end"
+                                    />
+                                ))}
+                            </Tabs>
+                        </Box>
+
                         <TextField
                             fullWidth
-                            label="Product Name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleNameChange}
-                            required
+                            label={`Product Name (${LANGUAGES[activeTab].label})`}
+                            value={formData.name[currentLang]}
+                            onChange={(e) => handleMultilingualChange(currentLang, e.target.value)}
+                            required={currentLang === 'en'}
                             sx={{ mb: 3 }}
                             placeholder="e.g. Tomato"
                         />
@@ -154,7 +218,7 @@ export default function NewProduct() {
                                 variant="outlined"
                                 startIcon={<Icon icon="solar:alt-arrow-left-linear" />}
                                 onClick={() => router.push('/admin/products')}
-                                sx={{ 
+                                sx={{
                                     textTransform: 'none',
                                     borderColor: 'divider',
                                     color: 'text.secondary',
