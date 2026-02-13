@@ -1,31 +1,32 @@
 'use client';
 
 import { Box, Container, Typography } from '@mui/material';
+import { useTranslations } from '@/hooks/useTranslations';
 
 const STORY_CARDS = [
     {
         id: 1,
         type: 'image',
         image: '/images/last/Rectangle 32.webp',
-        
+
     },
     {
         id: 2,
         type: 'image',
         image: '/images/last/Rectangle 33.webp',
-        
+
     },
     {
         id: 3,
         type: 'image',
         image: '/images/last/Rectangle 34.webp',
-        
+
     },
     {
         id: 4,
         type: 'image',
         image: '/images/last/Rectangle 35.webp',
-        
+
     },
     {
         id: 5,
@@ -36,14 +37,14 @@ const STORY_CARDS = [
         id: 6,
         type: 'image',
         image: '/images/last/Rectangle 37.webp',
-        
+
     }
 ];
 
 function StoryCard({ card, index }) {
     // Alternate positioning: even indices normal, odd indices shifted down
     const isOffset = index % 2 !== 0;
-    
+
     return (
         <Box
             sx={{
@@ -70,6 +71,7 @@ function StoryCard({ card, index }) {
 }
 
 export default function StorytellingSection() {
+    const { t } = useTranslations();
     return (
         <Box
             sx={{
@@ -87,7 +89,7 @@ export default function StorytellingSection() {
                         color: 'text.primary',
                     }}
                 >
-                    Storytelling / Visual Section
+                    {t('sustainability.storytelling.title')}
                 </Typography>
 
                 {/* Masonry Grid Layout */}

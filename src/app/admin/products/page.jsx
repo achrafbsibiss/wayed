@@ -107,10 +107,10 @@ export default function AdminProducts() {
                 </Box>
 
                 {error && (
-                    <Alert 
-                        severity="error" 
+                    <Alert
+                        severity="error"
                         icon={<Icon icon="solar:danger-circle-bold" width={22} />}
-                        sx={{ mb: 3, borderRadius: 2 }} 
+                        sx={{ mb: 3, borderRadius: 2 }}
                         onClose={() => setError('')}
                     >
                         {error}
@@ -175,9 +175,9 @@ export default function AdminProducts() {
                                 </TableHead>
                                 <TableBody>
                                     {products.map((product) => (
-                                        <TableRow 
-                                            key={product.id} 
-                                            sx={{ 
+                                        <TableRow
+                                            key={product.id}
+                                            sx={{
                                                 '&:hover': { bgcolor: '#f8f9fa' },
                                                 '&:last-child td': { borderBottom: 0 },
                                             }}
@@ -198,7 +198,7 @@ export default function AdminProducts() {
                                                         <Icon icon="solar:box-bold" width={18} style={{ color: '#667eea' }} />
                                                     </Box>
                                                     <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                                                        {product.name}
+                                                        {product.name?.en || product.name || ''}
                                                     </Typography>
                                                 </Box>
                                             </TableCell>
@@ -206,8 +206,8 @@ export default function AdminProducts() {
                                                 <Chip
                                                     label={product.slug}
                                                     size="small"
-                                                    sx={{ 
-                                                        fontFamily: 'monospace', 
+                                                    sx={{
+                                                        fontFamily: 'monospace',
                                                         fontSize: '0.75rem',
                                                         bgcolor: '#f3f4f6',
                                                         border: 'none',
@@ -218,7 +218,7 @@ export default function AdminProducts() {
                                                 <Chip
                                                     label={`${product.variants?.length || 0} variants`}
                                                     size="small"
-                                                    sx={{ 
+                                                    sx={{
                                                         bgcolor: '#667eea15',
                                                         color: '#667eea',
                                                         fontWeight: 600,
@@ -230,7 +230,7 @@ export default function AdminProducts() {
                                                 <Chip
                                                     label={product.display_order}
                                                     size="small"
-                                                    sx={{ 
+                                                    sx={{
                                                         minWidth: 32,
                                                         bgcolor: '#f3f4f6',
                                                         fontWeight: 600,
@@ -246,7 +246,7 @@ export default function AdminProducts() {
                                                         sx={{
                                                             bgcolor: '#667eea15',
                                                             color: '#667eea',
-                                                            '&:hover': { 
+                                                            '&:hover': {
                                                                 bgcolor: '#667eea25',
                                                             },
                                                         }}
@@ -259,7 +259,7 @@ export default function AdminProducts() {
                                                         sx={{
                                                             bgcolor: '#fee2e2',
                                                             color: '#ef4444',
-                                                            '&:hover': { 
+                                                            '&:hover': {
                                                                 bgcolor: '#fecaca',
                                                             },
                                                         }}
@@ -277,8 +277,8 @@ export default function AdminProducts() {
                 )}
 
                 {/* Delete Confirmation Dialog */}
-                <Dialog 
-                    open={deleteDialog.open} 
+                <Dialog
+                    open={deleteDialog.open}
                     onClose={() => setDeleteDialog({ open: false, id: null })}
                     PaperProps={{
                         sx: { borderRadius: 3, p: 1 }
@@ -294,7 +294,7 @@ export default function AdminProducts() {
                         </Typography>
                     </DialogContent>
                     <DialogActions sx={{ px: 3, pb: 2 }}>
-                        <Button 
+                        <Button
                             onClick={() => setDeleteDialog({ open: false, id: null })}
                             sx={{ textTransform: 'none' }}
                         >

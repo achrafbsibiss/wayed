@@ -229,28 +229,70 @@
   "sustainability": {
     "title": "Sustainability",
     "subtitle": "Our Commitment",
-    "description": "We are dedicated to sustainable farming practices that benefit both people and planet"
+    "description": "We are dedicated to sustainable farming practices that benefit both people and planet",
+    "hero": {
+      "title": "Committed to a Greener Future",
+      "description": "We believe in sustainable farming and eco-friendly innovation that protects our planet for generations.",
+      "ctaButton": "Our Initiatives"
+    },
+    "missionPhilosophy": {
+      "title": "Our Mission / Philosophy",
+      "description": "Our mission is to balance productivity with responsibility. From seed to harvest, every step we take is guided by care for the land, the farmer, and the future"
+    },
+    "storytelling": {
+      "title": "Storytelling / Visual Section"
+    }
   },
   "certificates": {
     "title": "Certificates",
     "subtitle": "Quality Assurance",
-    "description": "Our certifications demonstrate our commitment to excellence"
+    "description": "Our certifications demonstrate our commitment to excellence",
+    "pageTitle": "Certification",
+    "errors": {
+      "loadFailed": "Failed to load certificates",
+      "genericError": "An error occurred while loading certificates"
+    },
+    "emptyState": "No certificates available at the moment.",
+    "testimonial": {
+      "quote": "Working with GLOBALG.A.P standards since 1997, I have seen the change they've brought not only from the food safety perspective that is so important to consumers, but also as a practical tool that helps improve social and environmental aspects in the lives of smallholders all over the world.",
+      "name": "OMAR BENSALAH",
+      "title": "Founder and general manager of Wayd groupe"
+    }
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get In Touch",
     "description": "We'd love to hear from you",
+    "heroTitle": "CONTACT US",
+    "heroDescription": "Have questions or want to learn more? Get in touch with us we'd love to hear from you!",
     "name": "Name",
     "email": "Email",
     "message": "Message",
     "send": "Send Message",
     "success": "Message sent successfully!",
-    "error": "Please fill in all fields"
+    "error": "Please fill in all fields",
+    "visitUs": {
+      "title": "VISIT US",
+      "address": "123 Farm Road, Taddart, Morocco",
+      "description": "Come see our fields and greenhouses in person!"
+    },
+    "callUs": {
+      "title": "CALL US",
+      "phone": "+212 600 123 456",
+      "description": "We're happy to answer your questions and provide support"
+    },
+    "emailUs": {
+      "title": "CONTACT US",
+      "email": "info@WaydGroupe.com",
+      "description": "Send us an email and we'll get back to you promptly"
+    }
   },
   "quote": {
     "title": "Request a Quote",
     "subtitle": "Get Started",
     "description": "Fill out the form below and we'll get back to you soon",
+    "heroTitle": "Request a Quote",
+    "heroDescription": "Let us know your requirements and we'll provide a detailed quote",
     "company": "Company",
     "name": "Name",
     "email": "Email",
@@ -260,12 +302,48 @@
     "message": "Message",
     "submit": "Submit Request",
     "success": "Quote request submitted successfully!",
-    "error": "Please fill in all required fields"
+    "error": "Please fill in all required fields",
+    "form": {
+      "aboutYourself": "About yourself",
+      "aboutYourselfDescription": "Tell us a bit about yourself",
+      "nameLabel": "Name",
+      "firstPlaceholder": "First",
+      "lastPlaceholder": "Last",
+      "businessLabel": "Business/Organisation",
+      "emailLabel": "Email",
+      "websiteLabel": "Website",
+      "textLabel": "Text",
+      "submitButton": "Request a Quote"
+    }
   },
   "harvest": {
     "title": "Our Harvest",
     "subtitle": "Fresh from the Farm",
-    "description": "Discover our seasonal harvests"
+    "description": "Discover our seasonal harvests",
+    "insight": "INSIGHT",
+    "requestQuote": "Request a Quote",
+    "season": {
+      "title": "Harvest Season",
+      "qualityTitle": "Development & Quality",
+      "resultsTitle": "Results in 2025",
+      "stats": {
+        "varietiesTested": "600+ Varieties Tested Annually With Seed Partners",
+        "preCommercial": "28 Varieties In Pre-Commercial Trials",
+        "production": "24 Varieties In Production For Customers",
+        "exclusive": "3 Varieties Exclusive To Duroc"
+      },
+      "description": "At our farms, innovation meets tradition. We continuously invest in research and development to enhance crop performance, disease resistance, and overall quality. Every tomato is carefully monitored from seed to harvest, ensuring it meets the highest standards of freshness, nutrition, and flavor. By combining advanced technology, sustainable practices, and expert knowledge, we deliver produce that reflects excellence and the pride of Moroccan agriculture.",
+      "commitmentTitle": "Our Commitment",
+      "commitments": {
+        "sustainable": "Sustainable farming practices",
+        "quality": "Quality-controlled harvesting",
+        "technology": "Advanced technology integration",
+        "fresh": "Fresh produce guaranteed"
+      },
+      "commitmentDescription": "Our development and quality processes ensure that every tomato we harvest meets the highest standards. Through continuous innovation and rigorous quality control, we deliver products that reflect our commitment to excellence. From seed to harvest, we monitor every stage to guarantee freshness, flavor, and nutritional value that our customers can trust.",
+      "downloadCatalog": "DOWNLOAD CATALOG",
+      "downloadButton": "Download Catalog"
+    }
   },
   "common": {
     "learnMore": "Learn More",

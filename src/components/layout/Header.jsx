@@ -183,7 +183,7 @@ export default function Header() {
               </Box>
 
               {/* Center: Logo (centered on mobile, left-aligned on desktop) */}
-              <Box sx={{ flex: { xs: 1, lg: 1 }, display: 'flex', justifyContent: { xs: 'center', lg: 'flex-start' }, alignItems: 'center' }}>
+              <Box sx={{ flex: { xs: 1, lg: 1 }, display: 'flex', justifyContent: { xs: 'center', lg: 'flex-start' }, alignItems: 'center', marginLeft: { xs: 0, lg: '-300px' } }}>
                 <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Box

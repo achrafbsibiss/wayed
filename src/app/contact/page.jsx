@@ -2,8 +2,10 @@
 
 import { Box, Container, Typography, Grid, Card, CardContent } from '@mui/material';
 import { Icon } from '@iconify/react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function ContactPage() {
+    const { t } = useTranslations();
     return (
         <Box>
             {/* Hero Section with Background Image */}
@@ -104,7 +106,7 @@ export default function ContactPage() {
                                 },
                             }}
                         >
-                            CONTACT US
+                            {t('contact.heroTitle')}
                         </Typography>
 
                         <Typography
@@ -120,7 +122,7 @@ export default function ContactPage() {
                                 px: 2,
                             }}
                         >
-                            Have questions or want to learn more? Get in touch with us we'd love to hear from you!
+                            {t('contact.heroDescription')}
                         </Typography>
                     </Box>
                 </Container>
@@ -180,7 +182,7 @@ export default function ContactPage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    VISIT US
+                                    {t('contact.visitUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -191,7 +193,7 @@ export default function ContactPage() {
                                         mb: 1,
                                     }}
                                 >
-                                    123 Farm Road, Taddart, Morocco
+                                    {t('contact.visitUs.address')}
                                 </Typography>
 
                                 <Typography
@@ -202,7 +204,7 @@ export default function ContactPage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    Come see our fields and greenhouses in person!
+                                    {t('contact.visitUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>
@@ -244,7 +246,7 @@ export default function ContactPage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    CALL US
+                                    {t('contact.callUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -255,7 +257,7 @@ export default function ContactPage() {
                                         mb: 1,
                                     }}
                                 >
-                                    +212 600 123 456
+                                    {t('contact.callUs.phone')}
                                 </Typography>
 
                                 <Typography
@@ -266,13 +268,13 @@ export default function ContactPage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    We're happy to answer your questions and provide support
+                                    {t('contact.callUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>
 
                         {/* Contact Us (Email) */}
-                       <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
+                        <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex' }}>
                             <Box
                                 sx={{
                                     textAlign: 'center',
@@ -308,7 +310,7 @@ export default function ContactPage() {
                                         letterSpacing: '0.5px',
                                     }}
                                 >
-                                    CONTACT US
+                                    {t('contact.emailUs.title')}
                                 </Typography>
 
                                 <Typography
@@ -319,7 +321,7 @@ export default function ContactPage() {
                                         mb: 1,
                                     }}
                                 >
-                                    info@WaydGroupe.com
+                                    {t('contact.emailUs.email')}
                                 </Typography>
 
                                 <Typography
@@ -330,7 +332,7 @@ export default function ContactPage() {
                                         fontSize: '0.9rem',
                                     }}
                                 >
-                                    Send us an email and we'll get back to you promptly
+                                    {t('contact.emailUs.description')}
                                 </Typography>
                             </Box>
                         </Grid>

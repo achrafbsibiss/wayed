@@ -1,6 +1,10 @@
+'use client';
+
 import { Box, Button, Divider, Grid, Typography } from "@mui/material";
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function HarvestSeason() {
+    const { t } = useTranslations();
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, py: { xs: 6, md: 4 }, pt: { xs: 70 } }}>
             <Typography
@@ -12,7 +16,7 @@ export default function HarvestSeason() {
                     display: { xs: 'none', md: 'block' }
                 }}
             >
-                Harvest Season
+                {t('harvest.season.title')}
             </Typography>
             <Box
                 component='img'
@@ -34,7 +38,7 @@ export default function HarvestSeason() {
                     color: '#1a1a1a',
                 }}
             >
-                Development & Quality
+                {t('harvest.season.qualityTitle')}
             </Typography>
 
             {/* Mobile Layout */}
@@ -63,7 +67,7 @@ export default function HarvestSeason() {
                         textAlign: 'center',
                     }}
                 >
-                    Results in 2025
+                    {t('harvest.season.resultsTitle')}
                 </Typography>
 
                 {/* Stats List */}
@@ -101,7 +105,7 @@ export default function HarvestSeason() {
                             }}
                         />
                         <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#2a2a2a', lineHeight: 1.5 }}>
-                            600+ Varieties Tested Annually With Seed Partners
+                            {t('harvest.season.stats.varietiesTested')}
                         </Typography>
                     </Box>
                     <Box
@@ -125,7 +129,7 @@ export default function HarvestSeason() {
                             }}
                         />
                         <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#2a2a2a', lineHeight: 1.5 }}>
-                            28 Varieties In Pre-Commercial Trials
+                            {t('harvest.season.stats.preCommercial')}
                         </Typography>
                     </Box>
                     <Box
@@ -149,7 +153,7 @@ export default function HarvestSeason() {
                             }}
                         />
                         <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#2a2a2a', lineHeight: 1.5 }}>
-                            24 Varieties In Production For Customers
+                            {t('harvest.season.stats.production')}
                         </Typography>
                     </Box>
                     <Box
@@ -173,7 +177,7 @@ export default function HarvestSeason() {
                             }}
                         />
                         <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#2a2a2a', lineHeight: 1.5 }}>
-                            3 Varieties Exclusive To Duroc
+                            {t('harvest.season.stats.exclusive')}
                         </Typography>
                     </Box>
                 </Box>
@@ -189,7 +193,7 @@ export default function HarvestSeason() {
                         mb: 3,
                     }}
                 >
-                    At our farms, innovation meets tradition. We continuously invest in research and development to enhance crop performance, disease resistance, and overall quality. Every tomato is carefully monitored from seed to harvest, ensuring it meets the highest standards of freshness, nutrition, and flavor. By combining advanced technology, sustainable practices, and expert knowledge, we deliver produce that reflects excellence and the pride of Moroccan agriculture.
+                    {t('harvest.season.description')}
                 </Typography>
 
                 {/* Download Button */}
@@ -212,7 +216,7 @@ export default function HarvestSeason() {
                         }
                     }}
                 >
-                    DOWNLOAD CATALOG
+                    {t('harvest.season.downloadCatalog')}
                 </Button>
             </Box>
 
@@ -255,7 +259,7 @@ export default function HarvestSeason() {
                                 textAlign: { xs: 'center', md: 'left' },
                             }}
                         >
-                            Our Commitment
+                            {t('harvest.season.commitmentTitle')}
                         </Typography>
                         <Box
                             component="ul"
@@ -289,7 +293,7 @@ export default function HarvestSeason() {
                                     }}
                                 />
                                 <Typography variant="body1" sx={{ fontSize: '1rem', color: '#2a2a2a' }}>
-                                    Sustainable farming practices
+                                    {t('harvest.season.commitments.sustainable')}
                                 </Typography>
                             </Box>
                             <Box
@@ -313,7 +317,7 @@ export default function HarvestSeason() {
                                     }}
                                 />
                                 <Typography variant="body1" sx={{ fontSize: '1rem', color: '#2a2a2a' }}>
-                                    Quality-controlled harvesting
+                                    {t('harvest.season.commitments.quality')}
                                 </Typography>
                             </Box>
                             <Box
@@ -337,7 +341,7 @@ export default function HarvestSeason() {
                                     }}
                                 />
                                 <Typography variant="body1" sx={{ fontSize: '1rem', color: '#2a2a2a' }}>
-                                    Advanced technology integration
+                                    {t('harvest.season.commitments.technology')}
                                 </Typography>
                             </Box>
                             <Box
@@ -361,7 +365,7 @@ export default function HarvestSeason() {
                                     }}
                                 />
                                 <Typography variant="body1" sx={{ fontSize: '1rem', color: '#2a2a2a' }}>
-                                    Fresh produce guaranteed
+                                    {t('harvest.season.commitments.fresh')}
                                 </Typography>
                             </Box>
                         </Box>
@@ -381,11 +385,7 @@ export default function HarvestSeason() {
                                 textAlign: { xs: 'center', md: 'left' },
                             }}
                         >
-                            Our development and quality processes ensure that every tomato we harvest meets
-                            the highest standards. Through continuous innovation and rigorous quality control,
-                            we deliver products that reflect our commitment to excellence. From seed to harvest,
-                            we monitor every stage to guarantee freshness, flavor, and nutritional value that our
-                            customers can trust.
+                            {t('harvest.season.commitmentDescription')}
                         </Typography>
                     </Box>
                 </Grid>
@@ -414,7 +414,7 @@ export default function HarvestSeason() {
                     }
                 }}
             >
-                Download Catalog
+                {t('harvest.season.downloadButton')}
             </Button>
         </Box>
     );

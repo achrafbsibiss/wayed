@@ -10,8 +10,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import { Icon } from '@iconify/react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function HarvestHero() {
+    const { t, locale } = useTranslations();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeProduct, setActiveProduct] = useState(null);
@@ -72,8 +74,9 @@ export default function HarvestHero() {
     const activeVariantProps = {
         mainImage: currentVariantData?.main_image_url,
         sliderImages: currentVariantData?.slider_images || [],
-        size: currentVariantData?.size,
-        description: currentVariantData?.description,
+        size: currentVariantData?.size?.[locale] || currentVariantData?.size?.en || currentVariantData?.size || '',
+        description: currentVariantData?.description?.[locale] || currentVariantData?.description?.en || currentVariantData?.description || '',
+        label: currentVariantData?.label?.[locale] || currentVariantData?.label?.en || currentVariantData?.label || '',
     };
 
     return (
@@ -136,7 +139,7 @@ export default function HarvestHero() {
                             minWidth: { xs: '200px', md: '300px' },
                         }}
                     >
-                        {currentProduct.name}
+                        {currentProduct.name?.[locale] || currentProduct.name?.en || currentProduct.name || ''}
                     </Typography>
 
                     {/* Next Product Arrow */}
@@ -197,7 +200,7 @@ export default function HarvestHero() {
                                 },
                             }}
                         >
-                            {variant.label}
+                            {variant.label?.[locale] || variant.label?.en || variant.label || ''}
                         </Button>
                     ))}
                 </Box>
@@ -252,7 +255,7 @@ export default function HarvestHero() {
                                 <Box
                                     component="img"
                                     src={image}
-                                    alt={`${currentProduct.name} ${index + 1}`}
+                                    alt={`${currentProduct.name?.[locale] || currentProduct.name?.en || currentProduct.name || ''} ${index + 1}`}
                                 />
                             </SwiperSlide>
                         ))}
@@ -334,7 +337,7 @@ export default function HarvestHero() {
                                             fontSize: '2rem',
                                         }}
                                     >
-                                        INSIGHT
+                                        {t('harvest.insight')}
                                     </Typography>
 
                                     {/* Description */}
@@ -364,7 +367,7 @@ export default function HarvestHero() {
                                 <Box
                                     component="img"
                                     src={activeVariantProps.mainImage}
-                                    alt={currentProduct.name}
+                                    alt={currentProduct.name?.[locale] || currentProduct.name?.en || currentProduct.name || ''}
                                     sx={{
                                         maxWidth: '100%',
                                         height: 'auto',
@@ -446,7 +449,7 @@ export default function HarvestHero() {
                         {/* Request a Quote Button */}
                         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
                             <Button
-                                onClick={() => router.push("/quote")} 
+                                onClick={() => router.push("/quote")}
                                 variant="contained"
                                 size="large"
                                 sx={{
@@ -466,7 +469,7 @@ export default function HarvestHero() {
                                     transition: 'all 0.3s ease',
                                 }}
                             >
-                                Request a Quote
+                                {t('harvest.requestQuote')}
                             </Button>
                         </Box>
 
@@ -540,7 +543,7 @@ export default function HarvestHero() {
                                         fontStyle: 'italic',
                                     }}
                                 >
-                                    INSIGHT
+                                    {t('harvest.insight')}
                                 </Typography>
 
                                 {/* Description */}
@@ -584,7 +587,7 @@ export default function HarvestHero() {
                                 transition: 'all 0.3s ease',
                             }}
                         >
-                            Request a Quote
+                            {t('harvest.requestQuote')}
                         </Button>
                     </Box>
                     <Box

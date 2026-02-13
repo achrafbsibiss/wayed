@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { useTranslations } from '@/hooks/useTranslations';
 
 const VALUES = [
     {
@@ -70,9 +71,10 @@ const scaleIn = {
 };
 
 export default function CertificatesHero() {
-    const [currentTestimonial, setCurrentTestimonial] = useState(0);
+    const { t, locale } = useTranslations();
     const [certificates, setCertificates] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [currentTestimonial, setCurrentTestimonial] = useState(0);
     const [error, setError] = useState(null);
 
     // Fetch certificates from API
@@ -85,10 +87,10 @@ export default function CertificatesHero() {
                 if (data.success) {
                     setCertificates(data.data);
                 } else {
-                    setError('Failed to load certificates');
+                    setError(t('certificates.errors.loadFailed'));
                 }
             } catch (err) {
-                setError('An error occurred while loading certificates');
+                setError(t('certificates.errors.genericError'));
             } finally {
                 setLoading(false);
             }
@@ -182,7 +184,7 @@ export default function CertificatesHero() {
                                         marginBottom: { xs: 4, md: 8 },
                                     }}
                                 >
-                                    Certification
+                                    {t('certificates.pageTitle')}
                                 </Typography>
                             </motion.div>
                         )}
@@ -232,7 +234,7 @@ export default function CertificatesHero() {
                                                                 whiteSpace: 'nowrap',
                                                             }}
                                                         >
-                                                            {certificate.title}
+                                                            {certificate.title?.[locale] || certificate.title?.en || ''}
                                                         </Typography>
                                                         <Box
                                                             sx={{
@@ -259,7 +261,7 @@ export default function CertificatesHero() {
                                                             fontSize: { xs: '0.95rem', md: '20px' },
                                                         }}
                                                     >
-                                                        {certificate.description}
+                                                        {certificate.description?.[locale] || certificate.description?.en || ''}
                                                     </Typography>
                                                 </Box>
                                             </motion.div>
@@ -285,7 +287,7 @@ export default function CertificatesHero() {
                                                     <Box
                                                         component="img"
                                                         src={certificate.image_url}
-                                                        alt={certificate.title}
+                                                        alt={certificate.title?.[locale] || certificate.title?.en || 'Certificate'}
                                                         sx={{
                                                             width: '100%',
                                                             height: { xs: 'auto', md: '318px' },
@@ -293,7 +295,7 @@ export default function CertificatesHero() {
                                                         }}
                                                     />
                                                     <IconButton
-                                                        onClick={() => downloadCertificate(certificate.image_url, certificate.title)}
+                                                        onClick={() => downloadCertificate(certificate.image_url, certificate.title?.[locale] || certificate.title?.en || 'certificate')}
                                                         sx={{
                                                             position: 'absolute',
                                                             top: 16,
@@ -413,7 +415,7 @@ export default function CertificatesHero() {
                                                                             mb: 0.5,
                                                                         }}
                                                                     >
-                                                                        {TESTIMONIALS[currentTestimonial].name}
+                                                                        {t('certificates.testimonial.name')}
                                                                     </Typography>
                                                                     <Typography
                                                                         sx={{
@@ -423,7 +425,7 @@ export default function CertificatesHero() {
                                                                             fontWeight: 400,
                                                                         }}
                                                                     >
-                                                                        {TESTIMONIALS[currentTestimonial].title}
+                                                                        {t('certificates.testimonial.title')}
                                                                     </Typography>
                                                                 </Box>
                                                             </Box>
@@ -441,7 +443,7 @@ export default function CertificatesHero() {
                                 <Grid size={{ xs: 12 }}>
                                     <Box sx={{ textAlign: 'center', py: 8 }}>
                                         <Typography variant="h5" color="text.secondary">
-                                            No certificates available at the moment.
+                                            {t('certificates.emptyState')}
                                         </Typography>
                                     </Box>
                                 </Grid>

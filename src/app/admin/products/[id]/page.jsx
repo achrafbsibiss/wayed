@@ -22,11 +22,20 @@ import {
     Dialog,
     DialogContent,
     Chip,
+    Tabs,
+    Tab,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 import { useRouter } from 'next/navigation';
 import VariantForm from '@/components/admin/VariantForm';
 import Image from 'next/image';
+
+const LANGUAGES = [
+    { code: 'en', label: 'English' },
+    { code: 'fr', label: 'Français' },
+    { code: 'es', label: 'Español' },
+    { code: 'gr', label: 'Deutsch' },
+];
 
 export default function EditProduct({ params }) {
     const router = useRouter();
@@ -40,6 +49,7 @@ export default function EditProduct({ params }) {
     // Variant Dialog State
     const [variantDialogOpen, setVariantDialogOpen] = useState(false);
     const [editingVariant, setEditingVariant] = useState(null);
+    const [activeTab, setActiveTab] = useState(0);
 
     const fetchProduct = async () => {
         try {
@@ -61,11 +71,38 @@ export default function EditProduct({ params }) {
         fetchProduct();
     }, [id]);
 
+    const initMultilingualField = (value) => {
+        if (typeof value === 'object' && value !== null) {
+            return {
+                en: value.en || '',
+                fr: value.fr || '',
+                es: value.es || '',
+                gr: value.gr || '',
+            };
+        }
+        return {
+            en: value || '',
+            fr: '',
+            es: '',
+            gr: '',
+        };
+    };
+
     const handleProductChange = (e) => {
         const { name, value, checked, type } = e.target;
         setProduct({
             ...product,
             [name]: type === 'checkbox' ? checked : value,
+        });
+    };
+
+    const handleMultilingualNameChange = (lang, value) => {
+        setProduct({
+            ...product,
+            name: {
+                ...initMultilingualField(product.name),
+                [lang]: value,
+            },
         });
     };
 
@@ -122,7 +159,7 @@ export default function EditProduct({ params }) {
                     Back
                 </Button>
                 <Typography variant="h4" sx={{ fontWeight: 700 }}>
-                    Edit Product: {product.name}
+                    Edit Product: {product.name?.en || product.name || ''}
                 </Typography>
             </Box>
 
@@ -132,13 +169,42 @@ export default function EditProduct({ params }) {
             <Paper sx={{ p: 4, mb: 4 }}>
                 <Typography variant="h6" sx={{ mb: 3 }}>Product Details</Typography>
                 <form onSubmit={handleProductSubmit}>
+                    {/* Language Tabs for Product Name */}
+                    <Box sx={{ mb: 3, borderBottom: 1, borderColor: 'divider' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600, color: 'text.secondary' }}>
+                            Product Name (Multilingual)
+                        </Typography>
+                        <Tabs
+                            value={activeTab}
+                            onChange={(e, v) => setActiveTab(v)}
+                            sx={{
+                                '& .MuiTab-root': {
+                                    minWidth: 80,
+                                    fontWeight: 600,
+                                }
+                            }}
+                        >
+                            {LANGUAGES.map((lang) => (
+                                <Tab
+                                    key={lang.code}
+                                    label={lang.label}
+                                    icon={
+                                        lang.code === 'en' ? (
+                                            <Typography variant="caption" color="error">*</Typography>
+                                        ) : null
+                                    }
+                                    iconPosition="end"
+                                />
+                            ))}
+                        </Tabs>
+                    </Box>
+
                     <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
                         <TextField
-                            label="Name"
-                            name="name"
-                            value={product.name}
-                            onChange={handleProductChange}
-                            required
+                            label={`Name (${LANGUAGES[activeTab].label})`}
+                            value={initMultilingualField(product.name)[LANGUAGES[activeTab].code]}
+                            onChange={(e) => handleMultilingualNameChange(LANGUAGES[activeTab].code, e.target.value)}
+                            required={LANGUAGES[activeTab].code === 'en'}
                             sx={{ flex: 1, minWidth: 200 }}
                         />
                         <TextField
@@ -221,9 +287,9 @@ export default function EditProduct({ params }) {
                                                 <Image src={v.main_image_url} alt={v.label} fill style={{ objectFit: 'cover' }} />
                                             </Box>
                                         </TableCell>
-                                        <TableCell sx={{ fontWeight: 600 }}>{v.label}</TableCell>
+                                        <TableCell sx={{ fontWeight: 600 }}>{v.label?.en || v.label || ''}</TableCell>
                                         <TableCell><Chip label={v.variant_id} size="small" /></TableCell>
-                                        <TableCell>{v.size}</TableCell>
+                                        <TableCell>{v.size?.en || v.size || ''}</TableCell>
                                         <TableCell>{v.display_order}</TableCell>
                                         <TableCell align="right">
                                             <IconButton

@@ -1,0 +1,360 @@
+{
+    "site": {
+        "name": "WAYD Groupe",
+        "tagline": "Generationswurzeln Globale Reichweite",
+        "description": "Minimierung der Distanz zwischen marokkanischen Bauern und internationalen Märkten.",
+        "email": "contact@waydgroupe.com",
+        "phone": "+212 XXX XXX XXX",
+        "address": "Marokko"
+    },
+    "nav": {
+        "home": "Startseite",
+        "products": "Produkte",
+        "about": "Über uns",
+        "sustainability": "Nachhaltigkeit",
+        "certificates": "Zertifikate",
+        "contact": "Kontakt",
+        "requestQuote": "Angebot Anfordern",
+        "language": "Deutsch"
+    },
+    "hero": {
+        "title": "Generationswurzeln",
+        "titleLine2": "Globale Reichweite",
+        "description": "Minimierung der Distanz zwischen marokkanischen Bauern und internationalen Märkten.",
+        "ctaPrimary": "Dienstleistungen Kennenlernen",
+        "ctaSecondary": "Angebot Anfordern"
+    },
+    "stats": {
+        "yearsExperience": {
+            "value": "50+",
+            "label": "Jahre Erfahrung",
+            "description": "45 Jahre familiäres Savoir-faire in landwirtschaftlichen Aktivitäten, der Nachhaltigkeit und Exzellenz gewidmet. Seit über 20 Jahren exportieren wir unsere eigenen Produkte und liefern Beständigkeit und vertrauenswürdige Qualität bei jeder Lieferung."
+        },
+        "farmsInProgress": {
+            "value": "7+",
+            "label": "EIGENE FARMEN",
+            "description": "Mit mehr als 50 Hektar über mehr als sieben eigene Farmen behalten wir die volle Kontrolle über Versorgung, Qualität und Rückverfolgbarkeit vom Samen bis zum Versand."
+        },
+        "localFarmers": {
+            "value": "6000+",
+            "label": "Tonnen Tomaten pro Jahr",
+            "description": "Mehr als 6000 Tonnen hochwertiger Tomaten, die in verschiedenen Sorten angeboten, produziert und jährlich exportiert werden, in vollständiger Übereinstimmung mit internationalen Standards für Frische, Gesundheit und Sicherheit."
+        },
+        "certifiedQuality": {
+            "value": "Zertifiziert",
+            "label": "Produkte GLOBAL G.A.P."
+        }
+    },
+    "mission": {
+        "title": "Unsere Mission",
+        "subtitle": "Stärkung der marokkanischen Landwirtschaft",
+        "description": "Wir sind verpflichtet, lokale Bauern zu unterstützen und die besten marokkanischen Produkte auf globale Märkte zu bringen, während wir nachhaltige Praktiken beibehalten.",
+        "tabs": {
+            "goal": "VISION",
+            "who": "Wer wir sind",
+            "vision": "Vision",
+            "mission": "Mission"
+        },
+        "content": {
+            "goal": {
+                "title": "Erweiterung unserer Reichweite, Erhöhung unserer Standards.",
+                "description": "Entwicklung weiterer Farmen, Erreichen neuer Märkte und Diversifizierung unserer Produkte durch intelligentere Landwirtschaft und nachhaltige Expansion."
+            },
+            "who": {
+                "title": "Wir sind ein führendes marokkanisches Landwirtschaftsunternehmen, das sich der Bereitstellung von hochwertigem Bio-Gemüse für globale Märkte verschrieben hat.",
+                "description": "Mit jahrzehntelanger Erfahrung in Anbau und Export haben wir starke Partnerschaften mit lokalen Bauern und internationalen Käufern aufgebaut. Unser Team kombiniert traditionelles landwirtschaftliches Wissen mit moderner Agrartechnologie, um bei jeder Ernte höchste Qualitätsstandards zu gewährleisten."
+            },
+            "vision": {
+                "title": "Die vertrauenswürdigste Quelle der Welt für hochwertiges marokkanisches Bio-Gemüse zu werden und neue Standards für Qualität und Nachhaltigkeit zu setzen.",
+                "description": "Wir sehen eine Zukunft vor uns, in der die marokkanische Landwirtschaft weltweit für ihre Exzellenz, Innovation und ihr Engagement für Umweltschutz anerkannt wird. Durch kontinuierliche Verbesserung und strategische Partnerschaften wollen wir unsere Reichweite erweitern und gleichzeitig unsere Kernwerte Qualität, Nachhaltigkeit und Gemeinschaftsunterstützung beibehalten."
+            },
+            "mission": {
+                "title": "Außergewöhnliches Bio-Gemüse zu liefern, während wir marokkanische Bauern stärken und unser landwirtschaftliches Erbe schützen.",
+                "description": "Unsere Mission ist es, die Lücke zwischen Marokkos reicher landwirtschaftlicher Tradition und den Anforderungen des globalen Marktes zu schließen. Wir investieren in modernste Agrartechnologie, bieten lokalen Bauern faire Preise und implementieren nachhaltige Praktiken, die unser Land für zukünftige Generationen bewahren. Jede Tomate, die wir exportieren, repräsentiert unser Engagement für Exzellenz und Gemeindeentwicklung."
+            }
+        }
+    },
+    "products": {
+        "title": "Unsere Produkte",
+        "subtitle": "Premium Marokkanische Produkte",
+        "viewAll": "Alle Produkte Ansehen",
+        "items": {
+            "tomatoes": {
+                "name": "Tomaten",
+                "description": "Premium Bio-Tomaten, rebengereift für maximalen Geschmack und Nährwert",
+                "category": "Gemüse",
+                "features": {
+                    "certifiedOrganic": "Bio-Zertifiziert",
+                    "freshDaily": "Täglich Frisch",
+                    "exportQuality": "Export-Qualität",
+                    "vineRipened": "Rebengereift"
+                }
+            },
+            "cucumbers": {
+                "name": "Gurken",
+                "description": "Knackige, frische Gurken mit nachhaltigen Praktiken angebaut",
+                "category": "Gemüse",
+                "features": {
+                    "pesticideFree": "Pestizid-Frei",
+                    "greenhouseGrown": "Gewächshaus-Anbau",
+                    "yearRound": "Ganzjährig",
+                    "premiumGrade": "Premium-Qualität"
+                }
+            },
+            "carrots": {
+                "name": "Karotten",
+                "description": "Süße, zarte Karotten aus mineralreichem marokkanischem Boden",
+                "category": "Wurzelgemüse",
+                "features": {
+                    "highNutrition": "Hoher Nährwert",
+                    "naturalGrowth": "Natürliches Wachstum",
+                    "premiumGrade": "Premium-Qualität",
+                    "freshHarvest": "Frische Ernte"
+                }
+            },
+            "bellPeppers": {
+                "name": "Paprika",
+                "description": "Bunte, lebendige Paprika voller Vitamine und Antioxidantien",
+                "category": "Gemüse",
+                "features": {
+                    "multiColor": "Mehrfarbig",
+                    "nutrientRich": "Nährstoffreich",
+                    "exportReady": "Export-Bereit",
+                    "sweetFlavor": "Süßer Geschmack"
+                }
+            }
+        }
+    },
+    "technology": {
+        "title": "Unsere Technologie",
+        "subtitle": "Innovation in der Landwirtschaft",
+        "weUse": "",
+        "technology": "",
+        "slides": {
+            "slide1": {
+                "title": "Wir Nutzen Technologie",
+                "subtitle": "DAS LAND SCHÜTZEN, WÄHREND WIR VERANTWORTUNGSVOLL WACHSEN UND VERTRAUENSWÜRDIGE PRODUKTE LIEFERN.",
+                "description": "DAS LAND SCHÜTZEN, WÄHREND WIR VERANTWORTUNGSVOLL WACHSEN UND VERTRAUENSWÜRDIGE PRODUKTE LIEFERN."
+            }
+        },
+        "items": {
+            "precisionAgriculture": {
+                "title": "Präzisionslandwirtschaft",
+                "description": "Verwendung intelligenter Technologie zur Überwachung und Kontrolle jeder Phase des Tomatenanbaus: Pflanzung, Bewässerung und Ernte für optimale Ergebnisse."
+            },
+            "cropMonitoring": {
+                "title": "Pflanzenüberwachung",
+                "description": "Moderne Sensoren und Software zur Gewährleistung gesunden Wachstums in jeder Phase"
+            },
+            "smartAutomation": {
+                "title": "Intelligente Automatisierung",
+                "description": "Automatisierte Bewässerungs- und Klimakontrollsysteme für konstante Qualität"
+            }
+        }
+    },
+    "innovation": {
+        "title": "Innovation",
+        "subtitle": "Führende Agrartechnologie",
+        "description": "Wir nutzen modernste Technologie, um Produkte höchster Qualität zu gewährleisten"
+    },
+    "newsletter": {
+        "title": "Auf dem Laufenden Bleiben",
+        "subtitle": "Abonnieren Sie Unseren Newsletter",
+        "description": "Erhalten Sie die neuesten Nachrichten über unsere Produkte und nachhaltigen Anbaumethoden",
+        "heading": "BAUERN STÄRKEN\\nSTANDARDS ERHÖHEN",
+        "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+        "subscribe": "Abonnieren",
+        "success": "Vielen Dank für Ihr Abonnement!",
+        "error": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+    },
+    "showcase": {
+        "title": "Angebot Anfordern",
+        "qualityGreenhouse": {
+            "title": "Qualitäts-Gewächshaus",
+            "description": "Hochmoderne Gewächshausanlagen"
+        },
+        "freshDelivery": {
+            "title": "Frische Lieferung",
+            "description": "Frisch vor Ihre Haustür geliefert"
+        },
+        "freshHarvest": {
+            "title": "Frische Ernte",
+            "description": "Von Hand gepflückt bei optimaler Reife"
+        },
+        "premiumHarvest": {
+            "title": "Premium-Ernte",
+            "description": "Qualität, die Sie sehen und schmecken können"
+        },
+        "carefulGrowth": {
+            "title": "Sorgfältiges Wachstum",
+            "description": "In jeder Phase überwacht"
+        }
+    },
+    "footer": {
+        "services": "Dienstleistungen",
+        "resources": "Ressourcen",
+        "products": "Produkte",
+        "help": "Hilfe",
+        "blog": "Blog",
+        "information": "Information",
+        "legal": "Rechtliches",
+        "faq": "FAQ",
+        "helpCenter": "Hilfezentrum",
+        "support": "Support",
+        "allRightsReserved": "Alle Rechte vorbehalten",
+        "privacyPolicy": "Datenschutzrichtlinie",
+        "termsOfService": "Nutzungsbedingungen"
+    },
+    "about": {
+        "title": "Über Uns",
+        "subtitle": "Unsere Geschichte",
+        "description": "Erfahren Sie mehr über unsere Reise und unser Engagement für Qualität",
+        "hero_description_paragraphs": [
+            "WAYD basiert auf 45 Jahren familiärem Savoir-faire in landwirtschaftlichen Aktivitäten. Seit 1980 widmet sich unsere Familie Qualität, Vertrauen, Nachhaltigkeit und Exzellenz mit einer einfachen Mission: mit Sorgfalt anbauen und liefern.",
+            "Heute, unter der Führung der 3. Generation, werden alle oben genannten Werte zu Ethiken, nach denen wir leben. Sie leiten alles, von der Art und Weise, wie wir anbauen, bis zur Art und Weise, wie wir mit Partnern zusammenarbeiten.",
+            "Wir konzentrieren uns auf Innovation, wir glauben an Transparenz, neue Vision, die dennoch in der Tradition verwurzelt ist, frische Produkte aus Marokko direkt in die Welt zu bringen. Wir haben unsere Farmen erweitert und starke Exportpartnerschaften aufgebaut, um die Distanz zwischen Bauern und internationalen Märkten zu minimieren.",
+            "Unser Ziel ist es, unsere Waren den Menschen weltweit noch näher zu bringen, gewürzt mit einem Hauch, der unsere Leidenschaft für Exzellenz widerspiegelt."
+        ],
+        "goal_description_paragraphs": [
+            "Fortschritt ist unsere Denkweise und Wachstum ist nicht verhandelbar.\\nWir glauben, dass wahres Wachstum kollektiv ist und diejenigen, die unseren Antrieb teilen, mit uns wachsen.",
+            "Wir streben danach, gemeinsam mit unserem Team, unseren Partnern und unseren Kunden zu wachsen. Unsere Stärke liegt in ständiger Innovation, die es uns ermöglicht, fortgeschritten und zukunftsbereit zu bleiben",
+            "Ein Umfeld schaffen, in dem unsere Mitarbeiter sicher arbeiten, sich beruflich weiterentwickeln und gedeihen können, während wir expandieren und gleichzeitig die höchsten Standards in Qualität und Nachhaltigkeit aufrechterhalten."
+        ],
+        "vision_description_paragraphs": [
+            "Neudefinition von Qualität und Nachhaltigkeit in der gesamten Landwirtschaft und Beweis, dass wahre Meisterschaft in der Kunst des Anbaus liegt, wo starke disziplinierte Standards unsere Kreativität schützen und fördern.",
+            "Diversifizierung unserer Produkte durch intelligentere Landwirtschaft und nachhaltige Expansion, Erreichen neuer Länder, Erschließung neuer Märkte und Aufbau einer breiteren globalen Präsenz",
+            "Wir streben danach, unser Land zu vergrößern, mehr Farmen zu entwickeln und zu kultivieren und Produkte auf den Markt zu bringen, die Innovation mit der besten Tradition der marokkanischen Landwirtschaft verbinden."
+        ]
+    },
+    "sustainability": {
+        "title": "Nachhaltigkeit",
+        "subtitle": "Unser Engagement",
+        "description": "Wir widmen uns nachhaltigen Anbaumethoden, die sowohl Menschen als auch dem Planeten zugutekommen",
+        "hero": {
+            "title": "Engagiert für eine Grünere Zukunft",
+            "description": "Wir glauben an nachhaltige Landwirtschaft und umweltfreundliche Innovation, die unseren Planeten für kommende Generationen schützt.",
+            "ctaButton": "Unsere Initiativen"
+        },
+        "missionPhilosophy": {
+            "title": "Unsere Mission / Philosophie",
+            "description": "Unsere Mission ist es, Produktivität und Verantwortung in Einklang zu bringen. Von der Saat bis zur Ernte wird jeder Schritt von der Sorge um das Land, den Landwirt und die Zukunft geleitet"
+        },
+        "storytelling": {
+            "title": "Unsere Geschichte / Visueller Bereich"
+        }
+    },
+    "certificates": {
+        "title": "Zertifikate",
+        "subtitle": "Qualitätssicherung",
+        "description": "Unsere Zertifizierungen zeigen unser Engagement für Exzellenz",
+        "pageTitle": "Zertifizierung",
+        "errors": {
+            "loadFailed": "Fehler beim Laden der Zertifikate",
+            "genericError": "Beim Laden der Zertifikate ist ein Fehler aufgetreten"
+        },
+        "emptyState": "Derzeit sind keine Zertifikate verfügbar.",
+        "testimonial": {
+            "quote": "Seit 1997 arbeite ich mit GLOBALG.A.P-Standards und habe die Veränderungen gesehen, die sie gebracht haben - nicht nur aus der Perspektive der Lebensmittelsicherheit, die für Verbraucher so wichtig ist, sondern auch als praktisches Werkzeug, das hilft, soziale und ökologische Aspekte im Leben von Kleinbauern weltweit zu verbessern.",
+            "name": "OMAR BENSALAH",
+            "title": "Gründer und Geschäftsführer von Wayd groupe"
+        }
+    },
+    "contact": {
+        "title": "Kontaktieren Sie Uns",
+        "subtitle": "In Kontakt Treten",
+        "description": "Wir würden gerne von Ihnen hören",
+        "heroTitle": "KONTAKTIEREN SIE UNS",
+        "heroDescription": "Haben Sie Fragen oder möchten Sie mehr erfahren? Kontaktieren Sie uns, wir freuen uns auf Ihre Nachricht!",
+        "name": "Name",
+        "email": "E-Mail",
+        "message": "Nachricht",
+        "send": "Nachricht Senden",
+        "success": "Nachricht erfolgreich gesendet!",
+        "error": "Bitte füllen Sie alle Felder aus",
+        "visitUs": {
+            "title": "BESUCHEN SIE UNS",
+            "address": "123 Farmweg, Taddart, Marokko",
+            "description": "Kommen Sie und sehen Sie unsere Felder und Gewächshäuser persönlich!"
+        },
+        "callUs": {
+            "title": "RUFEN SIE UNS AN",
+            "phone": "+212 600 123 456",
+            "description": "Wir beantworten gerne Ihre Fragen und bieten Unterstützung"
+        },
+        "emailUs": {
+            "title": "SCHREIBEN SIE UNS",
+            "email": "info@WaydGroupe.com",
+            "description": "Senden Sie uns eine E-Mail und wir werden uns umgehend bei Ihnen melden"
+        }
+    },
+    "quote": {
+        "title": "Angebot Anfordern",
+        "subtitle": "Erste Schritte",
+        "description": "Füllen Sie das untenstehende Formular aus und wir werden uns bald bei Ihnen melden",
+        "heroTitle": "Angebot Anfordern",
+        "heroDescription": "Teilen Sie uns Ihre Anforderungen mit und wir erstellen Ihnen ein detailliertes Angebot",
+        "company": "Firma",
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "product": "Produkt",
+        "quantity": "Menge",
+        "message": "Nachricht",
+        "submit": "Anfrage Absenden",
+        "success": "Angebotsanfrage erfolgreich abgeschickt!",
+        "error": "Bitte füllen Sie alle erforderlichen Felder aus",
+        "form": {
+            "aboutYourself": "Über Sie",
+            "aboutYourselfDescription": "Erzählen Sie uns etwas über sich",
+            "nameLabel": "Name",
+            "firstPlaceholder": "Vorname",
+            "lastPlaceholder": "Nachname",
+            "businessLabel": "Unternehmen/Organisation",
+            "emailLabel": "E-Mail",
+            "websiteLabel": "Webseite",
+            "textLabel": "Text",
+            "submitButton": "Angebot Anfordern"
+        }
+    },
+    "harvest": {
+        "title": "Unsere Ernte",
+        "subtitle": "Frisch vom Hof",
+        "description": "Entdecken Sie unsere saisonalen Ernten",
+        "insight": "EINBLICK",
+        "requestQuote": "Angebot Anfordern",
+        "season": {
+            "title": "Erntezeit",
+            "qualityTitle": "Entwicklung & Qualität",
+            "resultsTitle": "Ergebnisse 2025",
+            "stats": {
+                "varietiesTested": "600+ Sorten Jährlich Mit Saatgutpartnern Getestet",
+                "preCommercial": "28 Sorten In Vorkommerziellen Versuchen",
+                "production": "24 Sorten In Produktion Für Kunden",
+                "exclusive": "3 Exklusive Sorten Für Duroc"
+            },
+            "description": "Auf unseren Farmen trifft Innovation auf Tradition. Wir investieren kontinuierlich in Forschung und Entwicklung, um die Pflanzenleistung, Krankheitsresistenz und Gesamtqualität zu verbessern. Jede Tomate wird sorgfältig vom Samen bis zur Ernte überwacht, um sicherzustellen, dass sie den höchsten Standards für Frische, Ernährung und Geschmack entspricht. Durch die Kombination fortschrittlicher Technologie, nachhaltiger Praktiken und Expertenwissen liefern wir Produkte, die Exzellenz und den Stolz der marokkanischen Landwirtschaft widerspiegeln.",
+            "commitmentTitle": "Unser Engagement",
+            "commitments": {
+                "sustainable": "Nachhaltige Anbaumethoden",
+                "quality": "Qualitätskontrollierte Ernte",
+                "technology": "Integration fortschrittlicher Technologie",
+                "fresh": "Garantiert frische Produkte"
+            },
+            "commitmentDescription": "Unsere Entwicklungs- und Qualitätsprozesse stellen sicher, dass jede Tomate, die wir ernten, den höchsten Standards entspricht. Durch kontinuierliche Innovation und strenge Qualitätskontrolle liefern wir Produkte, die unser Engagement für Exzellenz widerspiegeln. Vom Samen bis zur Ernte überwachen wir jede Phase, um Frische, Geschmack und Nährwert zu garantieren, auf die unsere Kunden vertrauen können.",
+            "downloadCatalog": "KATALOG HERUNTERLADEN",
+            "downloadButton": "Katalog Herunterladen"
+        }
+    },
+    "common": {
+        "learnMore": "Mehr Erfahren",
+        "readMore": "Weiterlesen",
+        "viewDetails": "Details Ansehen",
+        "close": "Schließen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "loading": "Lädt...",
+        "error": "Ein Fehler ist aufgetreten",
+        "success": "Erfolgreich!"
+    }
+}
