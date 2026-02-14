@@ -364,9 +364,6 @@ export default function HarvestSeason() {
                                         flexShrink: 0,
                                     }}
                                 />
-                                <Typography variant="body1" sx={{ fontSize: '1rem', color: '#2a2a2a' }}>
-                                    {t('harvest.season.commitments.fresh')}
-                                </Typography>
                             </Box>
                         </Box>
                     </Box>
@@ -376,8 +373,27 @@ export default function HarvestSeason() {
 
                 {/* Right - Paragraph Text */}
                 <Grid size={{ xs: 12, md: 3.8 }}>
-                    <Box sx={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-                        <Typography
+                    <Box
+                        component="li"
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 2,
+                        }}
+                    >
+                    <Box
+                        component="img"
+                        src="/images/hero/decorative-leaf.png"
+                        alt=""
+                        sx={{
+                            width: { xs: 40, md: 43 },
+                            height: { xs: 40, md: 19 },
+                            objectFit: 'contain',
+                            mt: 0.5,
+                            flexShrink: 0,
+                        }}
+                    />
+                            <Typography
                             variant="body1"
                             sx={{
                                 fontSize: { xs: '0.95rem', md: '20px' },
