@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import { Grid } from '@mui/material';
 import { useState } from 'react';
 import { useTranslations } from '@/hooks/useTranslations';
+import Image from 'next/image';
 
 export default function RequestQuotePage() {
     const { t } = useTranslations();
@@ -41,7 +42,7 @@ export default function RequestQuotePage() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     overflow: 'hidden',
-                    pt: { xs: '96px', md: '128px' },
+                    pt: { xs: '96px', md: '90px' },
                     pb: { xs: 8, md: 12 },
                 }}
             >
@@ -100,10 +101,10 @@ export default function RequestQuotePage() {
                         <Typography
                             variant="h1"
                             sx={{
-                                fontWeight: 700,
-                                mb: 3,
-                                fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' },
-                                lineHeight: 1.2,
+                                fontWeight: 900,
+                                mb: 1,
+                                fontSize: { xs: '2.5rem', sm: '3rem', md: '5rem' },
+                                lineHeight: 1,
                                 color: 'white',
                                 textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
                             }}
@@ -118,7 +119,7 @@ export default function RequestQuotePage() {
                                 fontWeight: 400,
                                 fontSize: { xs: '1rem', md: '1.2rem' },
                                 lineHeight: 1.6,
-                                maxWidth: '600px',
+                                maxWidth: '573px',
                                 mx: 'auto',
                                 px: 2,
                                 textShadow: '1px 1px 4px rgba(0,0,0,0.3)',
@@ -126,6 +127,22 @@ export default function RequestQuotePage() {
                         >
                             {t('quote.heroDescription')}
                         </Typography>
+
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                bottom: -60,
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                            }}
+                        >
+                            <Image
+                                src="/images/hero/decorative-left.png"
+                                alt="Decorative Element"
+                                width={70}
+                                height={60}
+                            />
+                        </Box>
                     </Box>
                 </Container>
 
