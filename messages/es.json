@@ -1,0 +1,222 @@
+{
+  "site": {
+    "name": "WAYD Groupe",
+    "tagline": "Raíces Generacionales Alcance Global",
+    "description": "Minimizando la Distancia Entre los Agricultores Marroquíes y los Mercados Internacionales.",
+    "email": "contact@waydgroupe.com",
+    "phone": "+212 XXX XXX XXX",
+    "address": "Marruecos"
+  },
+  "nav": {
+    "products": "Productos",
+    "about": "Sobre nosotros",
+    "sustainability": "Sostenibilidad",
+    "certificates": "Certificados",
+    "contact": "Contacto",
+    "requestQuote": "Solicitar Cotización",
+    "language": "Español"
+  },
+  "hero": {
+    "title": "Raíces Generacionales",
+    "titleLine2": "Alcance Global",
+    "description": "Minimizando la Distancia Entre los Agricultores Marroquíes y los Mercados Internacionales.",
+    "ctaPrimary": "Conocer Servicios",
+    "ctaSecondary": "Solicitar Cotización"
+  },
+  "stats": {
+    "yearsExperience": {
+      "value": "50+",
+      "label": "Años de Experiencia",
+      "description": "45 años de savoir faire familiar en actividades agrícolas, dedicados a la sostenibilidad y la excelencia. Durante más de 20 años hemos exportado nuestros propios productos, garantizando consistencia y calidad confiable en cada envío."
+    },
+    "farmsInProgress": {
+      "value": "100+",
+      "label": "GRANJAS PROPIAS",
+      "description": "Con más de 50 hectáreas distribuidas en más de siete granjas propias, mantenemos el control total del suministro, la calidad y la trazabilidad desde la semilla hasta el envío."
+    },
+    "localFarmers": {
+      "value": "500+",
+      "label": "Toneladas de Tomates al año",
+      "description": "Más de 6000 toneladas de tomates de alta calidad en diversas variedades producidas y exportadas anualmente, cumpliendo plenamente con los estándares internacionales de frescura, salud y seguridad."
+    }
+  },
+  "mission": {
+    "title": "Nuestra Misión",
+    "subtitle": "Potenciando la Agricultura Marroquí",
+    "description": "Estamos comprometidos a apoyar a los agricultores locales y llevar los mejores productos marroquíes a los mercados globales, manteniendo prácticas sostenibles."
+  },
+  "products": {
+    "title": "Nuestros Productos",
+    "subtitle": "Productos Marroquíes Premium",
+    "viewAll": "Ver Todos los Productos",
+    "items": {
+      "tomatoes": {
+        "name": "Tomates",
+        "description": "Tomates orgánicos premium, madurados en la vid para el máximo sabor y nutrición",
+        "category": "Verduras",
+        "features": {
+          "certifiedOrganic": "Certificado Orgánico",
+          "freshDaily": "Frescura Diaria",
+          "exportQuality": "Calidad de Exportación",
+          "vineRipened": "Madurado en la Vid"
+        }
+      },
+      "cucumbers": {
+        "name": "Pepinos",
+        "description": "Pepinos frescos y crujientes cultivados con prácticas sostenibles",
+        "category": "Verduras",
+        "features": {
+          "pesticideFree": "Sin Pesticidas",
+          "greenhouseGrown": "Cultivo en Invernadero",
+          "yearRound": "Todo el Año",
+          "premiumGrade": "Calidad Premium"
+        }
+      },
+      "carrots": {
+        "name": "Zanahorias",
+        "description": "Zanahorias dulces y tiernas del suelo rico en minerales de Marruecos",
+        "category": "Vegetales de Raíz",
+        "features": {
+          "highNutrition": "Alto Valor Nutritivo",
+          "naturalGrowth": "Crecimiento Natural",
+          "premiumGrade": "Calidad Premium",
+          "freshHarvest": "Cosecha Fresca"
+        }
+      },
+      "bellPeppers": {
+        "name": "Pimientos",
+        "description": "Pimientos coloridos y vibrantes, llenos de vitaminas y antioxidantes",
+        "category": "Verduras",
+        "features": {
+          "multiColor": "Multicolor",
+          "nutrientRich": "Rico en Nutrientes",
+          "exportReady": "Listo para Exportar",
+          "sweetFlavor": "Sabor Dulce"
+        }
+      }
+    }
+  },
+  "technology": {
+    "title": "Nuestra Tecnología",
+    "subtitle": "Innovación en Agricultura",
+    "items": {
+      "precisionAgriculture": {
+        "title": "Agricultura de Precisión",
+        "description": "Uso de tecnología inteligente para monitorear y controlar cada etapa del cultivo de tomate: siembra, riego y cosecha para resultados óptimos."
+      },
+      "cropMonitoring": {
+        "title": "Monitoreo de Cultivos",
+        "description": "Sensores y software modernos para garantizar un crecimiento saludable en cada etapa"
+      },
+      "smartAutomation": {
+        "title": "Automatización Inteligente",
+        "description": "Sistemas automatizados de riego y control climático para una calidad constante"
+      }
+    }
+  },
+  "innovation": {
+    "title": "Innovación",
+    "subtitle": "Tecnología Agrícola Líder",
+    "description": "Aprovechamos tecnología de vanguardia para garantizar productos de la más alta calidad"
+  },
+  "newsletter": {
+    "title": "Mantente Informado",
+    "subtitle": "Suscríbete a Nuestro Boletín",
+    "description": "Recibe las últimas noticias sobre nuestros productos y prácticas agrícolas sostenibles",
+    "emailPlaceholder": "Ingresa tu email",
+    "subscribe": "Suscribirse",
+    "success": "¡Gracias por suscribirte!",
+    "error": "Por favor ingresa una dirección de email válida"
+  },
+  "showcase": {
+    "qualityGreenhouse": {
+      "title": "Invernadero de Calidad",
+      "description": "Instalaciones de invernadero de última generación"
+    },
+    "freshHarvest": {
+      "title": "Cosecha Fresca",
+      "description": "Recogido a mano en su punto óptimo de madurez"
+    },
+    "premiumHarvest": {
+      "title": "Cosecha Premium",
+      "description": "Calidad que puedes ver y saborear"
+    },
+    "carefulGrowth": {
+      "title": "Crecimiento Cuidadoso",
+      "description": "Supervisado en cada etapa"
+    }
+  },
+  "footer": {
+    "services": "Servicios",
+    "resources": "Recursos",
+    "products": "Productos",
+    "help": "Ayuda",
+    "blog": "Blog",
+    "information": "Información",
+    "legal": "Legal",
+    "faq": "Preguntas Frecuentes",
+    "helpCenter": "Centro de Ayuda",
+    "support": "Soporte",
+    "allRightsReserved": "Todos los derechos reservados",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Nuestra Historia",
+    "description": "Conoce más sobre nuestro recorrido y compromiso con la calidad"
+  },
+  "sustainability": {
+    "title": "Sostenibilidad",
+    "subtitle": "Nuestro Compromiso",
+    "description": "Estamos dedicados a prácticas agrícolas sostenibles que benefician tanto a las personas como al planeta"
+  },
+  "certificates": {
+    "title": "Certificados",
+    "subtitle": "Garantía de Calidad",
+    "description": "Nuestras certificaciones demuestran nuestro compromiso con la excelencia"
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Ponte en Contacto",
+    "description": "Nos encantaría saber de ti",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje",
+    "success": "¡Mensaje enviado con éxito!",
+    "error": "Por favor completa todos los campos"
+  },
+  "quote": {
+    "title": "Solicitar Cotización",
+    "subtitle": "Comenzar",
+    "description": "Completa el formulario a continuación y nos pondremos en contacto pronto",
+    "company": "Empresa",
+    "name": "Nombre",
+    "email": "Email",
+    "phone": "Teléfono",
+    "product": "Producto",
+    "quantity": "Cantidad",
+    "message": "Mensaje",
+    "submit": "Enviar Solicitud",
+    "success": "¡Solicitud de cotización enviada con éxito!",
+    "error": "Por favor completa todos los campos obligatorios"
+  },
+  "harvest": {
+    "title": "Nuestra Cosecha",
+    "subtitle": "Fresco de la Granja",
+    "description": "Descubre nuestras cosechas de temporada"
+  },
+  "common": {
+    "learnMore": "Saber Más",
+    "readMore": "Leer Más",
+    "viewDetails": "Ver Detalles",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "success": "¡Éxito!"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "site": {
+    "name": "WAYD Groupe",
+    "tagline": "Generationswurzeln Globale Reichweite",
+    "description": "Die Distanz zwischen marokkanischen Bauern und den internationalen Märkten minimieren.",
+    "email": "contact@waydgroupe.com",
+    "phone": "+212 XXX XXX XXX",
+    "address": "Marokko"
+  },
+  "nav": {
+    "products": "Produkte",
+    "about": "Über uns",
+    "sustainability": "Nachhaltigkeit",
+    "certificates": "Zertifikate",
+    "contact": "Kontakt",
+    "requestQuote": "Angebot anfordern",
+    "language": "Deutsch"
+  },
+  "hero": {
+    "title": "Generationswurzeln",
+    "titleLine2": "Globale Reichweite",
+    "description": "Die Distanz zwischen marokkanischen Bauern und den internationalen Märkten minimieren.",
+    "ctaPrimary": "Leistungen entdecken",
+    "ctaSecondary": "Angebot anfordern"
+  },
+  "stats": {
+    "yearsExperience": {
+      "value": "50+",
+      "label": "Jahre Erfahrung",
+      "description": "45 Jahre familiäres Savoir-faire in der Landwirtschaft, der Nachhaltigkeit und Exzellenz verpflichtet. Seit über 20 Jahren exportieren wir unsere eigenen Produkte und liefern gleichbleibende, vertrauenswürdige Qualität mit jeder Lieferung."
+    },
+    "farmsInProgress": {
+      "value": "100+",
+      "label": "EIGENE BETRIEBE",
+      "description": "Mit mehr als 50 Hektar auf über sieben eigenen Betrieben behalten wir die volle Kontrolle über Versorgung, Qualität und Rückverfolgbarkeit – von der Saat bis zur Lieferung."
+    },
+    "localFarmers": {
+      "value": "500+",
+      "label": "Tonnen Tomaten pro Jahr",
+      "description": "Mehr als 6.000 Tonnen hochwertiger Tomaten in verschiedenen Sorten werden jährlich produziert und exportiert, vollständig im Einklang mit den internationalen Standards für Frische, Gesundheit und Sicherheit."
+    }
+  },
+  "mission": {
+    "title": "Unsere Mission",
+    "subtitle": "Marokkanische Landwirtschaft stärken",
+    "description": "Wir setzen uns dafür ein, lokale Bauern zu unterstützen und die besten marokkanischen Produkte auf die Weltmärkte zu bringen, während wir nachhaltige Praktiken aufrechterhalten."
+  },
+  "products": {
+    "title": "Unsere Produkte",
+    "subtitle": "Erstklassige marokkanische Produkte",
+    "viewAll": "Alle Produkte anzeigen",
+    "items": {
+      "tomatoes": {
+        "name": "Tomaten",
+        "description": "Premium-Bio-Tomaten, am Weinstock gereift für maximalen Geschmack und Nährwert",
+        "category": "Gemüse",
+        "features": {
+          "certifiedOrganic": "Zertifiziert Bio",
+          "freshDaily": "Täglich Frisch",
+          "exportQuality": "Exportqualität",
+          "vineRipened": "Am Weinstock Gereift"
+        }
+      },
+      "cucumbers": {
+        "name": "Gurken",
+        "description": "Knackige, frische Gurken, nachhaltig angebaut",
+        "category": "Gemüse",
+        "features": {
+          "pesticideFree": "Pestizidfreie",
+          "greenhouseGrown": "Im Gewächshaus Angebaut",
+          "yearRound": "Ganzjährig Verfügbar",
+          "premiumGrade": "Premiumqualität"
+        }
+      },
+      "carrots": {
+        "name": "Karotten",
+        "description": "Süße, zarte Karotten aus dem mineralreichen marokkanischen Boden",
+        "category": "Wurzelgemüse",
+        "features": {
+          "highNutrition": "Hoher Nährwert",
+          "naturalGrowth": "Natürliches Wachstum",
+          "premiumGrade": "Premiumqualität",
+          "freshHarvest": "Frische Ernte"
+        }
+      },
+      "bellPeppers": {
+        "name": "Paprika",
+        "description": "Bunte, lebendige Paprika, reich an Vitaminen und Antioxidantien",
+        "category": "Gemüse",
+        "features": {
+          "multiColor": "Mehrfarbig",
+          "nutrientRich": "Nährstoffreich",
+          "exportReady": "Exportfertig",
+          "sweetFlavor": "Süßer Geschmack"
+        }
+      }
+    }
+  },
+  "technology": {
+    "title": "Unsere Technologie",
+    "subtitle": "Innovation in der Landwirtschaft",
+    "items": {
+      "precisionAgriculture": {
+        "title": "Präzisionslandwirtschaft",
+        "description": "Einsatz intelligenter Technologie zur Überwachung und Steuerung jeder Phase des Tomatenanbaus: Pflanzung, Bewässerung und Ernte für optimale Ergebnisse."
+      },
+      "cropMonitoring": {
+        "title": "Ernte-Monitoring",
+        "description": "Moderne Sensoren und Software für gesundes Wachstum in jeder Phase"
+      },
+      "smartAutomation": {
+        "title": "Intelligente Automatisierung",
+        "description": "Automatisierte Bewässerungs- und Klimakontrollsysteme für gleichbleibende Qualität"
+      }
+    }
+  },
+  "innovation": {
+    "title": "Innovation",
+    "subtitle": "Führende Agrartechnologie",
+    "description": "Wir nutzen modernste Technologie, um Produkte höchster Qualität zu gewährleisten"
+  },
+  "newsletter": {
+    "title": "Bleiben Sie informiert",
+    "subtitle": "Abonnieren Sie unseren Newsletter",
+    "description": "Erhalten Sie die neuesten Nachrichten über unsere Produkte und nachhaltigen Anbaumethoden",
+    "emailPlaceholder": "E-Mail-Adresse eingeben",
+    "subscribe": "Abonnieren",
+    "success": "Vielen Dank für Ihr Abonnement!",
+    "error": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+  },
+  "showcase": {
+    "qualityGreenhouse": {
+      "title": "Qualitätsgewächshaus",
+      "description": "Modernste Gewächshausanlagen"
+    },
+    "freshHarvest": {
+      "title": "Frische Ernte",
+      "description": "Handgepflückt auf dem Höhepunkt der Reife"
+    },
+    "premiumHarvest": {
+      "title": "Premium-Ernte",
+      "description": "Qualität, die man sehen und schmecken kann"
+    },
+    "carefulGrowth": {
+      "title": "Sorgfältiges Wachstum",
+      "description": "In jeder Phase überwacht"
+    }
+  },
+  "footer": {
+    "services": "Dienstleistungen",
+    "resources": "Ressourcen",
+    "products": "Produkte",
+    "help": "Hilfe",
+    "blog": "Blog",
+    "information": "Informationen",
+    "legal": "Rechtliches",
+    "faq": "Häufige Fragen",
+    "helpCenter": "Hilfezentrum",
+    "support": "Support",
+    "allRightsReserved": "Alle Rechte vorbehalten",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen"
+  },
+  "about": {
+    "title": "Über Uns",
+    "subtitle": "Unsere Geschichte",
+    "description": "Erfahren Sie mehr über unsere Reise und unser Engagement für Qualität"
+  },
+  "sustainability": {
+    "title": "Nachhaltigkeit",
+    "subtitle": "Unser Engagement",
+    "description": "Wir widmen uns nachhaltigen Landwirtschaftspraktiken, die sowohl Menschen als auch dem Planeten zugutekommen"
+  },
+  "certificates": {
+    "title": "Zertifikate",
+    "subtitle": "Qualitätssicherung",
+    "description": "Unsere Zertifizierungen belegen unser Engagement für Exzellenz"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "In Kontakt treten",
+    "description": "Wir freuen uns von Ihnen zu hören",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht senden",
+    "success": "Nachricht erfolgreich gesendet!",
+    "error": "Bitte füllen Sie alle Felder aus"
+  },
+  "quote": {
+    "title": "Angebot anfordern",
+    "subtitle": "Loslegen",
+    "description": "Füllen Sie das untenstehende Formular aus und wir melden uns bald bei Ihnen",
+    "company": "Unternehmen",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "product": "Produkt",
+    "quantity": "Menge",
+    "message": "Nachricht",
+    "submit": "Anfrage senden",
+    "success": "Angebotsanfrage erfolgreich gesendet!",
+    "error": "Bitte füllen Sie alle Pflichtfelder aus"
+  },
+  "harvest": {
+    "title": "Unsere Ernte",
+    "subtitle": "Frisch vom Hof",
+    "description": "Entdecken Sie unsere saisonalen Ernten"
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "readMore": "Weiterlesen",
+    "viewDetails": "Details anzeigen",
+    "close": "Schließen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolgreich!"
+  }
+}
