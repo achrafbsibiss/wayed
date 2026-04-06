@@ -9,13 +9,37 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 import { Icon } from '@iconify/react';
+import { useTranslations } from '@/hooks/useTranslations';
 
 export default function HarvestHero() {
+    const { locale } = useTranslations();
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeProduct, setActiveProduct] = useState(null);
     const [activeVariant, setActiveVariant] = useState(null);
     const [direction, setDirection] = useState(0); // 1 for next, -1 for prev, 0 for variant change
+
+    const resolveLocalizedValue = (value) => {
+        if (value === null || value === undefined) return '';
+        if (typeof value === 'string' || typeof value === 'number') return String(value);
+
+        if (typeof value === 'object') {
+            const priorityLocales = [locale, 'en', 'fr', 'es', 'de', 'ar', 'gr'];
+            for (const language of priorityLocales) {
+                const localizedValue = value?.[language];
+                if (typeof localizedValue === 'string' && localizedValue.trim()) {
+                    return localizedValue;
+                }
+            }
+
+            const fallbackValue = Object.values(value).find(
+                (entry) => typeof entry === 'string' && entry.trim()
+            );
+            if (fallbackValue) return fallbackValue;
+        }
+
+        return '';
+    };
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -50,6 +74,7 @@ export default function HarvestHero() {
     if (!currentProduct) return null;
 
     const currentVariantData = currentProduct.variants.find(v => v.variant_id === activeVariant) || currentProduct.variants[0];
+    const currentProductName = resolveLocalizedValue(currentProduct.name);
 
     const handleProductChange = (productSlug, animDirection) => {
         const newProduct = products.find(p => p.slug === productSlug);
@@ -70,8 +95,8 @@ export default function HarvestHero() {
     const activeVariantProps = {
         mainImage: currentVariantData?.main_image_url,
         sliderImages: currentVariantData?.slider_images || [],
-        size: currentVariantData?.size,
-        description: currentVariantData?.description,
+        size: resolveLocalizedValue(currentVariantData?.size),
+        description: resolveLocalizedValue(currentVariantData?.description),
     };
 
     return (
@@ -134,7 +159,7 @@ export default function HarvestHero() {
                             minWidth: { xs: '200px', md: '300px' },
                         }}
                     >
-                        {currentProduct.name}
+                        {currentProductName}
                     </Typography>
 
                     {/* Next Product Arrow */}
@@ -195,7 +220,7 @@ export default function HarvestHero() {
                                 },
                             }}
                         >
-                            {variant.label}
+                            {resolveLocalizedValue(variant.label)}
                         </Button>
                     ))}
                 </Box>
@@ -250,7 +275,7 @@ export default function HarvestHero() {
                                 <Box
                                     component="img"
                                     src={image}
-                                    alt={`${currentProduct.name} ${index + 1}`}
+                                    alt={`${currentProductName} ${index + 1}`}
                                 />
                             </SwiperSlide>
                         ))}
@@ -362,7 +387,7 @@ export default function HarvestHero() {
                                 <Box
                                     component="img"
                                     src={activeVariantProps.mainImage}
-                                    alt={currentProduct.name}
+                                    alt={currentProductName}
                                     sx={{
                                         maxWidth: '100%',
                                         height: 'auto',
@@ -400,7 +425,7 @@ export default function HarvestHero() {
                                             <Box
                                                 component="img"
                                                 src={image}
-                                                alt={`${currentProduct.name} ${index + 1}`}
+                                                alt={`${currentProductName} ${index + 1}`}
                                                 sx={{
                                                     height: '300px',
                                                     objectFit: 'cover',
@@ -430,7 +455,7 @@ export default function HarvestHero() {
                             <Box
                                 component="img"
                                 src={activeVariantProps.mainImage}
-                                alt={currentProduct.name}
+                                alt={currentProductName}
                                 sx={{
                                     maxWidth: '100%',
                                     height: 'auto',

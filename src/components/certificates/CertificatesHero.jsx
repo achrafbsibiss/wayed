@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { useTranslations } from '@/hooks/useTranslations';
 
 const VALUES = [
     {
@@ -70,10 +71,33 @@ const scaleIn = {
 };
 
 export default function CertificatesHero() {
+    const { locale } = useTranslations();
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
     const [certificates, setCertificates] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const resolveLocalizedValue = (value) => {
+        if (value === null || value === undefined) return '';
+        if (typeof value === 'string' || typeof value === 'number') return String(value);
+
+        if (typeof value === 'object') {
+            const priorityLocales = [locale, 'en', 'fr', 'es', 'de', 'ar', 'gr'];
+            for (const language of priorityLocales) {
+                const localizedValue = value?.[language];
+                if (typeof localizedValue === 'string' && localizedValue.trim()) {
+                    return localizedValue;
+                }
+            }
+
+            const fallbackValue = Object.values(value).find(
+                (entry) => typeof entry === 'string' && entry.trim()
+            );
+            if (fallbackValue) return fallbackValue;
+        }
+
+        return '';
+    };
 
     // Fetch certificates from API
     useEffect(() => {
@@ -136,7 +160,7 @@ export default function CertificatesHero() {
             pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
 
             // Download PDF
-            pdf.save(`${certificateName}.pdf`);
+            pdf.save(`${certificateName || 'certificate'}.pdf`);
 
             // Clean up
             document.body.removeChild(tempContainer);
@@ -201,16 +225,20 @@ export default function CertificatesHero() {
                     {!loading && !error && (
                         <>
                             {/* Dynamic Certificate Sections */}
-                            {certificates.map((certificate, index) => (
-                                <motion.div
-                                    key={certificate.id}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    variants={staggerContainer}
-                                    style={{ width: '100%' }}
-                                >
-                                    <Grid container spacing={4} sx={{ mt: 4 }}>
+                            {certificates.map((certificate, index) => {
+                                const certificateTitle = resolveLocalizedValue(certificate.title);
+                                const certificateDescription = resolveLocalizedValue(certificate.description);
+
+                                return (
+                                    <motion.div
+                                        key={certificate.id}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        variants={staggerContainer}
+                                        style={{ width: '100%' }}
+                                    >
+                                        <Grid container spacing={4} sx={{ mt: 4 }}>
                                         {/* Left - Certificate Text */}
                                         <Grid size={{ xs: 12, md: 6 }}>
                                             <motion.div variants={fadeInUp}>
@@ -232,7 +260,7 @@ export default function CertificatesHero() {
                                                                 whiteSpace: 'nowrap',
                                                             }}
                                                         >
-                                                            {certificate.title}
+                                                            {certificateTitle}
                                                         </Typography>
                                                         <Box
                                                             sx={{
@@ -259,7 +287,7 @@ export default function CertificatesHero() {
                                                             fontSize: { xs: '0.95rem', md: '20px' },
                                                         }}
                                                     >
-                                                        {certificate.description}
+                                                        {certificateDescription}
                                                     </Typography>
                                                 </Box>
                                             </motion.div>
@@ -285,7 +313,7 @@ export default function CertificatesHero() {
                                                     <Box
                                                         component="img"
                                                         src={certificate.image_url}
-                                                        alt={certificate.title}
+                                                        alt={certificateTitle}
                                                         sx={{
                                                             width: '100%',
                                                             height: { xs: 'auto', md: '318px' },
@@ -293,7 +321,7 @@ export default function CertificatesHero() {
                                                         }}
                                                     />
                                                     <IconButton
-                                                        onClick={() => downloadCertificate(certificate.image_url, certificate.title)}
+                                                        onClick={() => downloadCertificate(certificate.image_url, certificateTitle)}
                                                         sx={{
                                                             position: 'absolute',
                                                             top: 16,
@@ -432,9 +460,10 @@ export default function CertificatesHero() {
                                                 </motion.div>
                                             </Grid>
                                         )}
-                                    </Grid>
-                                </motion.div>
-                            ))}
+                                        </Grid>
+                                    </motion.div>
+                                );
+                            })}
 
                             {/* Empty State */}
                             {certificates.length === 0 && (
